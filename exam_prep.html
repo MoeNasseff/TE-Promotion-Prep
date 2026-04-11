@@ -182,10 +182,95 @@
   [dir="ltr"] .quote { border-right:none; border-left:3px solid #1e7cf4; border-radius:0 .5rem .5rem 0; }
 
   @media print {
-    body { background:white; color:black; }
-    .no-print { display:none !important; }
-    details { break-inside: avoid; }
-    .mcq .answer { display:block !important; }
+    @page { size: A4; margin: 14mm 12mm 16mm 12mm; }
+    html, body {
+      background: #fff !important;
+      color: #0c1426 !important;
+      font-size: 10.5pt;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      background: #fff !important;
+      background-image: none !important;
+    }
+    .no-print, header.sticky, .toolbar, nav.nav { display: none !important; }
+
+    /* Kill sticky / fixed offsets that create blank space at top of pages */
+    header { position: static !important; }
+    section { padding-top: .35rem !important; padding-bottom: .35rem !important; }
+    .max-w-7xl { max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; }
+
+    /* Page-break safety: keep cards together */
+    .glass, .pillar, .ribbon, article, .mcq, .quote, .grid-def, .dual > * {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+    }
+    .glass, .pillar, .ribbon {
+      background: #fff !important;
+      border: 1px solid #c6d0e0 !important;
+    }
+    .glass { padding: .6rem .8rem !important; margin-top: .5rem !important; }
+    .pillar { padding: .5rem .7rem !important; }
+
+    /* Section titles and headings always start with their content */
+    h1, h2, h3 {
+      break-after: avoid !important;
+      page-break-after: avoid !important;
+      color: #0c1426 !important;
+    }
+    h1 { font-size: 20pt !important; }
+    h2.section-title { font-size: 14pt !important; margin-top: .6rem !important; }
+    h3 { font-size: 12pt !important; }
+    p, li { orphans: 3; widows: 3; color: #1a2336 !important; }
+
+    /* Dual grid becomes single column in print to avoid short pages */
+    .dual { grid-template-columns: 1fr !important; gap: .5rem !important; }
+    html[data-lang="en"] .dual .card-ar,
+    html[data-lang="ar"] .dual .card-en { display: none !important; }
+
+    /* MCQs: expand all answers, drop opacity, compact spacing */
+    details, details[open] { display: block !important; }
+    details > summary { list-style: none; cursor: default; padding: .4rem .5rem !important; }
+    .mcq { margin: .35rem 0 !important; break-inside: avoid !important; }
+    .mcq .answer { display: block !important; border-top: 1px dashed #c6d0e0 !important; padding: .4rem .5rem !important; }
+    .opt { background: #fff !important; border: 1px solid #c6d0e0 !important; padding: .25rem .5rem !important; }
+    .opt.correct { background: #e8f6ee !important; border-color: #67c595 !important; color: #0c1426 !important; }
+
+    /* Essay blocks — each starts on its own section but allow natural flow */
+    #essay > .glass { break-before: auto !important; }
+    #essay > .glass + .glass { break-before: page !important; }
+
+    /* New page before each major section for cleaner layout */
+    #docs, #summary, #patterns, #mcq, #essay, #strategy, #alignment {
+      break-before: page !important;
+      page-break-before: always !important;
+    }
+
+    /* Kill gradients, hide decorative bars cleanly */
+    .bar { background: #0b4bab !important; }
+    .num-dot { background: #0b4bab !important; color: #fff !important; box-shadow: none !important; }
+    .chip, .score-pill, .side-label, .k-label {
+      background: #eef2f9 !important;
+      color: #0b4bab !important;
+      border: 1px solid #c6d0e0 !important;
+    }
+    a { color: #0b4bab !important; text-decoration: none; }
+    .sub-en, .en, .ltr-block { color: #4c628a !important; }
+    .h-rule { background: #c6d0e0 !important; height: 1px !important; }
+    .text-brand-400, .text-brand-200 { color: #0b4bab !important; }
+    .text-slate-300, .text-slate-400, .text-slate-500 { color: #4c628a !important; }
+    em, strong { color: #0c1426 !important; }
+
+    /* Backgrounds on gradient spans collapse to solid */
+    .bg-clip-text, .bg-gradient-to-l, .bg-gradient-to-br {
+      background: none !important;
+      -webkit-text-fill-color: #0b4bab !important;
+      color: #0b4bab !important;
+    }
   }
 
   /* ============== LANGUAGE SWITCH ============== */
