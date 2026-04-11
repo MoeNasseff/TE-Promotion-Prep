@@ -1,0 +1,2060 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark" data-lang="ar">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>الجزء الأول · التحضير للترقية · الاتصالات المصرية</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Cairo','Inter','system-ui','sans-serif'],
+          en:   ['Inter','system-ui','sans-serif'],
+          ar:   ['Cairo','Inter','system-ui','sans-serif'],
+        },
+        colors: {
+          ink:    { 900:'#05070e', 800:'#0a0f1c', 700:'#121a2e', 600:'#1a2442' },
+          brand:  { 50:'#eef7ff', 100:'#d8edff', 200:'#b0d8ff', 400:'#4fa2ff', 500:'#1e7cf4', 600:'#1060d6', 700:'#0b4bab' },
+          accent: { 400:'#f4b63b', 500:'#e59b0c', 600:'#b67505' },
+          good:   { 500:'#18b06b' },
+          bad:    { 500:'#e4575a' },
+        },
+        boxShadow: {
+          glow: '0 0 0 1px rgba(79,162,255,.35), 0 18px 40px -18px rgba(30,124,244,.45)',
+          card: '0 1px 0 rgba(255,255,255,.04) inset, 0 20px 48px -24px rgba(0,0,0,.6)',
+        },
+      }
+    }
+  }
+</script>
+<style>
+  :root { color-scheme: dark; }
+  html,body { background:#05070e; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 90% -10%, rgba(30,124,244,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgba(244,182,59,.10), transparent 60%),
+      linear-gradient(180deg, #05070e 0%, #070b17 100%);
+    color:#e7ecf6;
+    font-feature-settings:"ss01","cv11";
+    font-family:'Cairo','Inter',system-ui,sans-serif;
+    line-height:1.85;
+  }
+  .en { font-family:'Inter',system-ui,sans-serif; direction:ltr; display:inline-block; }
+  .ltr-block { direction:ltr; text-align:left; font-family:'Inter',system-ui,sans-serif; }
+  .glass {
+    background: linear-gradient(180deg, rgba(18,26,46,.85), rgba(10,15,28,.85));
+    border: 1px solid rgba(120,150,200,.14);
+    backdrop-filter: blur(8px);
+  }
+  .chip {
+    display:inline-flex; align-items:center; gap:.4rem;
+    padding:.28rem .7rem; border-radius:999px;
+    font-size:.72rem; font-weight:700; letter-spacing:.02em;
+    background: rgba(30,124,244,.12);
+    color:#b7d4ff;
+    border:1px solid rgba(79,162,255,.25);
+    white-space:nowrap;
+  }
+  .chip.accent { background: rgba(244,182,59,.1); color:#f4d58b; border-color: rgba(244,182,59,.3); }
+  .chip.good   { background: rgba(24,176,107,.1); color:#8be6b9; border-color: rgba(24,176,107,.3); }
+  .chip.bad    { background: rgba(228,87,90,.1); color:#ffb0b2; border-color: rgba(228,87,90,.3); }
+  .h-rule {
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(120,150,200,.35), transparent);
+  }
+  .kbd {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    padding:.1rem .45rem; border-radius:.35rem;
+    background:#0f1a33; color:#bcd3ff;
+    border:1px solid rgba(120,150,200,.2);
+    font-size:.72rem;
+  }
+  .num-dot {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:1.7rem; height:1.7rem; border-radius:999px;
+    background: linear-gradient(180deg,#1e7cf4,#0b4bab);
+    color:white; font-weight:800; font-size:.8rem;
+    box-shadow: 0 6px 18px -6px rgba(30,124,244,.8);
+    flex-shrink:0;
+    font-family:'Inter',sans-serif;
+  }
+  .section-title {
+    display:flex; align-items:center; gap:.9rem;
+    font-weight:900; letter-spacing:-.01em;
+  }
+  .section-title .bar {
+    width:6px; height:30px; border-radius:6px;
+    background: linear-gradient(180deg,#1e7cf4,#f4b63b);
+  }
+  details[open] summary .caret { transform: rotate(-90deg); }
+  .caret { display:inline-block; transition: transform .18s ease; }
+  .mcq summary {
+    list-style:none; cursor:pointer;
+    display:flex; align-items:flex-start; gap:.85rem;
+    padding: 1rem 1.15rem;
+  }
+  .mcq summary::-webkit-details-marker { display:none; }
+  .mcq .answer { border-top:1px dashed rgba(120,150,200,.2); }
+  .opt {
+    display:flex; gap:.7rem; align-items:flex-start;
+    padding:.55rem .8rem; border-radius:.6rem;
+    background: rgba(255,255,255,.02);
+    border:1px solid rgba(120,150,200,.08);
+  }
+  .opt.correct {
+    background: rgba(24,176,107,.08);
+    border-color: rgba(24,176,107,.35);
+  }
+  .opt .letter {
+    font-weight:800; color:#9cb6d8; width:1.4rem; flex-shrink:0;
+    font-family:'Inter',sans-serif;
+  }
+  .opt.correct .letter { color:#8be6b9; }
+  .nav a {
+    font-size:.78rem; color:#9cb6d8; padding:.4rem .65rem; border-radius:.5rem;
+  }
+  .nav a:hover { background: rgba(30,124,244,.1); color:#d4e6ff; }
+  .grid-def dt { color:#9cb6d8; font-size:.72rem; letter-spacing:.04em; margin-top:.7rem; font-weight:800; }
+  .grid-def dd { color:#e7ecf6; margin-top:.15rem; font-size:.85rem; }
+  .ribbon {
+    background: linear-gradient(135deg, rgba(30,124,244,.18), rgba(244,182,59,.08));
+    border:1px solid rgba(79,162,255,.25);
+  }
+  .pillar {
+    background: linear-gradient(180deg, rgba(18,26,46,.9), rgba(10,15,28,.9));
+    border:1px solid rgba(120,150,200,.14);
+    border-radius: 1rem;
+    padding: 1.1rem 1.15rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .pillar::before {
+    content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background: linear-gradient(90deg,#1e7cf4,#f4b63b);
+  }
+  .k-label { font-size:.7rem; letter-spacing:.06em; color:#7e97bc; font-weight:800; }
+  .k-label .en { font-size:.62rem; color:#556c8e; margin-right:.35rem; }
+  .cta-btn {
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.6rem 1rem; border-radius:.7rem; font-weight:800; font-size:.85rem;
+    background: linear-gradient(180deg,#1e7cf4,#0b4bab);
+    box-shadow: 0 10px 24px -10px rgba(30,124,244,.7);
+    color:white;
+  }
+  .mono { font-family: ui-monospace, SFMono-Regular, monospace; direction:ltr; display:inline-block; }
+  .score-pill {
+    background: rgba(30,124,244,.12); color:#b7d4ff;
+    padding:.25rem .6rem; border-radius:999px; font-size:.72rem; font-weight:800;
+    border:1px solid rgba(79,162,255,.25);
+  }
+  .toolbar button {
+    font-size:.72rem; padding:.35rem .65rem; border-radius:.5rem;
+    background: rgba(120,150,200,.08);
+    border:1px solid rgba(120,150,200,.18);
+    color:#bccce5;
+  }
+  .toolbar button:hover { background: rgba(30,124,244,.15); color:#d4e6ff; }
+  .bil h3 { font-weight:900; }
+  .bil .sub-en { font-family:'Inter',sans-serif; color:#9cb6d8; font-weight:600; font-size:.85rem; }
+  .dual {
+    display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  @media (max-width: 900px) { .dual { grid-template-columns: 1fr; } }
+  .dual .card-ar { direction:rtl; text-align:right; }
+  .dual .card-en { direction:ltr; text-align:left; font-family:'Inter',sans-serif; }
+  .side-label {
+    display:inline-block; font-size:.6rem; letter-spacing:.18em; font-weight:800;
+    padding:.15rem .5rem; border-radius:.35rem; color:#9cb6d8;
+    background: rgba(120,150,200,.08); border:1px solid rgba(120,150,200,.16);
+    margin-bottom:.5rem;
+  }
+  .card-ar .side-label { font-family:'Cairo',sans-serif; }
+  .card-en .side-label { font-family:'Inter',sans-serif; }
+  .quote {
+    border-right:3px solid #1e7cf4; padding:.75rem 1rem;
+    background: rgba(30,124,244,.06);
+    border-radius:.5rem 0 0 .5rem;
+  }
+  [dir="ltr"] .quote { border-right:none; border-left:3px solid #1e7cf4; border-radius:0 .5rem .5rem 0; }
+
+  @media print {
+    body { background:white; color:black; }
+    .no-print { display:none !important; }
+    details { break-inside: avoid; }
+    .mcq .answer { display:block !important; }
+  }
+
+  /* ============== LANGUAGE SWITCH ============== */
+  html[data-lang="ar"] .only-en,
+  html[data-lang="ar"] .card-en,
+  html[data-lang="ar"] .sub-en { display:none !important; }
+  html[data-lang="en"] .only-ar,
+  html[data-lang="en"] .card-ar { display:none !important; }
+  html[data-lang="en"] .dual { grid-template-columns: 1fr; }
+  html[data-lang="ar"] .dual { grid-template-columns: 1fr; }
+  html[data-lang="en"] { direction:ltr; }
+  html[data-lang="en"] body { font-family:'Inter',system-ui,sans-serif; text-align:left; }
+  html[data-lang="en"] .nav a,
+  html[data-lang="en"] h1,
+  html[data-lang="en"] h2,
+  html[data-lang="en"] h3,
+  html[data-lang="en"] p,
+  html[data-lang="en"] li,
+  html[data-lang="en"] dd,
+  html[data-lang="en"] dt { direction:ltr; text-align:left; }
+  html[data-lang="en"] .quote { border-right:none; border-left:3px solid var(--brand-500); border-radius:0 .5rem .5rem 0; }
+  html[data-lang="en"] .card-en .sub-en { display:inline-block !important; }
+  html[data-lang="en"] ul.list-disc,
+  html[data-lang="en"] ol.list-decimal { padding-left:1.25rem; padding-right:0; }
+
+  /* Chrome collapse trick: in EN mode, shrink Arabic text to zero and let .sub-en restore English */
+  html[data-lang="en"] .section-title { font-size: 0 !important; }
+  html[data-lang="en"] .section-title .bar { width:6px; height:30px; display:inline-block; }
+  html[data-lang="en"] .section-title .sub-en {
+    display:inline-block !important; font-size:1.5rem !important; font-weight:900 !important;
+    color: var(--text-hi) !important; margin:0 !important; letter-spacing:-.01em;
+  }
+  html[data-lang="en"] h1 { font-size:0 !important; line-height:0 !important; margin:0 !important; }
+  html[data-lang="en"] h1 + p.sub-en { font-size:3rem !important; font-weight:900 !important; line-height:1.15 !important; color:var(--text-hi) !important; margin-top:0 !important; }
+  html[data-lang="en"] .chrome-ar { display:none !important; }
+  html[data-lang="en"] .hero-ar-p { display:none !important; }
+  html[data-lang="en"] .section-subnote-ar { display:none !important; }
+  /* Nav links: show English label below Arabic when switching */
+  html[data-lang="en"] .nav a { font-size:0; }
+  html[data-lang="en"] .nav a .en-nav { font-size:.78rem; display:inline; }
+  html[data-lang="ar"] .nav a .en-nav { display:none; }
+
+  /* ============== THEME TOKENS ============== */
+  :root {
+    --bg-0:#05070e; --bg-1:#070b17; --bg-card:rgba(18,26,46,.85); --bg-card-2:rgba(10,15,28,.85);
+    --border-soft:rgba(120,150,200,.14); --border-mid:rgba(120,150,200,.2);
+    --text-hi:#e7ecf6; --text-mid:#bccce5; --text-lo:#9cb6d8; --text-xlo:#7e97bc;
+    --brand-400:#4fa2ff; --brand-500:#1e7cf4; --brand-600:#1060d6;
+    --accent-500:#e59b0c; --accent-400:#f4b63b;
+    --good-500:#18b06b; --bad-500:#e4575a;
+    --chip-bg:rgba(30,124,244,.12); --chip-text:#b7d4ff;
+    --pillar-bg-a:rgba(18,26,46,.9); --pillar-bg-b:rgba(10,15,28,.9);
+    --ribbon-a:rgba(30,124,244,.18); --ribbon-b:rgba(244,182,59,.08);
+    --grad-a:#1e7cf4; --grad-b:#f4b63b;
+    --rad-a:rgba(30,124,244,.18); --rad-b:rgba(244,182,59,.10);
+    --quote-bg:rgba(30,124,244,.06);
+  }
+  html[data-theme="light"] {
+    --bg-0:#f6f8fc; --bg-1:#eef2f9; --bg-card:rgba(255,255,255,.85); --bg-card-2:rgba(248,250,255,.9);
+    --border-soft:rgba(30,60,120,.12); --border-mid:rgba(30,60,120,.22);
+    --text-hi:#0c1426; --text-mid:#364764; --text-lo:#4c628a; --text-xlo:#6a7f9e;
+    --brand-400:#1060d6; --brand-500:#0b4bab; --brand-600:#083884;
+    --accent-500:#b67505; --accent-400:#d88a12;
+    --good-500:#118a53; --bad-500:#c43d42;
+    --chip-bg:rgba(11,75,171,.10); --chip-text:#0b4bab;
+    --pillar-bg-a:rgba(255,255,255,.95); --pillar-bg-b:rgba(240,245,253,.95);
+    --ribbon-a:rgba(11,75,171,.12); --ribbon-b:rgba(182,117,5,.08);
+    --grad-a:#0b4bab; --grad-b:#b67505;
+    --rad-a:rgba(11,75,171,.10); --rad-b:rgba(182,117,5,.08);
+    --quote-bg:rgba(11,75,171,.06);
+    color-scheme: light;
+  }
+  html[data-theme="dark"] { color-scheme: dark; }
+
+  html, body { background: var(--bg-0) !important; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 90% -10%, var(--rad-a), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, var(--rad-b), transparent 60%),
+      linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%) !important;
+    color: var(--text-hi) !important;
+  }
+  .glass {
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2)) !important;
+    border: 1px solid var(--border-soft) !important;
+  }
+  .pillar {
+    background: linear-gradient(180deg, var(--pillar-bg-a), var(--pillar-bg-b)) !important;
+    border: 1px solid var(--border-soft) !important;
+  }
+  .pillar::before { background: linear-gradient(90deg, var(--grad-a), var(--grad-b)) !important; }
+  .section-title .bar { background: linear-gradient(180deg, var(--grad-a), var(--grad-b)) !important; }
+  .ribbon { background: linear-gradient(135deg, var(--ribbon-a), var(--ribbon-b)) !important; border:1px solid var(--border-mid) !important; }
+  .chip { background: var(--chip-bg); color: var(--chip-text); border-color: var(--border-mid); }
+  .k-label { color: var(--text-xlo); }
+  .grid-def dt { color: var(--text-lo); }
+  .grid-def dd { color: var(--text-hi); }
+  .nav a { color: var(--text-lo); }
+  .nav a:hover { background: var(--chip-bg); color: var(--text-hi); }
+  .quote { background: var(--quote-bg); border-color: var(--brand-500); }
+  .h-rule { background: linear-gradient(90deg, transparent, var(--border-mid), transparent); }
+  .opt { background: var(--bg-card-2); border-color: var(--border-soft); }
+  .kbd { background: var(--bg-card-2); color: var(--text-mid); border-color: var(--border-mid); }
+  .toolbar button { background: var(--chip-bg); border:1px solid var(--border-mid); color: var(--text-mid); }
+  .toolbar button:hover { background: var(--brand-500); color:#fff; }
+  .num-dot { box-shadow: 0 6px 18px -6px var(--brand-500); }
+  .score-pill { background: var(--chip-bg); color: var(--chip-text); border:1px solid var(--border-mid); }
+  .side-label { background: var(--chip-bg); border:1px solid var(--border-mid); color: var(--text-lo); }
+  .text-slate-300, .text-slate-400, .text-slate-500 { color: var(--text-lo) !important; }
+  .text-brand-400 { color: var(--brand-400) !important; }
+  .text-brand-200 { color: var(--brand-400) !important; }
+  html[data-theme="light"] .bg-gradient-to-br.from-brand-500.to-accent-500 { background: linear-gradient(135deg, var(--brand-500), var(--accent-500)) !important; }
+  html[data-theme="light"] .bg-clip-text { background: linear-gradient(90deg, var(--brand-500), var(--accent-500)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+</style>
+</head>
+<body>
+
+<!-- ============== TOP NAV ============== -->
+<header class="no-print sticky top-0 z-40 glass border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-black text-white en">TE</div>
+      <div>
+        <div class="text-[11px] tracking-widest text-brand-200/70 font-black">الجزء الأول · التحضير للترقية <span class="en">· Part 1</span></div>
+        <div class="text-sm font-bold -mt-0.5">ترقية مدير إدارة · الاتصالات المصرية</div>
+      </div>
+    </div>
+    <nav class="nav hidden md:flex items-center gap-1 mr-auto">
+      <a href="#role">الوظيفة</a>
+      <a href="#docs">ملخص الوثائق</a>
+      <a href="#summary">الملخص الدراسي</a>
+      <a href="#patterns">أنماط الامتحان</a>
+      <a href="#mcq">أسئلة الاختيار</a>
+      <a href="#essay">السؤال المقالي</a>
+      <a href="#strategy">الاستراتيجية</a>
+      <a href="#alignment">المواءمة</a>
+    </nav>
+    <div class="toolbar flex items-center gap-2">
+      <button onclick="toggleLang()" id="langBtn" title="Language / اللغة"><span class="only-ar">EN</span><span class="only-en">AR</span></button>
+      <button onclick="toggleTheme()" id="themeBtn" title="Theme / السمة"><span class="only-ar" data-dark-ar="فاتح" data-light-ar="داكن">فاتح</span><span class="only-en" data-dark-en="Light" data-light-en="Dark">Light</span></button>
+      <button onclick="openAllMCQ()"><span class="only-ar">عرض الإجابات</span><span class="only-en">Reveal All</span></button>
+      <button onclick="window.print()"><span class="only-ar">طباعة</span><span class="only-en">Print</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="max-w-7xl mx-auto px-5 pt-10 pb-6">
+  <div class="flex items-center gap-2 mb-5 flex-wrap">
+    <span class="chip">حزمة تحضير خاصة · معنس</span>
+    <span class="chip accent">الجزء ١ من ٢ <span class="en">· Part 1 of 2</span></span>
+    <span class="chip good">مبنية على إعلان <span class="mono">93 / 2026</span></span>
+  </div>
+
+  <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-[1.15]">
+    من <span class="text-brand-400">رئيس قسم ترقيات التطبيقات</span>
+    إلى
+    <span class="bg-gradient-to-l from-brand-400 to-accent-500 bg-clip-text text-transparent">مدير إدارة الدعم الفني وإصلاح الأعطال</span>
+  </h1>
+  <p class="sub-en text-base mt-2 ltr-block max-w-3xl">
+    From Section Head · Application Upgrades &nbsp;→&nbsp; Manager · Technical Support &amp; Fault Repair.
+  </p>
+
+  <p class="mt-5 max-w-3xl text-base text-slate-300 only-ar">
+    حزمة تحضير بمستوى الممتحن، مبنية على وثيقتيك الدراسيتين
+    (<em>الإدارة الحديثة لمديري المستقبل</em>، <em>الإدارة الإشرافية الفعّالة</em>)
+    وإعلان <span class="mono">93 / 2026</span> للوظيفة الشاغرة تحت
+    <em>الإدارة العامة لدعم الأعمال — تطبيقات النظم التشغيلية</em>، مقر المهندسين.
+    كل ما يلي مفلتَر لاختبار الترقية — بلا حشو.
+  </p>
+  <p class="mt-5 max-w-3xl text-base text-slate-300 only-en" style="direction:ltr;text-align:left;">
+    Examiner-grade preparation pack, built on your two study documents
+    (<em>Modern Management for Future Managers</em>, <em>Effective Supervisory Management</em>)
+    and announcement <span class="mono">93 / 2026</span> for the vacant role under
+    <em>General Administration for Business Support — Operational Systems Applications</em>, Mohandessin.
+    Everything below is filtered for the promotion exam — no filler.
+  </p>
+
+  <div class="mt-7 grid md:grid-cols-4 gap-3">
+    <div class="pillar">
+      <div class="k-label">الوثائق الدراسية <span class="en">DOCS</span></div>
+      <div class="mt-1 text-3xl font-black en">2</div>
+      <div class="text-xs text-slate-400 mt-1">١٠٧ ص + ١٦ ص</div>
+    </div>
+    <div class="pillar">
+      <div class="k-label">أسئلة الاختيار <span class="en">MCQ</span></div>
+      <div class="mt-1 text-3xl font-black en">25</div>
+      <div class="text-xs text-slate-400 mt-1">سيناريوهات واقعية</div>
+    </div>
+    <div class="pillar">
+      <div class="k-label">نماذج المقال <span class="en">ESSAYS</span></div>
+      <div class="mt-1 text-3xl font-black en">5</div>
+      <div class="text-xs text-slate-400 mt-1">٤ أساسية + احتياطي</div>
+    </div>
+    <div class="pillar">
+      <div class="k-label">ميزتك التنافسية <span class="en">EDGE</span></div>
+      <div class="mt-1 text-3xl font-black en">MSAN/ONT</div>
+      <div class="text-xs text-slate-400 mt-1">صاحب الميدلوير</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ROLE SNAPSHOT ============== -->
+<section id="role" class="max-w-7xl mx-auto px-5 py-8">
+  <h2 class="section-title text-2xl"><span class="bar"></span>الوظيفة التي تتقدّم إليها <span class="sub-en ms-2">The role you are interviewing for</span></h2>
+  <p class="text-sm text-slate-400 mt-2 mr-7">مستخلصة من صور الإعلان رقم <span class="mono">93 / 2026</span>.</p>
+
+  <div class="mt-6 grid lg:grid-cols-3 gap-4">
+    <div class="glass rounded-2xl p-5 lg:col-span-1 bil">
+      <div class="k-label">المسمى الوظيفي <span class="en">POSITION</span></div>
+      <h3 class="mt-1 text-lg">مدير إدارة الدعم الفني وإصلاح الأعطال</h3>
+      <div class="sub-en mt-1 ltr-block">Manager — Technical Support &amp; Fault Repair</div>
+
+      <div class="mt-4">
+        <dl class="grid-def">
+          <dt>الجهة التابعة <span class="en">/ Reporting</span></dt>
+          <dd>الإدارة العامة لدعم الأعمال — تطبيقات النظم التشغيلية</dd>
+
+          <dt>مقر العمل <span class="en">/ Location</span></dt>
+          <dd>المهندسين · <span class="en">Mohandessin</span></dd>
+
+          <dt>شروط الشغل <span class="en">/ Gate</span></dt>
+          <dd>مستوى أول تخصصي · ٥+ سنوات خبرة · تقدير ممتاز لعامين · سنة على الأقل في الوظيفة الحالية · بكالوريوس هندسة اتصالات أو حاسبات ومعلومات.</dd>
+
+          <dt>المهارات المطلوبة <span class="en">/ Skills</span></dt>
+          <dd>حل المشكلات · إدارة الأزمات · المرونة والإقناع · الاستغلال الأمثل للموارد البشرية والمالية.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="glass rounded-2xl p-5 lg:col-span-2 bil">
+      <div class="k-label">المهام الرسمية الست <span class="en">SIX OFFICIAL RESPONSIBILITIES</span></div>
+      <ol class="mt-3 space-y-3 text-sm">
+        <li class="flex gap-3"><span class="num-dot">1</span><span>اعتماد وإغلاق أعطال تفعيل الخدمات الناتجة عن أعطال النظام.<br/><span class="sub-en en ltr-block text-xs">Approve &amp; close provisioning failures caused by system faults.</span></span></li>
+        <li class="flex gap-3"><span class="num-dot">2</span><span>العمل مع فرق العمل المختلفة للوقوف على أسباب مشاكل تفعيل الخدمات وإعداد تقارير، وتوجيه الإدارة المسؤولة لاتخاذ اللازم.<br/><span class="sub-en en ltr-block text-xs">Cross-team root-cause investigation, reporting, and corrective ownership.</span></span></li>
+        <li class="flex gap-3"><span class="num-dot">3</span><span>التعاون مع الفرق الفنية ومقدمي الخدمات المرتبطين بنظام التفعيل والتأكد من عدم التأثير على الخدمات القائمة.<br/><span class="sub-en en ltr-block text-xs">Coordinate with technical teams &amp; providers, guarantee no live-service impact.</span></span></li>
+        <li class="flex gap-3"><span class="num-dot">4</span><span>تحليل الأسباب الأكثر تكرارًا لمنع تكرارها، وعمل التوصيات والتقارير اللازمة.<br/><span class="sub-en en ltr-block text-xs">Recurrence analysis, prevention recommendations, periodic reports.</span></span></li>
+        <li class="flex gap-3"><span class="num-dot">5</span><span>تحليل مؤشرات الأداء للأجهزة والخدمات، وتحديد الفرص والمقترحات اللازمة لتحديث المؤشرات.<br/><span class="sub-en en ltr-block text-xs">KPI analysis for devices/services; propose new indicators.</span></span></li>
+        <li class="flex gap-3"><span class="num-dot">6</span><span>تصميم وتحديث لوحات عرض شاملة لمتابعة فعالية النظم الرئيسية والبديلة لضمان جاهزية النظام البديل في حال الانتقال إليه.<br/><span class="sub-en en ltr-block text-xs">Dashboards for primary &amp; backup systems; guarantee failover readiness.</span></span></li>
+      </ol>
+
+      <div class="mt-5 ribbon rounded-xl p-4">
+        <div class="k-label">التوقعات الخفية <span class="en">HIDDEN EXPECTATIONS</span></div>
+        <ul class="mt-2 text-sm space-y-1.5 list-disc pr-5">
+          <li>هذه وظيفة <strong>مخاطر تشغيلية</strong> مُرتدية عباءة فنية — انتظر أسئلة مخاطر واستمرارية أعمال.</li>
+          <li>أنت صاحب <strong>MTTR</strong>، وجاهزية الفيل-أوفر، وقاعدة "لا تدهور صامت".</li>
+          <li>إدارة علاقات مع الموردين والمبيعات التجارية وعملاء الشركات ومركز التحكم.</li>
+          <li>قيمتك الحقيقية: ترجمة الحادث الفني إلى لغة تأثير أعمال (SLA، إيراد، سمعة).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-5"><div class="h-rule my-6"></div></div>
+
+<!-- ============== DOCUMENT SUMMARIES ============== -->
+<section id="docs" class="max-w-7xl mx-auto px-5 py-6">
+  <h2 class="section-title text-2xl"><span class="bar"></span>ملخص الوثيقتين اللتين استخدمتُهما <span class="sub-en ms-2">Document Summaries</span></h2>
+  <p class="text-sm text-slate-400 mt-2 mr-7">
+    هذه هي الوثيقتان اللتان رفعتَهما، مع عرض مُركّز لكل فصل كما ورد داخل الوثيقة نفسها — حتى تعرف تحديدًا من أين جاء كل سؤال.
+  </p>
+
+  <!-- DOC A -->
+  <article class="glass rounded-2xl p-6 mt-6 bil">
+    <div class="flex items-start justify-between flex-wrap gap-4">
+      <div>
+        <div class="k-label">الوثيقة الأولى · ١٠٧ صفحة · ٧ أبواب <span class="en">DOC 1</span></div>
+        <h3 class="text-xl mt-1">الإدارة الحديثة لمديري المستقبل</h3>
+        <div class="sub-en ltr-block">Modern Management for Future Managers</div>
+        <div class="text-xs text-slate-500 ltr-block en mt-1">Code: TS5425MAN16Re · قسم البرامج الإدارية واللغات</div>
+      </div>
+      <span class="score-pill">وزن عالٍ جدًا · <span class="en">HIGH</span></span>
+    </div>
+
+    <div class="mt-5 dual">
+      <div class="card-ar">
+        <span class="side-label">العربية</span>
+        <ol class="space-y-4 text-sm list-none">
+          <li><strong class="text-brand-400">الباب ١ — نبذة تاريخية عن الإدارة</strong><br/>
+            رحلة علم الإدارة من السومريين والمصريين والصينيين إلى <em>ماكيافيلي</em> (الحوافز، الولاء، المعنويات)، ثم <em>فريدريك تايلور</em> رائد الإدارة العلمية (دراسة الوقت، المعايير، الحوافز النقدية، محاسبة التكاليف)، ثم <em>هنري فايول</em> الذي قسّم المنظمة إلى ٦ أنشطة (فني، تجاري، مالي، حماية، محاسبي، إداري) ووضع الوظائف الخمس للإدارة: تخطيط · تنظيم · توجيه · تنسيق · رقابة.
+          </li>
+          <li><strong class="text-brand-400">الباب ٢ — المنهج المتكامل للمدارس الإدارية</strong><br/>
+            الانتقال من المدرسة الكلاسيكية إلى المدارس السلوكية والكمية، ثم عرض عميق لمدخلي <em>الإدارة بالأهداف (MBO)</em> — خطواتها، مزاياها ومشاكلها — و<em>إعادة هندسة الإدارة (Reengineering)</em> لهامر وتشامبي: البدء من الصفر، التفكير الجذري، التركيز على العمليات. يغطي أيضًا تخصيص الموارد ومراحل التقييم والتصحيح.
+          </li>
+          <li><strong class="text-brand-400">الباب ٣ — فن القيادة وإدارة الآخرين</strong><br/>
+            الفرق بين القائد والمدير، الأنماط القيادية، مصادر السلطة (فرينش ورايفن)، القيادة الموقفية (هيرسي وبلانشارد)، القيادة التحويلية مقابل التعاملية، والذكاء العاطفي كأداة قيادية معاصرة.
+          </li>
+          <li><strong class="text-brand-400">الباب ٤ — سلوكيات اتخاذ القرارات</strong><br/>
+            النموذج العقلاني، العقلانية المحدودة لسيمون، القرارات التدريجية والسياسية، خطوات اتخاذ القرار، أساليب الجماعة (العصف الذهني، دلفي، الجماعة الاسمية)، والمخاطر النفسية (التفكير الجماعي، الانحياز التأكيدي).
+          </li>
+          <li><strong class="text-brand-400">الباب ٥ — التفويض والتمكين</strong><br/>
+            قاعدة ذهبية: <em>تُفوَّض السلطة ولا تُفوَّض المسؤولية</em>. الفوائد، المعوقات، شروط نجاح التفويض، ثم التمكين = تفويض + موارد + سلطة + مساءلة.
+          </li>
+          <li><strong class="text-brand-400">الباب ٦ — التطوير التنظيمي وإدارة التغيير</strong><br/>
+            نموذج ليفين ثلاثي المراحل: إذابة → تغيير → تجميد. نموذج كوتر الثماني: الإلحاح، الائتلاف، الرؤية، التواصل، التمكين، المكاسب السريعة، التعزيز، الترسيخ. مصادر المقاومة وطرق التعامل معها.
+          </li>
+          <li><strong class="text-brand-400">الباب ٧ — لماذا يفشل المديرون؟</strong><br/>
+            ضعف التواصل، الفشل في التفويض، غياب الرؤية، الذكاء العاطفي المنخفض، عدم تطوير خليفة، المركزية الزائدة، التركيز على التفاصيل على حساب الأهداف.
+          </li>
+        </ol>
+      </div>
+
+      <div class="card-en">
+        <span class="side-label">ENGLISH</span>
+        <ol class="space-y-4 text-sm list-none">
+          <li><strong class="text-brand-400">Ch 1 — History of Management</strong><br/>
+            From Sumerians &amp; Egyptians through Machiavelli (incentives, loyalty, morale), Frederick Taylor's Scientific Management (time studies, standards, piece-rate, cost accounting), and Henri Fayol's 6 activities (Technical, Commercial, Financial, Security, Accounting, Managerial) + the 5 functions: Planning · Organizing · Directing · Coordinating · Controlling.
+          </li>
+          <li><strong class="text-brand-400">Ch 2 — Integrated Approach to Management Schools</strong><br/>
+            Moves from classical to behavioural and quantitative schools, then dives into <em>MBO</em> (steps, advantages, pitfalls) and <em>Reengineering</em> (Hammer &amp; Champy — start from zero, radical process redesign, abandoning legacy thinking). Covers resource allocation, evaluation and corrective action.
+          </li>
+          <li><strong class="text-brand-400">Ch 3 — The Art of Leadership &amp; Managing Others</strong><br/>
+            Leader vs manager, leadership styles, French &amp; Raven power bases, Hersey-Blanchard situational leadership, transformational vs transactional, and emotional intelligence as a managerial tool.
+          </li>
+          <li><strong class="text-brand-400">Ch 4 — Decision-Making Behaviours</strong><br/>
+            Rational model, Simon's bounded rationality, incremental and political models, decision steps, group techniques (brainstorming, Delphi, nominal group), and cognitive traps (groupthink, confirmation bias).
+          </li>
+          <li><strong class="text-brand-400">Ch 5 — Delegation &amp; Empowerment</strong><br/>
+            Golden rule: <em>authority is delegated, responsibility is not</em>. Benefits, obstacles, conditions for success. Empowerment = delegation + resources + authority + accountability.
+          </li>
+          <li><strong class="text-brand-400">Ch 6 — Organizational Development &amp; Change</strong><br/>
+            Lewin's 3 stages (Unfreeze → Change → Refreeze). Kotter's 8 steps (urgency → coalition → vision → communicate → empower → quick wins → consolidate → anchor). Sources of resistance and handling techniques.
+          </li>
+          <li><strong class="text-brand-400">Ch 7 — Why Managers Fail</strong><br/>
+            Weak communication, refusal to delegate, no vision, low EQ, failure to build a successor, excessive centralisation, detail obsession at the cost of goals.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </article>
+
+  <!-- DOC B -->
+  <article class="glass rounded-2xl p-6 mt-5 bil">
+    <div class="flex items-start justify-between flex-wrap gap-4">
+      <div>
+        <div class="k-label">الوثيقة الثانية · ١٦ صفحة · ٥ محاور <span class="en">DOC 2</span></div>
+        <h3 class="text-xl mt-1">برنامج الإدارة الإشرافية الفعّالة</h3>
+        <div class="sub-en ltr-block">Effective Supervisory Management</div>
+      </div>
+      <span class="score-pill">وزن عالٍ جدًا · <span class="en">HIGH</span></span>
+    </div>
+
+    <div class="mt-5 dual">
+      <div class="card-ar">
+        <span class="side-label">العربية</span>
+        <ol class="space-y-4 text-sm list-none">
+          <li><strong class="text-brand-400">١ — الأساليب القيادية والإدارية</strong><br/>
+            تعريف القائد (شخصية مؤثرة بمعرفة ومهارة وسلوك لا بلقب وظيفي)، تعريف المدير، جدول الفروق بين القائد والمدير (الرؤية مقابل التخطيط، التحفيز مقابل الرقابة، التغيير مقابل الاستقرار). ثم الأنماط الثلاثة: <em>الأوتوقراطي (المركزي)</em>، <em>الديمقراطي (التشاركي)</em>، <em>الحر (Laissez-faire)</em> — مع توصية صريحة بتفضيل الديمقراطي غالبًا، والأوتوقراطي في الأزمات، وتجنّب الحر. تنتهي الوحدة بالمهام المتطورة للقائد: رؤية · مشاركة · رضا العميل · التدريب المستمر · قياس الأداء · ملاحقة التغيير.
+          </li>
+          <li><strong class="text-brand-400">٢ — تحفيز العاملين ومكافأتهم</strong><br/>
+            التحفيز محرّك مباشر للإنتاجية والرضا الوظيفي. عرض <em>هرم ماسلو</em> صراحة (فسيولوجية · أمان · اجتماعية · احترام · تحقيق ذات)، نظرية العاملين لهيرزبرج، نظرية التوقع لفروم، والحوافز المادية وغير المادية، ودور القائد في تحقيق التوازن في التحفيز.
+          </li>
+          <li><strong class="text-brand-400">٣ — تفويض السلطات ومنح المسؤوليات</strong><br/>
+            ماذا يُفوَّض، لمن يُفوَّض (كفاءة + التزام)، فوائد التفويض، معوقاته، واستراتيجيات إنجاحه. التأكيد أن التفويض ليس تخلّيًا.
+          </li>
+          <li><strong class="text-brand-400">٤ — مهارات الاتصال في المنظمات وبين الأفراد</strong><br/>
+            قنوات الاتصال (شفهي، كتابي، غير لفظي، رسمي، غير رسمي)، الاتصال الفعّال وتأثيره على الأداء، ومعوقات الاتصال (اللغة، الإدراك، الترشيح، الضوضاء، الثقافة، الحمل الزائد). الإنصات الفعّال وحلقات التغذية الراجعة.
+          </li>
+          <li><strong class="text-brand-400">٥ — مهارات إدارة الوقت بفاعلية</strong><br/>
+            مصفوفة إدارة الوقت (أيزنهاور): ربع ١ عاجل/مهم — نفّذ، ربع ٢ مهم/غير عاجل — خطّط (موطن المدير)، ربع ٣ عاجل/غير مهم — فوّض، ربع ٤ — احذف. محكات جدولة المهام اليومية والدورية.
+          </li>
+        </ol>
+      </div>
+
+      <div class="card-en">
+        <span class="side-label">ENGLISH</span>
+        <ol class="space-y-4 text-sm list-none">
+          <li><strong class="text-brand-400">1 — Leadership &amp; Managerial Styles</strong><br/>
+            Defines a leader by <em>knowledge, skill and behaviour</em>, not by title. Detailed Leader-vs-Manager comparison table (vision vs planning, motivation vs control, change vs stability). Three explicit styles: Autocratic (centralised), Democratic (participative), Laissez-faire (free) — the doc explicitly recommends democratic as default, autocratic only in crises, and avoiding laissez-faire. Closes with the evolved leader tasks: vision, firm participation, customer satisfaction, continuous training, performance measurement, change mastery.
+          </li>
+          <li><strong class="text-brand-400">2 — Motivation &amp; Rewards</strong><br/>
+            Motivation as direct productivity driver. The document explicitly draws <em>Maslow's pyramid</em> (Physiological → Safety → Social → Esteem → Self-actualization), Herzberg two-factor, Vroom expectancy, monetary vs non-monetary rewards, and the leader's balancing role.
+          </li>
+          <li><strong class="text-brand-400">3 — Delegation of Authority &amp; Responsibility</strong><br/>
+            What to delegate, who to delegate to (competence + commitment), benefits, obstacles, and success strategies. Reinforces that delegation is not abdication.
+          </li>
+          <li><strong class="text-brand-400">4 — Communication Skills</strong><br/>
+            Channels (verbal, written, non-verbal, formal, informal), effective communication impact on performance, and barriers (language, perception, filtering, noise, culture, overload). Active listening and feedback loops.
+          </li>
+          <li><strong class="text-brand-400">5 — Time Management</strong><br/>
+            Eisenhower matrix: Q1 urgent+important → do, Q2 important not urgent → plan (the manager's home), Q3 urgent not important → delegate, Q4 → eliminate. Criteria for scheduling daily and periodic tasks.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </article>
+
+  <!-- DOC-DERIVED MUST-MEMORISE -->
+  <article class="glass rounded-2xl p-6 mt-5 bil">
+    <div class="k-label">اقتباسات تكاد تكون حرفية من الوثائق — احفظها <span class="en">DIRECT QUOTES TO MEMORISE</span></div>
+    <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+      <div class="quote">«القيادة هي فن وأسلوب يُتبع لأداء مجموعة من المهام والمسؤوليات بواسطة مجموعة من الأفراد وحثّهم على الأداء بأسلوب يتسم بالجدية والتفاني والقدوة والإخلاص.» — <em>الإدارة الإشرافية</em></div>
+      <div class="quote">«علم الإدارة علم قديم ترجع أصوله لبداية ظهور الحضارات الإنسانية … اعتمد الرومانيون على التوصيف الوظيفي لتعريف نطاق السلطة.» — <em>الإدارة الحديثة</em></div>
+      <div class="quote">«لا يُنصح عادةً باتباع الأسلوب القيادي الحر الذي يترك فيه المدير زمام الأمور للعاملين دون توجيههم، مما يؤدي إلى عدم التنسيق والتسيّب.» — <em>الإدارة الإشرافية</em></div>
+      <div class="quote">«إعادة هندسة الإدارة = تحسين جذري محسوس لا تعديل محدود؛ طفرة واسعة لا تقدّم جزئي؛ على ما في ذلك من مخاطر حقيقية.» — <em>الإدارة الحديثة</em></div>
+    </div>
+  </article>
+</section>
+
+<div class="max-w-7xl mx-auto px-5"><div class="h-rule my-6"></div></div>
+
+<!-- ============== SUMMARY (STUDY NOTES) ============== -->
+<section id="summary" class="max-w-7xl mx-auto px-5 py-6">
+  <h2 class="section-title text-2xl"><span class="bar"></span>الملخص الذكي الموجّه للامتحان <span class="sub-en ms-2">Exam-filtered study notes</span></h2>
+  <p class="text-sm text-slate-400 mt-2 mr-7">المفاهيم الأعلى احتمالًا للظهور، مفلترة من الوثيقتين ومضاف إليها كتلة إدارة المخاطر لأنها شبه مؤكدة لوظيفة بهذا الطابع التشغيلي.</p>
+
+  <div class="mt-6 grid lg:grid-cols-3 gap-4">
+    <div class="pillar bil">
+      <div class="k-label">مبادئ جوهرية <span class="en">KEY PRINCIPLES</span></div>
+      <ul class="mt-3 text-sm space-y-2">
+        <li><strong>POSDC</strong> — وظائف فايول الخمس: <span class="en">Plan · Organize · Staff · Direct · Control</span>.</li>
+        <li><strong>القيادة الموقفية</strong> — النمط يتبع نضج الفريق، لا ذوق المدير.</li>
+        <li><strong>التفويض ≠ التخلّي</strong> — المسؤولية تبقى عند المدير.</li>
+        <li><strong>التمكين</strong> = تفويض + موارد + سلطة + مساءلة.</li>
+        <li><strong>ربع ٢ هو بيت المدير</strong> — الوقاية أرخص من الإطفاء.</li>
+      </ul>
+    </div>
+
+    <div class="pillar bil">
+      <div class="k-label">تعاريف حسّاسة <span class="en">DEFINITIONS</span></div>
+      <dl class="grid-def mt-2">
+        <dt>القائد <span class="en">Leader</span></dt>
+        <dd>شخص يقود زملاء بالمعرفة والمهارة والسلوك، لا باللقب الوظيفي.</dd>
+        <dt>المدير <span class="en">Manager</span></dt>
+        <dd>مسؤول رسمي عن التخطيط والتنظيم والرقابة وتحقيق الخطط.</dd>
+        <dt>الخطر <span class="en">Risk</span></dt>
+        <dd>أثر عدم اليقين على الأهداف (تعريف آيزو ٣١٠٠٠).</dd>
+        <dt>RTO</dt>
+        <dd>الزمن المستهدف للاستعادة — كم نحتاج من الوقت للعودة.</dd>
+        <dt>RPO</dt>
+        <dd>نقطة الاستعادة — كم من البيانات يمكن قبول فقدها.</dd>
+      </dl>
+    </div>
+
+    <div class="pillar bil">
+      <div class="k-label">أُطر ستُذكر بالاسم <span class="en">FRAMEWORKS BY NAME</span></div>
+      <ul class="mt-3 text-sm space-y-2">
+        <li><strong>هرم ماسلو</strong> — فسيولوجية → أمان → اجتماعية → احترام → تحقيق ذات.</li>
+        <li><strong>هيرزبرج</strong> — عوامل صحية vs محفّزة.</li>
+        <li><strong>ماكجريجور X / Y</strong> — افتراضات مختلفة عن الإنسان العامل.</li>
+        <li><strong>ليفين</strong> — إذابة → تغيير → تجميد.</li>
+        <li><strong>كوتر</strong> — ٨ خطوات تبدأ بالإلحاح.</li>
+        <li><strong>أيزنهاور</strong> — مصفوفة الوقت أربع أرباع.</li>
+        <li><strong>ISO 31000</strong> — دورة إدارة المخاطر ست مراحل.</li>
+        <li><strong>بازل II</strong> — المخاطر التشغيلية (أفراد/عمليات/نظم/أحداث خارجية).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- RISK BLOCK -->
+  <div class="glass rounded-2xl p-6 mt-6 bil">
+    <div class="flex items-start justify-between flex-wrap gap-4">
+      <div>
+        <div class="k-label">كتلة إدارة المخاطر — شبه مؤكدة للاختبار <span class="en">RISK MANAGEMENT BLOCK</span></div>
+        <h3 class="text-xl mt-1">إدارة المخاطر لمديري الاتصالات</h3>
+        <div class="sub-en">Risk Management for Telecom Managers</div>
+      </div>
+      <span class="score-pill">أولوية قصوى · <span class="en">CRITICAL</span></span>
+    </div>
+
+    <div class="mt-5 grid md:grid-cols-2 gap-4 text-sm">
+      <div class="pillar">
+        <div class="k-label">مبادئ آيزو ٣١٠٠٠ <span class="en">ISO 31000</span></div>
+        <ul class="mt-2 space-y-1.5">
+          <li>متكاملة، ممنهجة، مخصّصة، شاملة، ديناميكية.</li>
+          <li>تعتمد أفضل المعلومات المتاحة، تراعي العوامل البشرية والثقافية، قابلة للتحسين المستمر.</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="k-label">دورة إدارة المخاطر <span class="en">PROCESS</span></div>
+        <ol class="mt-2 list-decimal pr-5 space-y-1">
+          <li>التواصل والتشاور.</li>
+          <li>تحديد النطاق والسياق والمعايير.</li>
+          <li>تقييم المخاطر: تحديد → تحليل → تقويم.</li>
+          <li>معالجة المخاطر.</li>
+          <li>المتابعة والمراجعة.</li>
+          <li>التوثيق والتقارير.</li>
+        </ol>
+      </div>
+      <div class="pillar">
+        <div class="k-label">خيارات المعالجة — «أربعة T» <span class="en">4 T's</span></div>
+        <ul class="mt-2 space-y-1.5">
+          <li><strong>Terminate</strong> — التجنّب بإيقاف النشاط.</li>
+          <li><strong>Treat</strong> — التخفيف عبر ضوابط وتكرارية.</li>
+          <li><strong>Transfer</strong> — التحويل بالتأمين أو اتفاقية SLA.</li>
+          <li><strong>Tolerate</strong> — القبول ضمن نطاق التحمّل.</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="k-label">المخاطر التشغيلية — بازل II <span class="en">OP RISK</span></div>
+        <ul class="mt-2 space-y-1.5">
+          <li>أربعة مصادر: الأفراد، العمليات، النظم، الأحداث الخارجية.</li>
+          <li>ترجمها لواقع MSAN / ONT / طبقة التفعيل.</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="k-label">طرق التقييم <span class="en">ASSESSMENT</span></div>
+        <ul class="mt-2 space-y-1.5">
+          <li>كيفي — الخريطة الحرارية ٥×٥.</li>
+          <li>كمّي — FMEA، مونت كارلو، VaR.</li>
+          <li>شبه كمّي — تحليل الفراشة (Bow-tie).</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="k-label">استمرارية الأعمال <span class="en">BCM</span></div>
+        <dl class="grid-def mt-2">
+          <dt>RTO</dt><dd>الزمن المستهدف للاستعادة.</dd>
+          <dt>RPO</dt><dd>نقطة الاستعادة — حجم البيانات المقبول فقدها.</dd>
+          <dt>MTPD</dt><dd>الحد الأقصى لفترة التوقّف.</dd>
+          <dt>BIA</dt><dd>تحليل تأثير الأعمال — يغذّي RTO و RPO.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-5"><div class="h-rule my-6"></div></div>
+
+<!-- ============== PATTERNS ============== -->
+<section id="patterns" class="max-w-7xl mx-auto px-5 py-6">
+  <h2 class="section-title text-2xl"><span class="bar"></span>أنماط الامتحان وفخاخه <span class="sub-en ms-2">Exam patterns &amp; traps</span></h2>
+
+  <div class="grid md:grid-cols-3 gap-4 mt-6">
+    <div class="pillar bil">
+      <div class="k-label">مواضيع مُكرّرة (اختيار من متعدد) <span class="en">FREQUENTLY TESTED</span></div>
+      <ul class="mt-3 text-sm space-y-2 list-disc pr-5">
+        <li>وظائف فايول POSDC</li>
+        <li>ماكجريجور X vs Y</li>
+        <li>ترتيب هرم ماسلو</li>
+        <li>هيرزبرج: عوامل صحية vs محفّزة</li>
+        <li>مصفوفة أيزنهاور</li>
+        <li>نموذجا ليفين وكوتر</li>
+        <li>التفويض ≠ التخلّي</li>
+        <li>ترتيب دورة ISO 31000</li>
+        <li>RTO vs RPO</li>
+        <li>أربعة T لمعالجة المخاطر</li>
+      </ul>
+    </div>
+
+    <div class="pillar bil">
+      <div class="k-label">أسئلة المقال المرجّحة <span class="en">ESSAY MAGNETS</span></div>
+      <ul class="mt-3 text-sm space-y-2 list-disc pr-5">
+        <li>«كيف ستطوّر الإدارة إذا تمت ترقيتك؟»</li>
+        <li>«صِف تعاملك مع عطل جسيم.»</li>
+        <li>«كيف تبني فريقًا عالي الأداء؟»</li>
+        <li>«كيف تُدمج إدارة المخاطر في العمل اليومي؟»</li>
+        <li>«الفرق بين القائد والمدير.»</li>
+        <li>«خطتك لإدخال تغيير بأقل مقاومة.»</li>
+      </ul>
+    </div>
+
+    <div class="pillar bil">
+      <div class="k-label">فخاخ كلاسيكية <span class="en">CLASSIC TRAPS</span></div>
+      <ul class="mt-3 text-sm space-y-2 list-disc pr-5">
+        <li><strong>«التفويض ينقل المسؤولية»</strong> — خطأ؛ ينقل السلطة فقط.</li>
+        <li><strong>الفسيولوجية قبل الأمان</strong> في ماسلو.</li>
+        <li>الشهية ≠ التحمّل ≠ القدرة في المخاطر.</li>
+        <li>RPO يقيس البيانات، RTO يقيس الوقت.</li>
+        <li>التحويلية للتغيير، التعاملية للروتين.</li>
+        <li>أول خطوة عند كوتر هي الإلحاح وليس الرؤية.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-5"><div class="h-rule my-6"></div></div>
+
+<!-- ============== MCQs ============== -->
+<section id="mcq" class="max-w-7xl mx-auto px-5 py-6">
+  <h2 class="section-title text-2xl"><span class="bar"></span>٢٥ سؤال اختيار من متعدد متوقع <span class="sub-en ms-2">25 Predicted MCQs</span></h2>
+  <p class="text-sm text-slate-400 mt-2 mr-7">اضغط على أي سؤال لعرض الإجابة والشرح. كل سؤال مكتوب بالعربية ومعه نسخته الإنجليزية.</p>
+
+  <div class="mt-6 space-y-3" id="mcqList">
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">1</span>
+        <div class="flex-1">
+          <div class="font-bold">ما ترتيب وظائف الإدارة الخمس عند هنري فايول (POSDC)؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Which sequence reflects Fayol's five functions of management?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>تخطيط · تنظيم · إشراف · توجيه · رقابة</div>
+        <div class="opt correct"><span class="letter">B</span>تخطيط · تنظيم · توظيف · توجيه · رقابة <span class="sub-en en ltr-block mr-2">(Plan · Organize · Staff · Direct · Control)</span></div>
+        <div class="opt"><span class="letter">C</span>تخطيط · تشغيل · استدامة · قرار · اعتماد</div>
+        <div class="opt"><span class="letter">D</span>إعداد · تنظيم · جدولة · قرار · إغلاق</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> هو نموذج فايول الوظيفي POSDC.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">2</span>
+        <div class="flex-1">
+          <div class="font-bold">قام مدير بتفويض ترقية برمجيات MSAN لمهندس أول، ثم وقع انقطاع إقليمي. من المسؤول رسميًا؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">A manager delegated an MSAN rollout that caused a regional outage — who is accountable?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>المهندس — لأن السلطة انتقلت إليه.</div>
+        <div class="opt"><span class="letter">B</span>المورّد الذي سلّم الإصدار.</div>
+        <div class="opt correct"><span class="letter">C</span>المدير — لأن المسؤولية لا تُفوَّض.</div>
+        <div class="opt"><span class="letter">D</span>مسؤولية مشتركة بنسبة ٥٠ / ٥٠.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> قاعدة الباب الخامس في الوثيقة الأولى: السلطة تُفوَّض، المسؤولية لا.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">3</span>
+        <div class="flex-1">
+          <div class="font-bold">وفقًا لهيرزبرج، يُصنّف <em>الراتب المرتفع</em> باعتباره:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">According to Herzberg, a higher salary is classified as:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>عامل محفّز <span class="sub-en en ltr-block mr-2">Motivator</span></div>
+        <div class="opt correct"><span class="letter">B</span>عامل صحي <span class="sub-en en ltr-block mr-2">Hygiene factor</span></div>
+        <div class="opt"><span class="letter">C</span>حاجة إنجاز <span class="sub-en en ltr-block mr-2">Achievement need</span></div>
+        <div class="opt"><span class="letter">D</span>تحقيق ذات <span class="sub-en en ltr-block mr-2">Self-actualization</span></div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> غيابه يسبب الاستياء، لكن وجوده لا يُولّد تحفيزًا طويل الأجل.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">4</span>
+        <div class="flex-1">
+          <div class="font-bold">ما الخطوة الأولى في نموذج كوتر الثماني لإدارة التغيير؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Kotter's first step in leading change is:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>صياغة الرؤية</div>
+        <div class="opt correct"><span class="letter">B</span>خلق الشعور بالإلحاح <span class="sub-en en ltr-block mr-2">Establish urgency</span></div>
+        <div class="opt"><span class="letter">C</span>تمكين العمل</div>
+        <div class="opt"><span class="letter">D</span>ترسيخ التغيير في الثقافة</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> الإلحاح خطوة ١، والرؤية خطوة ٣.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">5</span>
+        <div class="flex-1">
+          <div class="font-bold">اكتشفت عطلاً متكررًا في طابور تفعيل ONT الساعة ٠٢:٠٠. ما أول خطوة وفقًا لآيزو ٣١٠٠٠؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Per ISO 31000, the first action when a recurring fault is detected is:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>تطبيق حل مؤقت فورًا.</div>
+        <div class="opt"><span class="letter">B</span>تحويل الخطر إلى المورّد.</div>
+        <div class="opt correct"><span class="letter">C</span>تحديد النطاق والسياق والمعايير ثم تحديد الخطر رسميًا.</div>
+        <div class="opt"><span class="letter">D</span>قبول الخطر ضمن حدود التحمّل.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> الدورة تبدأ بالنطاق والسياق قبل أي قرار معالجة.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">6</span>
+        <div class="flex-1">
+          <div class="font-bold">في مصفوفة أيزنهاور، متابعة تجديد اتفاقية SLA مؤجلة تقع في:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">In the Eisenhower matrix, routine follow-up on a postponed SLA renewal falls in:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الربع ١ — عاجل ومهم</div>
+        <div class="opt correct"><span class="letter">B</span>الربع ٢ — مهم وغير عاجل</div>
+        <div class="opt"><span class="letter">C</span>الربع ٣ — عاجل غير مهم</div>
+        <div class="opt"><span class="letter">D</span>الربع ٤ — لا عاجل ولا مهم</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> ربع ٢ بيت المدير؛ التخطيط هنا يمنع طوارئ الربع ١ لاحقًا.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">7</span>
+        <div class="flex-1">
+          <div class="font-bold">RTO و RPO مقياسان في خطة استمرارية الأعمال. أيّ التعريفات صحيح؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Which definition of RTO/RPO is correct?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>RTO = البيانات المقبول فقدها · RPO = زمن العودة.</div>
+        <div class="opt correct"><span class="letter">B</span>RTO = زمن العودة · RPO = البيانات المقبول فقدها.</div>
+        <div class="opt"><span class="letter">C</span>كلاهما يقيس التوقف بالساعات.</div>
+        <div class="opt"><span class="letter">D</span>كلاهما يقيس تكلفة التوقف.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> RTO زمن، RPO بيانات.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">8</span>
+        <div class="flex-1">
+          <div class="font-bold">المدير الذي يتبنى نظرية Y لماكجريجور غالبًا:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">A Theory Y manager most likely:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>يراقب كل خطوة في كل مهمة.</div>
+        <div class="opt correct"><span class="letter">B</span>يثق بالعاملين ويمنحهم مساحة للقيادة الذاتية وتحمّل المسؤولية.</div>
+        <div class="opt"><span class="letter">C</span>يستخدم الخوف محفّزًا رئيسيًا.</div>
+        <div class="opt"><span class="letter">D</span>يُركّز كل القرارات في يده.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> نظرية Y تفترض أن العمل طبيعي كاللعب وأن الإنسان يسعى للمسؤولية.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">9</span>
+        <div class="flex-1">
+          <div class="font-bold">مهندس أول يرفض نظام مراقبة جديد بحجّة «جرّبناه من قبل». مصدر المقاومة الأرجح هو:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">"We tried this before" — the dominant source of resistance is:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>خسارة اقتصادية.</div>
+        <div class="opt correct"><span class="letter">B</span>خبرات سابقة / شكّ عوائدي.</div>
+        <div class="opt"><span class="letter">C</span>سوء فهم للخطة.</div>
+        <div class="opt"><span class="letter">D</span>فقدان سياسي للنفوذ.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> واجِه هذا بمقارنة ما اختلف الآن + مكسب سريع صغير.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">10</span>
+        <div class="flex-1">
+          <div class="font-bold">أي مما يلي أسلوب تحليل مخاطر <em>كمّي</em>؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Which technique is quantitative risk analysis?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>خريطة حرارية</div>
+        <div class="opt"><span class="letter">B</span>تحليل SWOT</div>
+        <div class="opt correct"><span class="letter">C</span>محاكاة مونت كارلو</div>
+        <div class="opt"><span class="letter">D</span>مخطط الفراشة (Bow-tie)</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> الخرائط الحرارية والفراشة كيفية، ومونت كارلو كميّة.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">11</span>
+        <div class="flex-1">
+          <div class="font-bold">فشل تفعيل متكرر بسبب عيب برمجي في الميدلوير يندرج تحت أي مصدر من مصادر المخاطر التشغيلية (بازل II)؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Which Basel II operational risk source covers a middleware software defect?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الأفراد <span class="sub-en en ltr-block mr-2">People</span></div>
+        <div class="opt"><span class="letter">B</span>العمليات <span class="sub-en en ltr-block mr-2">Process</span></div>
+        <div class="opt correct"><span class="letter">C</span>النظم <span class="sub-en en ltr-block mr-2">Systems</span></div>
+        <div class="opt"><span class="letter">D</span>أحداث خارجية <span class="sub-en en ltr-block mr-2">External</span></div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> أعطال البرمجيات والتكامل ضمن فئة النظم.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">12</span>
+        <div class="flex-1">
+          <div class="font-bold">أي أسلوب قيادي أنسب لغرفة عمليات طوارئ انقطاع شبكة؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Best leadership style in a network-outage war room:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الحر (Laissez-faire)</div>
+        <div class="opt correct"><span class="letter">B</span>الأوتوقراطي / التوجيهي</div>
+        <div class="opt"><span class="letter">C</span>التحويلي</div>
+        <div class="opt"><span class="letter">D</span>الديمقراطي</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> القيادة الموقفية: وقت قصير ومخاطر عالية ⇒ توجيهي. عُد للديمقراطية في المراجعة بعد الحادث.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">13</span>
+        <div class="flex-1">
+          <div class="font-bold">الترتيب الصحيح لهرم ماسلو من القاعدة إلى القمة:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Correct Maslow order (base → top):</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt correct"><span class="letter">A</span>فسيولوجية → أمان → اجتماعية → احترام → تحقيق ذات</div>
+        <div class="opt"><span class="letter">B</span>أمان → فسيولوجية → اجتماعية → تحقيق ذات → احترام</div>
+        <div class="opt"><span class="letter">C</span>فسيولوجية → احترام → اجتماعية → أمان → تحقيق ذات</div>
+        <div class="opt"><span class="letter">D</span>اجتماعية → فسيولوجية → أمان → احترام → تحقيق ذات</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: A.</strong></p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">14</span>
+        <div class="flex-1">
+          <div class="font-bold">أيّ تعريف يُعبّر عن <em>التمكين</em> بدقة؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Which best describes empowerment?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>إعطاء العاملين جميع القرارات دون إشراف.</div>
+        <div class="opt"><span class="letter">B</span>تكليف المهام مع رقابة صارمة.</div>
+        <div class="opt correct"><span class="letter">C</span>تفويض + موارد + سلطة + مساءلة.</div>
+        <div class="opt"><span class="letter">D</span>دوران العاملين بين الأدوار.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong></p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">15</span>
+        <div class="flex-1">
+          <div class="font-bold">علاج الخطر عن طريق التأمين أو اتفاقية خدمة مع مورّد يُسمّى:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Treating risk via insurance or vendor SLA is called:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>التجنّب <span class="sub-en en ltr-block mr-2">Terminate</span></div>
+        <div class="opt"><span class="letter">B</span>التخفيف <span class="sub-en en ltr-block mr-2">Treat</span></div>
+        <div class="opt correct"><span class="letter">C</span>التحويل <span class="sub-en en ltr-block mr-2">Transfer</span></div>
+        <div class="opt"><span class="letter">D</span>القبول <span class="sub-en en ltr-block mr-2">Tolerate</span></div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong></p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">16</span>
+        <div class="flex-1">
+          <div class="font-bold">مؤشر الأداء الجيد يجب أن يكون:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">A good KPI must be:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>بسيطًا، غامضًا، ممكنًا، مرنًا، محدّدًا بالوقت.</div>
+        <div class="opt correct"><span class="letter">B</span>محدّدًا، قابلًا للقياس، قابلًا للتحقيق، ذا صلة، محدّدًا بالوقت (SMART).</div>
+        <div class="opt"><span class="letter">C</span>استراتيجيًا، حديثًا، طموحًا، سريعًا، مجرّبًا.</div>
+        <div class="opt"><span class="letter">D</span>كميًا فقط.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> اذكر SMART في المقابلة عند الحديث عن المسؤولية رقم ٥.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">17</span>
+        <div class="flex-1">
+          <div class="font-bold">أفضل أداة لتحليل الجذور بعد عطل متكرر هي:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Best root-cause tool after a recurring fault:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>SWOT</div>
+        <div class="opt"><span class="letter">B</span>PESTEL</div>
+        <div class="opt correct"><span class="letter">C</span>٥ لماذا / عظمة السمكة (إيشيكاوا)</div>
+        <div class="opt"><span class="letter">D</span>قوى بورتر الخمس</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> اذكرهما صراحة في المسؤولية رقم ٤.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">18</span>
+        <div class="flex-1">
+          <div class="font-bold">في نموذج ليفين، تجربة الحلول وتدريب العاملين تحدث في مرحلة:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">In Lewin's model, piloting and training happen in:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الإذابة <span class="sub-en en ltr-block mr-2">Unfreeze</span></div>
+        <div class="opt correct"><span class="letter">B</span>التغيير <span class="sub-en en ltr-block mr-2">Change / Movement</span></div>
+        <div class="opt"><span class="letter">C</span>التجميد <span class="sub-en en ltr-block mr-2">Refreeze</span></div>
+        <div class="opt"><span class="letter">D</span>الاستقرار</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong></p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">19</span>
+        <div class="flex-1">
+          <div class="font-bold">أيّ مما يلي <em>ليس</em> من مصادر المخاطر التشغيلية الأربعة؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Which is NOT one of the four operational risk sources?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الأفراد</div>
+        <div class="opt"><span class="letter">B</span>العمليات</div>
+        <div class="opt correct"><span class="letter">C</span>الاستراتيجية</div>
+        <div class="opt"><span class="letter">D</span>الأحداث الخارجية</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> مخاطر الاستراتيجية فئة مستقلة. المخاطر التشغيلية = أفراد / عمليات / نظم / أحداث خارجية.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">20</span>
+        <div class="flex-1">
+          <div class="font-bold">يجب الاختيار بين إصلاح دائم مكلف وحل مؤقت سريع قبل موسم الذروة. ما الجواب الإداري الأقوى؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Permanent vs temporary fix before peak season — strongest managerial answer:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الحل الأرخص دائمًا لتوفير الميزانية.</div>
+        <div class="opt"><span class="letter">B</span>تصعيد كل قرار للإدارة العليا.</div>
+        <div class="opt correct"><span class="letter">C</span>تطبيق الحل المؤقت لحماية الذروة، جدولة الإصلاح الدائم في نافذة التغيير بعد الذروة، وتسجيل الخطر المؤجل في السجل بمالك ومهلة.</div>
+        <div class="opt"><span class="letter">D</span>تأجيل كل شيء حتى تمر الذروة.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> سجل مخاطر + نافذة تغيير + قبول مؤقت بمدة انتهاء.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">21</span>
+        <div class="flex-1">
+          <div class="font-bold">تقول نظرية التوقع لفروم إن الدافعية تعتمد على:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Vroom's Expectancy Theory says motivation depends on:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الحاجة للإنجاز فقط.</div>
+        <div class="opt correct"><span class="letter">B</span>التوقع × الوسيلة × التكافؤ <span class="sub-en en ltr-block mr-2">(E × I × V)</span></div>
+        <div class="opt"><span class="letter">C</span>العوامل الصحية والمحفّزة.</div>
+        <div class="opt"><span class="letter">D</span>الإدراك العادل فقط.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong> إذا صار أي عامل صفرًا، تنعدم الدافعية.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">22</span>
+        <div class="flex-1">
+          <div class="font-bold">أي الأمثلة يمثّل «الترشيح» كمعوّق اتصال؟</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Which scenario is communication filtering?</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>ضجيج في مركز بيانات أثناء الاتصال.</div>
+        <div class="opt"><span class="letter">B</span>اختلاف لهجات بين متحدثَين.</div>
+        <div class="opt correct"><span class="letter">C</span>رئيس فريق يُخفّف أخبارًا سيئة قبل رفعها للمدير.</div>
+        <div class="opt"><span class="letter">D</span>بريد إلكتروني مترجم خطأً من مورّد.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> الترشيح تشويه مقصود من المرسل. علاجه مراجعات الحوادث بلا لوم.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">23</span>
+        <div class="flex-1">
+          <div class="font-bold">تصميم لوحة متابعة للنظام الرئيسي والبديل هو في جوهره ضابط من ضوابط:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Dashboarding primary &amp; backup paths is fundamentally a control of:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>إدارة الأفراد.</div>
+        <div class="opt"><span class="letter">B</span>التسويق.</div>
+        <div class="opt correct"><span class="letter">C</span>استمرارية الأعمال / المرونة التشغيلية.</div>
+        <div class="opt"><span class="letter">D</span>المراجعة المالية.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> هي بحرفها «جاهزية مسار الفيل-أوفر» — مصطلح BCM.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">24</span>
+        <div class="flex-1">
+          <div class="font-bold">عند فرينش ورايفن، السلطة النابعة من المعرفة العميقة تُسمّى:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">French &amp; Raven's power from deep knowledge is:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>شرعية <span class="sub-en en ltr-block mr-2">Legitimate</span></div>
+        <div class="opt"><span class="letter">B</span>مكافأة <span class="sub-en en ltr-block mr-2">Reward</span></div>
+        <div class="opt correct"><span class="letter">C</span>خبيرة <span class="sub-en en ltr-block mr-2">Expert</span></div>
+        <div class="opt"><span class="letter">D</span>مرجعية <span class="sub-en en ltr-block mr-2">Referent</span></div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: C.</strong> هذا بالضبط موطن قوتك — استخدمه في المقابلة.</p>
+      </div>
+    </details>
+
+    <details class="mcq glass rounded-xl">
+      <summary>
+        <span class="num-dot">25</span>
+        <div class="flex-1">
+          <div class="font-bold">وفقًا للباب السابع من الإدارة الحديثة، أحد أبرز أسباب فشل المديرين هو:</div>
+          <div class="sub-en mt-1 ltr-block text-xs">Per Ch 7 of the manual, a top reason managers fail is:</div>
+        </div>
+        <span class="caret text-brand-400">‹</span>
+      </summary>
+      <div class="answer px-5 pb-4 pt-3 space-y-2 text-sm">
+        <div class="opt"><span class="letter">A</span>الإفراط في التفويض.</div>
+        <div class="opt correct"><span class="letter">B</span>العجز عن التواصل والإنصات الفعّال.</div>
+        <div class="opt"><span class="letter">C</span>الاهتمام المفرط بمؤشرات الأداء.</div>
+        <div class="opt"><span class="letter">D</span>قوّته الفنية.</div>
+        <p class="text-slate-400 mt-2"><strong class="text-good-500">الإجابة: B.</strong></p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-5"><div class="h-rule my-6"></div></div>
+
+<!-- ============== ESSAY ============== -->
+<section id="essay" class="max-w-7xl mx-auto px-5 py-6">
+  <h2 class="section-title text-2xl"><span class="bar"></span>سؤال المقال المتوقع + الإجابة النموذجية <span class="sub-en ms-2">Predicted essay + perfect answer</span></h2>
+
+  <div class="glass rounded-2xl p-6 mt-6 bil">
+    <div class="flex items-center gap-2 flex-wrap">
+      <span class="chip">السؤال الأساسي · ٨٥٪ احتمال</span>
+      <span class="chip accent">اكتب إجابتك بالعربية في الامتحان</span>
+    </div>
+    <h3 class="text-xl md:text-2xl mt-3">«إذا تمت ترقيتك إلى مدير إدارة الدعم الفني وإصلاح الأعطال، كيف ستُطوّر الإدارة خلال أول عام؟»</h3>
+    <div class="sub-en mt-1 ltr-block">"If promoted to Manager of Technical Support &amp; Fault Repair, how will you improve the department?"</div>
+
+    <div class="mt-6 dual">
+      <!-- ARABIC ANSWER -->
+      <div class="card-ar">
+        <span class="side-label">الإجابة النموذجية — عربي</span>
+
+        <div class="mt-2 text-sm space-y-4 leading-loose">
+          <div>
+            <div class="k-label">١ · المقدمة</div>
+            <p class="mt-1">بصفتي رئيس قسم ترقيات التطبيقات، فإن عملي اليومي يقع بالفعل على الخط الفاصل بين النظم التشغيلية والشبكة الحيّة؛ فقد بنيت بنفسي طبقة الميدلوير التي تنفّذ عمليات التفعيل والاستعادة على أجهزة MSAN و ONT. وبالترقية إلى إدارة الدعم الفني، سأنتقل من امتلاك <em>القدرة</em> إلى امتلاك <em>النتيجة</em>: إدارة تدعم تخفيض الحوادث المؤثرة على الخدمة، وتحمي اتفاقيات المستوى، وتكسب ثقة الموردين ومركز التحكم وعملاء قطاع الأعمال.</p>
+          </div>
+
+          <div>
+            <div class="k-label">٢ · التحديات الراهنة</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>تكرار الأعطال لأن الجذور تُعالج مؤقتًا دون استئصال.</li>
+              <li>تقارير الحوادث ترد بلغة فنية بلا أثر واضح على الأعمال.</li>
+              <li>النظام الرئيسي والبديل يُراقبان منفصلَين؛ جاهزية الفيل-أوفر مُفترَضة لا مُثبَتة.</li>
+              <li>المعرفة محصورة في أفراد قليلين، وفقدان أحدهم خطر حقيقي.</li>
+              <li>اعتمادية عالية على الموردين تخلق مناطق عمياء أثناء نوافذ التحديث.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="k-label">٣ · التحسينات الاستراتيجية — أفراد · عمليات · تكنولوجيا</div>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">الأفراد</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>برنامج إرشاد ودوران وظيفي يضمن وجود ≥ ٢ مُتقنَين لكل نوع عطل.</li>
+                  <li>مراجعات حوادث شهرية بلا لوم لبناء بيئة نفسية آمنة.</li>
+                  <li>سلّم مهني واضح من المستوى الأول إلى الخبير مع مؤشرات ترقية مكتوبة.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">العمليات</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>اعتماد تدفق ITIL: حادث → مشكلة → تغيير.</li>
+                  <li>فرض «٥ لماذا» على كل حادث حرج قبل الإغلاق.</li>
+                  <li>اختبار فيل-أوفر ربع سنوي موثّق بـ RTO و RPO مُقاسَين.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">التكنولوجيا</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>توسيع الميدلوير الذي بنيتُه ليعالج الأعطال العشرة الأكثر تكرارًا تلقائيًا.</li>
+                  <li>لوحة موحّدة تدمج مؤشرات النظام الرئيسي والبديل بألوان إشارة.</li>
+                  <li>اكتشاف أنماط الأعطال آليًا من بيانات التذاكر التاريخية.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="k-label">٤ · دمج إدارة المخاطر (عدسة آيزو ٣١٠٠٠)</div>
+            <p class="mt-1">سأتعامل مع كل عطل متكرر باعتباره <em>حدث خطر</em> لا مجرد تذكرة، وأسجّله في السجل باحتماليته وأثره ومالكه واختيار معالجة من «أربعة T». مراجعة ربع سنوية لأعلى ٢٠ خطرًا مدعومة بخرائط حرارية تُغذّي تقويم التغييرات مباشرة. تمارين استمرارية الأعمال على النظام البديل توفّر دليلًا ملموسًا على جاهزية الفيل-أوفر — وهذا بالضبط المسؤولية رقم ٦ في الإعلان.</p>
+          </div>
+
+          <div>
+            <div class="k-label">٥ · الأثر القابل للقياس — مؤشرات أول ١٢ شهرًا</div>
+            <div class="grid md:grid-cols-2 gap-2 text-xs mt-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">الموثوقية</strong>
+                <ul class="mt-1 list-disc pr-5 space-y-1">
+                  <li>تخفيض MTTR: ‎−٤٠٪‎ للحرج والعالي.</li>
+                  <li>تخفيض معدل تكرار الأعطال: ‎−٦٠٪‎ خلال ربعَين.</li>
+                  <li>نسبة نجاح تمارين الفيل-أوفر: ١٠٠٪ ربع سنوي.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">الأعمال</strong>
+                <ul class="mt-1 list-disc pr-5 space-y-1">
+                  <li>تكلفة خرق SLA: ‎−٢٥٪‎ سنويًا.</li>
+                  <li>تسليم تقارير الحوادث الحرجة: &lt; ٤٨ ساعة.</li>
+                  <li>تغطية الأتمتة لأعلى ١٠ أعطال: ≥ ٧٠٪.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote">
+            <div class="k-label">٦ · الخاتمة</div>
+            <p class="mt-1">خلفيتي الفنية ليست عبئًا على دوري الإداري، بل هي <em>فارقي التنافسي</em>. أستطيع أن أجلس بلغتين: لغة المهندس الذي يعرف لماذا يتكرّر العطل، ولغة المدير الذي يشرح تكلفته بالأرقام. في نهاية العام، سأعيد إدارة تكتشف الأعطال مبكرًا، وتتعافى أسرع، وتحمل سجل مخاطر يقرأه الرئيس التنفيذي بنفسه.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENGLISH ANSWER -->
+      <div class="card-en">
+        <span class="side-label">MODEL ANSWER — ENGLISH</span>
+
+        <div class="mt-2 text-sm space-y-4 leading-relaxed">
+          <div>
+            <div class="k-label en">1 · Introduction</div>
+            <p class="mt-1">As Section Head of Application Upgrades, my work already sits at the seam between the operational systems and the live network — I personally built the middleware layer that executes provisioning and recovery actions on MSAN and ONT devices. Promoted into this department, I would shift from <em>owning a capability</em> to <em>owning an outcome</em>: a technical-support organisation that measurably reduces service-affecting incidents, protects SLAs and earns operational trust across vendors, the NOC and the B2B customer base.</p>
+          </div>
+
+          <div>
+            <div class="k-label en">2 · Current Challenges</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Recurring faults reappear because root causes are patched, not killed.</li>
+              <li>Incident reports arrive as technical logs with no business-impact translation.</li>
+              <li>Primary and backup systems are monitored separately; failover readiness is assumed, not proven.</li>
+              <li>Knowledge is concentrated in a few engineers — one leaver is a real risk.</li>
+              <li>Vendor dependencies create blind spots during release windows.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="k-label en">3 · Strategic Improvements · People · Process · Technology</div>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">People</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Structured mentorship + rotation so every fault type has ≥ 2 qualified owners.</li>
+                  <li>Monthly blameless post-mortems to build psychological safety.</li>
+                  <li>A written L1 → Senior career ladder with clear KPIs.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Process</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Adopt an ITIL-aligned incident → problem → change flow.</li>
+                  <li>Enforce 5 Whys on every Sev-1 before closure.</li>
+                  <li>Quarterly failover drill with documented RTO and RPO.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Technology</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Extend my existing middleware into a self-healing loop for the top 10 recurring faults.</li>
+                  <li>Unified dashboard fusing primary + backup KPIs with red/amber/green bands.</li>
+                  <li>Automated fault-pattern detection over historical ticket data.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="k-label en">4 · Embedding Risk Management (ISO 31000 lens)</div>
+            <p class="mt-1">I would treat every recurring fault as a <em>risk event</em>, not a ticket — registered with likelihood, impact, owner and a treatment choice from the 4 T's. A quarterly review of the top 20 risks, backed by heat maps, would feed the change calendar directly. Business-continuity drills on the backup system would provide evidence-based failover readiness rather than assumed readiness — answering responsibility #6 of the announcement.</p>
+          </div>
+
+          <div>
+            <div class="k-label en">5 · Measurable Impact · 12-month KPIs</div>
+            <div class="grid md:grid-cols-2 gap-2 text-xs mt-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Reliability</strong>
+                <ul class="mt-1 list-disc ms-5 space-y-1">
+                  <li>MTTR: −40% on Sev-1/2.</li>
+                  <li>Recurring-fault rate: −60% within 2 quarters.</li>
+                  <li>Failover drill pass rate: 100% quarterly.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Business</strong>
+                <ul class="mt-1 list-disc ms-5 space-y-1">
+                  <li>SLA breach cost: −25% YoY.</li>
+                  <li>Post-incident reports: &lt; 48h for all Sev-1.</li>
+                  <li>Automation coverage: ≥ 70% of top-10 faults.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote">
+            <div class="k-label en">6 · Conclusion</div>
+            <p class="mt-1">My technical background is not a distraction from management — it is my differentiator. I can sit in both languages at once: the engineer explaining <em>why</em> a fault repeats, and the manager explaining <em>what it costs</em>. In twelve months I will hand back a department that detects faults earlier, recovers faster, and carries a risk register the executive team can actually read.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== ESSAY 2 — LEADERSHIP / BUS FACTOR ============== -->
+  <div class="glass rounded-2xl p-6 mt-6 bil">
+    <div class="flex items-center gap-2 flex-wrap">
+      <span class="chip">السؤال الثاني · ٧٠٪ احتمال</span>
+      <span class="chip accent only-ar">قيادة · تفويض · تمكين</span>
+      <span class="chip accent only-en">Leadership · Delegation · Empowerment</span>
+    </div>
+    <h3 class="text-xl md:text-2xl mt-3 only-ar">«كيف ستبني ثقافة اعتمادية داخل فريقك وتُقلّل الاعتماد على الأفراد في إدارة دعم فني؟»</h3>
+    <h3 class="text-xl md:text-2xl mt-3 only-en">"How will you build a reliability culture and reduce key-person dependency in a technical support department?"</h3>
+
+    <div class="mt-6 dual">
+      <!-- ARABIC -->
+      <div class="card-ar">
+        <span class="side-label">الإجابة النموذجية — عربي</span>
+        <div class="mt-2 text-sm space-y-4 leading-loose">
+          <div>
+            <div class="k-label">١ · تأطير المشكلة</div>
+            <p class="mt-1">في إدارات الدعم الفني، ينشأ الخطر الحقيقي من تركّز المعرفة في أفراد محدودين. عند غياب واحد منهم ترتفع MTTR وتتوقّف قرارات حرجة. مسؤوليتي الأولى كمدير إدارة ليست إطفاء الحريق، بل بناء فريق قادر على إطفائه في غيابي — وهو جوهر ما سمّاه فايول وظيفة التنظيم، وما أكّده كتاب «الإدارة الحديثة» حين قال إن <em>السلطة تُفوَّض والمسؤولية لا تُفوَّض</em>.</p>
+          </div>
+          <div>
+            <div class="k-label">٢ · التشخيص الأولي — ٣٠ يومًا</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>مصفوفة مهارات لكل عطل × كل مهندس (عامل الحافلة = كم مهندس مؤهّل لكل عطل).</li>
+              <li>تحليل توزيع التذاكر: هل ٢٠٪ من الفريق يحلّون ٨٠٪ من التذاكر الحرجة؟</li>
+              <li>خريطة الموردين والواجهات الخارجية — من يعرف كل منها فقط؟</li>
+              <li>مراجعة سجل التصعيدات في آخر ٦ أشهر — الأسماء المتكرّرة هي نقاط الفشل.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label">٣ · نموذجي القيادي — موقفي وتحويلي معًا</div>
+            <p class="mt-1">سأتبنّى نموذج هيرسي–بلانشارد للقيادة الموقفية: مع الجدد والمبتدئين أستخدم الأسلوب التوجيهي، ومع الخبراء أستخدم التفويض الكامل. في الوقت نفسه أعمل كقائد تحويلي أُلهم الفريق برؤية «لا مهندس لا غنى عنه» بدلًا من ثقافة البطل المنقذ.</p>
+          </div>
+          <div>
+            <div class="k-label">٤ · إجراءات التفويض والتمكين</div>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">الأفراد</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>ضامن الثنائي: لكل عطل حرج مهندس رئيسي + ظل نائب إجباري.</li>
+                  <li>دوران وظيفي ربع سنوي لكسر جُزر المعرفة.</li>
+                  <li>خطة خليفة موثّقة لكل رئيس قسم — ردًا على خطأ «عدم تطوير الخليفة» الذي عدّه الكتاب سببًا رئيسًا لفشل المديرين.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">العمليات</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>قاعدة معرفة حيّة: حل كل تذكرة Sev-1 يُضاف كخطوات قابلة للتكرار قبل الإغلاق.</li>
+                  <li>ورش «لا-يوم» ربع سنوية يُغيَّب فيها الخبير الأعلى عمدًا ويقود فريقه العطل.</li>
+                  <li>مراجعات بلا لوم بعد الحادث + نشر الدروس على الإدارات المجاورة.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">التكنولوجيا</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>أتمتة العمليات المتكرّرة عبر الميدلوير الذي أمتلكه — لتحويل المعرفة الفردية إلى كود مشترك.</li>
+                  <li>Runbooks بصيغة مُوحَّدة مرتبطة بأدوات التنبيه.</li>
+                  <li>لوحة «عامل الحافلة» تُحدَّث تلقائيًا من مصفوفة المهارات.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="k-label">٥ · التحفيز — ماسلو وهيرزبرغ عمليًا</div>
+            <p class="mt-1">عامل النظافة (الراتب، المكتب، الأمان) لا يُحفّز وحده، لكنه يُثبّط إن غاب. سأضمن أساسيات عادلة ثم أضيف العوامل الحقيقية: الاعتراف العلني بحلّ عطل صعب، فرص التعلّم، التفويض الحقيقي، ومهام بمعنى استراتيجي. ليس «إدارة بالعصا» بل «إدارة بالثقة».</p>
+          </div>
+          <div>
+            <div class="k-label">٦ · مؤشرات النجاح — ١٢ شهرًا</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>عامل الحافلة: لا عطل حرج يعتمد على أقل من ٢ مهندسَين (الحالة الابتدائية ≈ ١).</li>
+              <li>ساعات التصعيد بعد ساعات العمل الرسمية: ‎−٥٠٪‎.</li>
+              <li>نسبة التذاكر التي يُغلقها المستوى الأول دون تصعيد: ‎+٣٠٪‎.</li>
+              <li>رضا الفريق الداخلي (استبيان مجهول): ≥ ٨٠٪.</li>
+            </ul>
+          </div>
+          <div class="quote">
+            <div class="k-label">٧ · الخاتمة</div>
+            <p class="mt-1">لا أريد أن أصبح المدير الذي يُطفئ الحرائق بيديه؛ أريد أن أصبح المدير الذي يبني فريقًا لا يحتاجه في كل حريق. هذه هي القيادة كما وصفها كتابا الإدارة الحديثة والإشرافية: تحويل الناس من منفذين إلى مالكين، ومن موظفين إلى قادة صغار داخل أدوارهم.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENGLISH -->
+      <div class="card-en">
+        <span class="side-label">MODEL ANSWER — ENGLISH</span>
+        <div class="mt-2 text-sm space-y-4 leading-relaxed">
+          <div>
+            <div class="k-label en">1 · Framing the Problem</div>
+            <p class="mt-1">In technical-support departments, the real risk is concentration of knowledge in a handful of individuals. When one of them is absent, MTTR spikes and critical decisions stall. My first responsibility as a department manager is not to fight fires myself — it is to build a team that can fight them in my absence. This is Fayol's <em>organising</em> function, and it is exactly the rule "Modern Management" emphasises: <em>authority is delegated, responsibility is not</em>.</p>
+          </div>
+          <div>
+            <div class="k-label en">2 · Initial Diagnosis · First 30 Days</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Skills matrix — every fault type × every engineer (bus factor = how many are qualified per fault).</li>
+              <li>Ticket distribution — are 20% of the team closing 80% of critical tickets?</li>
+              <li>Vendor interface map — who is the only person that knows each one?</li>
+              <li>Escalation log review for the last 6 months — the repeated names are the single-points-of-failure.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label en">3 · My Leadership Model — Situational + Transformational</div>
+            <p class="mt-1">I will use Hersey–Blanchard situational leadership: directive with juniors, full delegation with experts. In parallel, I will act as a transformational leader — inspiring the team around the vision that "no engineer should be irreplaceable", replacing the hero-culture with a reliability culture.</p>
+          </div>
+          <div>
+            <div class="k-label en">4 · Delegation &amp; Empowerment Actions</div>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">People</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Mandatory shadow-pair for every critical fault (primary + deputy).</li>
+                  <li>Quarterly rotation to break knowledge silos.</li>
+                  <li>Documented successor plan for every section head — the book explicitly lists "failing to develop a successor" as a top cause of managerial failure.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Process</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Living knowledge base: every Sev-1 must be converted into repeatable steps before closure.</li>
+                  <li>Quarterly "no-hero" drills where the senior expert is deliberately removed from the incident.</li>
+                  <li>Blameless post-mortems + cross-department publishing of lessons.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Technology</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Automate repeat actions inside the middleware I already own — turning personal knowledge into shared code.</li>
+                  <li>Standardised runbooks linked to alerting tools.</li>
+                  <li>A "bus factor" dashboard auto-populated from the skills matrix.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="k-label en">5 · Motivation · Maslow &amp; Herzberg in Practice</div>
+            <p class="mt-1">Hygiene factors (pay, office, safety) don't motivate on their own but demotivate if absent. I will guarantee a fair baseline, then add the real motivators: public recognition for solving hard faults, learning budget, genuine delegation, and strategically meaningful assignments. Management by trust, not by stick.</p>
+          </div>
+          <div>
+            <div class="k-label en">6 · Success KPIs — 12 Months</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Bus factor ≥ 2 for every critical fault type (baseline ≈ 1).</li>
+              <li>Out-of-hours escalations: −50%.</li>
+              <li>Tickets closed at L1 without escalation: +30%.</li>
+              <li>Anonymous team satisfaction: ≥ 80%.</li>
+            </ul>
+          </div>
+          <div class="quote">
+            <div class="k-label en">7 · Conclusion</div>
+            <p class="mt-1">I do not want to be the manager who personally extinguishes every fire. I want to be the manager who builds a team that does not need him for every fire. That is leadership as "Modern Management" and "Effective Supervisory Management" define it — turning people from executors into owners, and from employees into leaders of their own scope.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== ESSAY 3 — CHANGE MANAGEMENT ============== -->
+  <div class="glass rounded-2xl p-6 mt-6 bil">
+    <div class="flex items-center gap-2 flex-wrap">
+      <span class="chip">السؤال الثالث · ٦٥٪ احتمال</span>
+      <span class="chip accent only-ar">إدارة التغيير · ليفين · كوتر</span>
+      <span class="chip accent only-en">Change Management · Lewin · Kotter</span>
+    </div>
+    <h3 class="text-xl md:text-2xl mt-3 only-ar">«طلبت الإدارة العليا استبدال منصة المراقبة الحالية بمنصّة جديدة. كيف ستقود هذا التغيير في إدارتك؟»</h3>
+    <h3 class="text-xl md:text-2xl mt-3 only-en">"Top management has asked you to replace the current monitoring platform with a new one. How will you lead this change in your department?"</h3>
+
+    <div class="mt-6 dual">
+      <!-- ARABIC -->
+      <div class="card-ar">
+        <span class="side-label">الإجابة النموذجية — عربي</span>
+        <div class="mt-2 text-sm space-y-4 leading-loose">
+          <div>
+            <div class="k-label">١ · المقدمة</div>
+            <p class="mt-1">استبدال منصة المراقبة ليس مشروعًا فنيًا فقط، بل مشروع <em>تغيير بشري</em>. التغييرات الفنية تفشل غالبًا لا بسبب التكنولوجيا بل بسبب المقاومة وضعف التواصل والرؤية غير الواضحة — كما يُحذّر كتابا المنهج الدراسي. لذلك سأتعامل مع المشروع عبر نموذجين متكاملَين: <strong>كورت ليفين</strong> الثلاثي و<strong>جون كوتر</strong> الثماني.</p>
+          </div>
+          <div>
+            <div class="k-label">٢ · مرحلة الإذابة (Unfreeze)</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>أبني شعورًا بالإلحاح: عرض رقمي للحوادث التي أخفقت المنصّة القديمة في اكتشافها مبكرًا وتكلفتها.</li>
+              <li>أُكوّن ائتلافًا قياديًا: رؤساء الأقسام + ممثل الأمن + ممثل الموردين + قائد من الشبكة.</li>
+              <li>أصوغ رؤية بسيطة: «نرى العطل قبل العميل، ونتعافى قبل SLA».</li>
+              <li>أنصت للخوف: من سيفقد امتيازاته؟ من لا يتقن الأداة الجديدة؟ ذلك جوهر مقاومة التغيير.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label">٣ · مرحلة التغيير (Change)</div>
+            <p class="mt-1">تنفيذ متدرّج لا «كل شيء في ليلة واحدة». أتبع خطوات كوتر ٤–٧: التواصل المتكرر (كل قناة، كل أسبوع)، إزالة العقبات والتمكين (صلاحيات، تدريب، ميزانية)، تحقيق <em>مكاسب سريعة</em> بتمكين فريق رائد من تشغيل المنصة الجديدة على عطل حقيقي صغير خلال ٣٠ يومًا، ثم توسيع النطاق.</p>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">مسار تواز</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>المنصّة القديمة والجديدة تعملان معًا ٦٠ يومًا.</li>
+                  <li>معايير قبول مكتوبة قبل الإطفاء النهائي.</li>
+                  <li>خطة عودة واضحة ومجرّبة.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">مخاطر</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>سجل مخاطر مفعّل (ISO 31000) مع مالك لكل خطر.</li>
+                  <li>اختبار فيل-أوفر وتغطية قبل الانتقال.</li>
+                  <li>اعتماد رسمي من لجنة التغيير.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">الأفراد</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>تدريب إجباري + اعتماد مكتوب لكل مهندس قبل أخذ المناوبة الأولى.</li>
+                  <li>أبطال تبنٍّ داخل الفريق.</li>
+                  <li>قناة أسئلة مفتوحة بلا حكم.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="k-label">٤ · مرحلة التجميد (Refreeze)</div>
+            <p class="mt-1">خطوتا كوتر ٧–٨: ترسيخ المكاسب ودمجها في الثقافة. أحدّث الإجراءات الرسمية، وأعدّل مؤشرات الأداء، وأُدخل المنصّة الجديدة في تقييم الأداء السنوي. أحتفل بالنجاح علنًا ليصبح «كيفنا الجديد» لا «مشروعًا مؤقتًا».</p>
+          </div>
+          <div>
+            <div class="k-label">٥ · إدارة المقاومة</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>المقاومة بسبب الخوف من الفقد → الإنصات والطمأنة.</li>
+              <li>المقاومة بسبب نقص المعلومات → تواصل أكثر، ليس أقل.</li>
+              <li>المقاومة بسبب المصلحة الشخصية → تفاوض مفتوح أو إعادة توزيع المهام.</li>
+              <li>المقاومة المكشوفة أفضل من المقاومة الصامتة — أشجّع الاعتراض العلني.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label">٦ · مؤشرات النجاح</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>نسبة التبني بعد ٩٠ يومًا: ≥ ٩٥٪ من التنبيهات عبر المنصّة الجديدة.</li>
+              <li>الحوادث المكتشفة عبر الأداة الجديدة قبل العميل: ‎+٥٠٪‎.</li>
+              <li>صفر حوادث ناتجة عن نقص تدريب.</li>
+              <li>استبيان رضا الفريق بعد ١٢٠ يومًا: ≥ ٨٠٪.</li>
+            </ul>
+          </div>
+          <div class="quote">
+            <div class="k-label">٧ · الخاتمة</div>
+            <p class="mt-1">التغيير الناجح ليس فرض نظام جديد، بل قيادة الفريق خلاله. سأقود هذا التغيير كأنّه تغيير ثقافي قبل أن يكون تقنيًا، مستخدمًا ليفين لهيكلة الرحلة وكوتر لإدارة الإيقاع — وهو تحديدًا ما تعلّمته من فصل «التطوير التنظيمي وإدارة التغيير» في كتاب الإدارة الحديثة.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENGLISH -->
+      <div class="card-en">
+        <span class="side-label">MODEL ANSWER — ENGLISH</span>
+        <div class="mt-2 text-sm space-y-4 leading-relaxed">
+          <div>
+            <div class="k-label en">1 · Introduction</div>
+            <p class="mt-1">Replacing a monitoring platform is not just a technical project — it is a <em>human change project</em>. Technical changes usually fail not because of the technology, but because of resistance, poor communication and unclear vision — a warning both study texts explicitly make. I will therefore run this change through two complementary models: <strong>Kurt Lewin's</strong> 3-stage model and <strong>John Kotter's</strong> 8 steps.</p>
+          </div>
+          <div>
+            <div class="k-label en">2 · Unfreeze</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Create urgency: a numbered deck of incidents the current platform missed, and the business cost of each.</li>
+              <li>Form a guiding coalition: section heads + security rep + vendor rep + a network champion.</li>
+              <li>Shape a simple vision: "See the fault before the customer. Recover before the SLA."</li>
+              <li>Listen for fear: who loses status? who doesn't know the new tool? that is the core of resistance.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label en">3 · Change</div>
+            <p class="mt-1">Incremental execution — never "everything in one night". Follow Kotter steps 4–7: relentless communication (every channel, every week), remove obstacles and empower (access, training, budget), secure <em>quick wins</em> by letting a pilot team run the new platform on one real minor fault within 30 days, then widen scope.</p>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Parallel Run</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Old and new platforms running together for 60 days.</li>
+                  <li>Written acceptance criteria before final cutover.</li>
+                  <li>A rollback plan, rehearsed, not imagined.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Risk</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Active risk register (ISO 31000) with named owners.</li>
+                  <li>Failover + coverage test before cutover.</li>
+                  <li>Formal CAB approval.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">People</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Mandatory training + written certification before first shift.</li>
+                  <li>Adoption champions inside the team.</li>
+                  <li>Open, judgement-free question channel.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="k-label en">4 · Refreeze</div>
+            <p class="mt-1">Kotter 7–8: consolidate and anchor. I update the formal procedures, realign KPIs, and write the new platform into the annual performance appraisal. I publicly celebrate the wins — so the new platform becomes "the way we work now", not "that project we did".</p>
+          </div>
+          <div>
+            <div class="k-label en">5 · Handling Resistance</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Resistance from fear-of-loss → listen and reassure.</li>
+              <li>Resistance from information gap → more communication, not less.</li>
+              <li>Resistance from self-interest → open negotiation or role reshuffle.</li>
+              <li>Visible resistance is better than silent resistance — I encourage open dissent.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label en">6 · Success KPIs</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Adoption after 90 days: ≥ 95% of alerts flowing through the new platform.</li>
+              <li>Incidents detected by the new tool before the customer: +50%.</li>
+              <li>Zero incidents caused by training gaps.</li>
+              <li>Team satisfaction survey after 120 days: ≥ 80%.</li>
+            </ul>
+          </div>
+          <div class="quote">
+            <div class="k-label en">7 · Conclusion</div>
+            <p class="mt-1">A successful change is not the imposition of a new system — it is leading a team through it. I will run this migration as a cultural change first and a technical one second, using Lewin to structure the journey and Kotter to pace it — precisely what the "Organisational Development &amp; Change" chapter of Modern Management teaches.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== ESSAY 4 — KPIs &amp; PERFORMANCE ============== -->
+  <div class="glass rounded-2xl p-6 mt-6 bil">
+    <div class="flex items-center gap-2 flex-wrap">
+      <span class="chip">السؤال الرابع · ٦٠٪ احتمال</span>
+      <span class="chip accent only-ar">مؤشرات الأداء · المسؤولية رقم ٥</span>
+      <span class="chip accent only-en">KPIs · Responsibility #5</span>
+    </div>
+    <h3 class="text-xl md:text-2xl mt-3 only-ar">«كيف تضع مؤشرات أداء لإدارة الدعم الفني، وكيف تُحوّلها إلى قرارات فعلية؟»</h3>
+    <h3 class="text-xl md:text-2xl mt-3 only-en">"How do you set KPIs for a Technical Support department and turn them into actionable decisions?"</h3>
+
+    <div class="mt-6 dual">
+      <!-- ARABIC -->
+      <div class="card-ar">
+        <span class="side-label">الإجابة النموذجية — عربي</span>
+        <div class="mt-2 text-sm space-y-4 leading-loose">
+          <div>
+            <div class="k-label">١ · المبدأ الحاكم</div>
+            <p class="mt-1">المؤشر الذي لا يُغيّر قرارًا هو مؤشر ميت. أضع ثلاث قواعد حاكمة قبل أي رقم: أن يكون المؤشر <strong>SMART</strong> (محدد، قابل للقياس، قابل للتحقيق، مرتبط بالهدف، محدد زمنيًا)، أن يُغطّي بُعدًا واحدًا من أبعاد بطاقة الأداء المتوازن (مالي، عميل، عمليات داخلية، تعلّم ونمو)، وأن يكون له <em>مالك مُسمّى</em> مسؤول عن قراءته وتحريكه. ذلك يربط الامتحان مباشرة بالمسؤولية الخامسة في إعلان الوظيفة.</p>
+          </div>
+          <div>
+            <div class="k-label">٢ · هرم المؤشرات — ثلاث طبقات</div>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">مؤشرات تشغيلية (يومية)</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>MTTR للحرج والعالي.</li>
+                  <li>First-Call Resolution.</li>
+                  <li>حجم التذاكر المفتوحة وتوزيعها.</li>
+                  <li>تنبيهات الفيل-أوفر والنجاح.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">مؤشرات تكتيكية (أسبوعية/شهرية)</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>معدل تكرار الأعطال.</li>
+                  <li>التزام SLA حسب العميل/الخدمة.</li>
+                  <li>تغطية الأتمتة على أكثر الأعطال تكرارًا.</li>
+                  <li>نسبة تذاكر «الجذر المعروف».</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">مؤشرات استراتيجية (ربع سنوية)</strong>
+                <ul class="mt-1 text-xs list-disc pr-5 space-y-1">
+                  <li>تكلفة خرق SLA بالإيراد.</li>
+                  <li>رضا العملاء المؤسسيين (NPS/CSAT).</li>
+                  <li>عامل الحافلة على المهام الحرجة.</li>
+                  <li>نسبة نجاح تمارين استمرارية الأعمال.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="k-label">٣ · كيف أُحوّل الرقم إلى قرار</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>لكل مؤشر: عتبة خضراء/صفراء/حمراء، وإجراء مُسبق الاتفاق عليه لكل حالة.</li>
+              <li>لقاء أسبوعي ١٥ دقيقة يقرأ المؤشرات فقط — لا شرح، بل قرار.</li>
+              <li>مؤشر متراجع = عمل مشكلة فوري (ITIL Problem) مع مالك ومهلة.</li>
+              <li>الاتجاهات أهم من الأرقام المطلقة — أستخدم المتوسط المتحرّك والتحكّم الإحصائي البسيط.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label">٤ · مخاطر المؤشرات وتجنّبها</div>
+            <ul class="mt-1 list-disc pr-5 space-y-1">
+              <li>قانون غودهارت: «حين يصير المقياس هدفًا يتوقّف عن كونه مقياسًا جيدًا» — لن أربط أي مؤشر بمكافأة فردية دون موازنة.</li>
+              <li>اللعب بالأرقام: أفصل من يقيس عمّن يُدير.</li>
+              <li>تضخّم المؤشرات: أُطبّق قاعدة «أقلّ من ١٢ مؤشرًا لكل مستوى».</li>
+              <li>مؤشرات بلا سياق: كل مؤشر يحمل خط المقارنة والسياق.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label">٥ · الربط بلغة الأعمال</div>
+            <p class="mt-1">قيمتي الحقيقية هي أن أترجم الرقم الفني إلى لغة مالية: ‎−١٠٪‎ في MTTR = توفير كذا في خروقات SLA شهريًا. ذلك يجعل الإدارة العليا <em>تستثمر</em> في الدعم الفني بدلًا من «تَحَمُّله» كمركز تكلفة — وهو بالضبط ما أشار إليه كتاب الإدارة الحديثة في فصل إدارة العمليات بالأهداف (MBO).</p>
+          </div>
+          <div>
+            <div class="k-label">٦ · لوحة موحّدة — الوعد</div>
+            <p class="mt-1">سأبني لوحة واحدة تعرض المؤشرات الثلاث طبقات في زمن فعلي، وتُظهر حالة النظام البديل بجانب الرئيسي — وهذا هو تحديدًا المسؤوليتَان ٥ و ٦ في إعلان الوظيفة، منفذَتان في قطعة واحدة.</p>
+          </div>
+          <div class="quote">
+            <div class="k-label">٧ · الخاتمة</div>
+            <p class="mt-1">مؤشرات الأداء ليست زينة تقارير شهرية؛ إنها لغة اتخاذ القرار داخل إدارتي. أريد أن يعرف كل مهندس «ما اللون الذي أنا فيه الآن؟» وأن يعرف كل مسؤول عن قسم «ما قراري القادم؟» — وذلك يحوّل إدارة الدعم من فريق ينتظر المشكلة إلى فريق يَقرأ النظام ويتقدم عليه.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENGLISH -->
+      <div class="card-en">
+        <span class="side-label">MODEL ANSWER — ENGLISH</span>
+        <div class="mt-2 text-sm space-y-4 leading-relaxed">
+          <div>
+            <div class="k-label en">1 · Governing Principle</div>
+            <p class="mt-1">A KPI that does not change a decision is a dead KPI. Before I pick any number, I apply three rules: the KPI must be <strong>SMART</strong>, it must belong to one of the Balanced Scorecard dimensions (Financial, Customer, Internal Process, Learning &amp; Growth), and it must have a <em>named owner</em> accountable for reading and moving it. This maps the exam question directly onto responsibility #5 of the job announcement.</p>
+          </div>
+          <div>
+            <div class="k-label en">2 · The KPI Pyramid — Three Layers</div>
+            <div class="mt-2 grid gap-2">
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Operational (daily)</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>MTTR on Sev-1 / Sev-2.</li>
+                  <li>First-call resolution.</li>
+                  <li>Open ticket volume &amp; distribution.</li>
+                  <li>Failover probe success rate.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Tactical (weekly/monthly)</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>Recurring-fault rate.</li>
+                  <li>SLA compliance by customer/service.</li>
+                  <li>Automation coverage on top-N faults.</li>
+                  <li>Percentage of tickets with a known root cause.</li>
+                </ul>
+              </div>
+              <div class="pillar p-3">
+                <strong class="text-brand-200">Strategic (quarterly)</strong>
+                <ul class="mt-1 text-xs list-disc ms-5 space-y-1">
+                  <li>SLA-breach cost in revenue.</li>
+                  <li>Enterprise customer satisfaction (NPS/CSAT).</li>
+                  <li>Bus factor on critical tasks.</li>
+                  <li>Business-continuity drill pass rate.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="k-label en">3 · Turning Numbers Into Decisions</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Every KPI has green/amber/red thresholds and a pre-agreed action per colour.</li>
+              <li>A 15-minute weekly KPI stand-up — not explanation, decision.</li>
+              <li>A regressing KPI triggers an immediate ITIL Problem with an owner and a deadline.</li>
+              <li>Trends matter more than absolute values — I use moving averages and simple SPC.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label en">4 · KPI Risks &amp; How I Avoid Them</div>
+            <ul class="mt-1 list-disc ms-5 space-y-1">
+              <li>Goodhart's Law: "When a measure becomes a target, it ceases to be a good measure." I never tie a single KPI to individual bonus without a counter-balance.</li>
+              <li>Gaming: the measurer and the manager are separate roles.</li>
+              <li>KPI inflation: the rule is "fewer than 12 KPIs per layer".</li>
+              <li>No context, no KPI — every number ships with a baseline and context.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="k-label en">5 · Translating to Business Language</div>
+            <p class="mt-1">My real value is converting a technical number into a financial one: a 10% reduction in MTTR equals X EGP saved in monthly SLA penalties. That makes the executive team <em>invest</em> in technical support rather than <em>tolerate</em> it as a cost centre — exactly the spirit of the Management-by-Objectives chapter in Modern Management.</p>
+          </div>
+          <div>
+            <div class="k-label en">6 · Unified Dashboard — The Promise</div>
+            <p class="mt-1">I will build a single dashboard that shows all three layers in real time and places the backup system next to the primary — executing responsibilities #5 and #6 of the announcement in one artefact.</p>
+          </div>
+          <div class="quote">
+            <div class="k-label en">7 · Conclusion</div>
+            <p class="mt-1">KPIs are not ornaments on a monthly report. They are the decision language of my department. Every engineer should know "what colour am I right now?" and every section head should know "what is my next decision?". That is how a technical-support department stops waiting for problems and starts reading the system ahead of them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKUP ESSAY -->
+  <div class="glass rounded-2xl p-6 mt-5 bil">
+    <span class="chip">احتياطي · ٤٠٪ احتمال</span>
+    <h3 class="text-xl mt-3">«اشرح تعاملك مع عطل جسيم يُؤثر على عميل مؤسسي كبير.»</h3>
+    <div class="sub-en mt-1 ltr-block">"Describe your handling of a major service outage affecting a key corporate customer."</div>
+    <ol class="mt-4 text-sm list-decimal pr-5 space-y-1.5">
+      <li><strong>احتواء</strong> — تفعيل غرفة العمليات، تعيين قائد الحادث، تفعيل المسار البديل، تجميد التغييرات المجاورة.</li>
+      <li><strong>تواصل</strong> — قناة واحدة صاعدة (NOC → الإدارة → العميل)، أوقات وتقديرات شفافة، منع الترشيح.</li>
+      <li><strong>تشخيص</strong> — مسارَين متوازيَين: فريق حل مؤقت وفريق جذر.</li>
+      <li><strong>استرداد</strong> — التحقق من SLA، تأكيد قبول العميل، تسجيل أي فقدان بيانات بـ RPO.</li>
+      <li><strong>مراجعة بلا لوم</strong> خلال ٤٨ ساعة — ٥ لماذا + إيشيكاوا.</li>
+      <li><strong>منع التكرار</strong> — إدخال الحادث في سجل المخاطر، جدولة الإصلاح الدائم، تحديث الرَنبوك والمراقبة.</li>
+    </ol>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-5"><div class="h-rule my-6"></div></div>
+
+<!-- ============== STRATEGY ============== -->
+<section id="strategy" class="max-w-7xl mx-auto px-5 py-6">
+  <h2 class="section-title text-2xl"><span class="bar"></span>الاستراتيجية الشخصية <span class="sub-en ms-2">Personalized strategy</span></h2>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="glass rounded-2xl p-5 bil">
+      <div class="k-label">كيف تُقدّم نفسك <span class="en">POSITIONING</span></div>
+      <p class="mt-2 text-sm">أنت <em>المرشح الوحيد</em> القادر على قول «لقد بنيتُ بنفسي الميدلوير الذي يُفعّل الخدمات ويسترجعها على MSAN و ONT». روايتك يجب أن تكون: <strong>«مُنفّذ عملي حلّ بالفعل أصعب مشكلات الإدارة، وجاهز لتوسيع ذلك».</strong> لا تحاول أن تبدو كخريج ماجستير إدارة تقليدي — ادخل من الباب الفني ثم غلّفه بلغة الإدارة.</p>
+    </div>
+
+    <div class="glass rounded-2xl p-5 bil">
+      <div class="k-label">الأفضلية التنافسية <span class="en">EDGE</span></div>
+      <ul class="mt-2 text-sm space-y-1.5 list-disc pr-5">
+        <li>ملكية فنية حقيقية على المنتج، لا ورقية.</li>
+        <li>تدير بالفعل قسمًا — خبرة قيادة أفراد جاهزة.</li>
+        <li>تترجم بين المهندسين والتنفيذيين — مهارة نادرة.</li>
+        <li>خبرة الميدلوير + MSAN / ONT تُطابق المسؤولية رقم ٣ حرفيًا.</li>
+      </ul>
+    </div>
+
+    <div class="glass rounded-2xl p-5 bil">
+      <div class="k-label">نقاط ضعف يجب علاجها قبل الامتحان <span class="en">GAPS</span></div>
+      <ul class="mt-2 text-sm space-y-1.5 list-disc pr-5">
+        <li>مفردات <strong>ISO 31000</strong> — احفظ الترتيب وأربعة T.</li>
+        <li>اللغة المالية — capex / opex، تأثير SLA على الإيراد، TCO.</li>
+        <li>مصطلحات ITIL v4 — حادث / مشكلة / تغيير / إصدار.</li>
+        <li>نماذج التغيير الرسمية — سمِّها باسم ليفين وكوتر.</li>
+        <li>تطوير الأفراد — سلّم مهني، تخطيط الخلافة.</li>
+      </ul>
+    </div>
+
+    <div class="glass rounded-2xl p-5 bil">
+      <div class="k-label">خمس جمل ذكية تُبهر المُقيّم <span class="en">FIVE SMART PHRASES</span></div>
+      <ol class="mt-2 text-sm space-y-2 list-decimal pr-5">
+        <li>«أتعامل مع كل عطل متكرر باعتباره حدث خطر لا تذكرة — له مالك وتاريخ انتهاء في السجل.»</li>
+        <li>«الإصلاح الفني ليس مكتملًا حتى تُحدَّث المراقبة ويُثبَت الفيل-أوفر.»</li>
+        <li>«وظيفتي كمدير أن أنقل الفريق من إطفاء الربع الأول إلى وقاية الربع الثاني.»</li>
+        <li>«التفويض ينقل السلطة لا المسؤولية — لذلك أستثمر في كفاءة من أفوّض إليه.»</li>
+        <li>«دوري ترجمة سجلّ المهندس إلى لغة تفهمها الإدارة: دقائق، مال، سمعة.»</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-5"><div class="h-rule my-6"></div></div>
+
+<!-- ============== ALIGNMENT ============== -->
+<section id="alignment" class="max-w-7xl mx-auto px-5 py-6 pb-16">
+  <h2 class="section-title text-2xl"><span class="bar"></span>مواءمة مع مهام الإعلان الرسمية <span class="sub-en ms-2">Alignment with the announcement</span></h2>
+  <p class="text-sm text-slate-400 mt-2 mr-7">كل مسؤولية من الست مرتبطة بنقطة الحديث الأقوى لك والكلمات التي يرغب اللجنة في سماعها.</p>
+
+  <div class="mt-6 overflow-x-auto glass rounded-2xl">
+    <table class="w-full text-sm min-w-[720px]" dir="rtl">
+      <thead class="bg-white/5">
+        <tr class="text-right text-xs tracking-wider text-slate-400">
+          <th class="p-3 w-10">#</th>
+          <th class="p-3">المسؤولية الرسمية</th>
+          <th class="p-3">نقطة حديثك الأقوى</th>
+          <th class="p-3">كلمات مفتاحية</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/5">
+        <tr>
+          <td class="p-3 font-bold text-brand-400">1</td>
+          <td class="p-3">اعتماد وإغلاق أعطال تفعيل الخدمات الناتجة عن أعطال النظام</td>
+          <td class="p-3">لا إغلاق دون تأكيد علاج الجذر ولوحة خضراء.</td>
+          <td class="p-3"><span class="chip">MTTR</span> <span class="chip">٥ لماذا</span> <span class="chip">مراجعة الحادث</span></td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-brand-400">2</td>
+          <td class="p-3">العمل متعدد الفرق للتحقيق وإعداد التقارير</td>
+          <td class="p-3">إدارة مشكلات رسمية + ثقافة بلا لوم + قالب تقرير موحد.</td>
+          <td class="p-3"><span class="chip">ITIL</span> <span class="chip">إيشيكاوا</span> <span class="chip">RACI</span></td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-brand-400">3</td>
+          <td class="p-3">التعاون مع الفرق الفنية ومقدمي الخدمات لضمان عدم التأثير على الخدمات الحية</td>
+          <td class="p-3">«الميدلوير على هذا المسار بالفعل، وأعرف أين تسكن مخاطر التكامل.»</td>
+          <td class="p-3"><span class="chip">Middleware</span> <span class="chip">MSAN/ONT</span> <span class="chip">اختبارات الانحدار</span></td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-brand-400">4</td>
+          <td class="p-3">تحليل الأعطال المتكرّرة وتقارير الوقاية</td>
+          <td class="p-3">اتجاهات المشكلات أسبوعيًا + معايير خروج واضحة من الحادث إلى المشكلة.</td>
+          <td class="p-3"><span class="chip">باريتو ٨٠/٢٠</span> <span class="chip">إدارة المشكلات</span></td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-brand-400">5</td>
+          <td class="p-3">تحليل مؤشرات الأداء واقتراح مؤشرات جديدة</td>
+          <td class="p-3">مؤشرات SMART + ملخصات للإدارة التنفيذية + صحة المؤشر جزء من اللوحة.</td>
+          <td class="p-3"><span class="chip">SMART</span> <span class="chip">SLA</span> <span class="chip">% التوافر</span></td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-brand-400">6</td>
+          <td class="p-3">تصميم لوحات النظم الرئيسية والبديلة وضمان جاهزية الفيل-أوفر</td>
+          <td class="p-3">الجاهزية قدرة مُختبَرة لا افتراض — تمرين ربع سنوي.</td>
+          <td class="p-3"><span class="chip">RTO</span> <span class="chip">RPO</span> <span class="chip">BCM</span> <span class="chip">تمرين فيل-أوفر</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-6 ribbon rounded-2xl p-5 bil">
+    <div class="k-label">توقعات لن تُقال علنًا <span class="en">WHAT THE PANEL WON'T SAY</span></div>
+    <ul class="mt-2 text-sm space-y-1.5 list-disc pr-5">
+      <li>يريدون من لا يختبئ خلف «إنها مشكلة المورّد».</li>
+      <li>يريدون مديرًا يستطيع الاستيقاظ الساعة الثالثة فجرًا ويقود بهدوء.</li>
+      <li>يريدون من يعتبر التوثيق والتقارير عملًا أساسيًا لا عبئًا.</li>
+      <li>يريدون من يمتلك الرقم على اللوحة ولا يلوم من يملك العنصر.</li>
+      <li>يشعرون بإحباط من تكرار الأعطال — اعرض نفسك كمن ينهي هذا التكرار.</li>
+    </ul>
+  </div>
+
+  <div class="mt-10 glass rounded-2xl p-6 flex flex-wrap items-center justify-between gap-4 bil">
+    <div>
+      <div class="k-label">الخطوة التالية <span class="en">NEXT</span></div>
+      <div class="font-bold text-lg mt-1">الجزء الثاني · إعداد العرض التقديمي</div>
+      <div class="text-sm text-slate-400">عندما تكون جاهزًا، أرسل تفاصيل العرض وسأبنيه بنفس الطراز.</div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="cta-btn" onclick="openAllMCQ()">عرض كل الإجابات</button>
+      <button class="cta-btn" style="background:linear-gradient(180deg,#e59b0c,#b67505); box-shadow:0 10px 24px -10px rgba(229,155,12,.7);" onclick="window.print()">تصدير PDF</button>
+    </div>
+  </div>
+
+  <div class="mt-10 text-xs text-slate-500">
+    الجزء ١ من ٢ · مبني على وثيقتيك + إعلان <span class="mono">93 / 2026</span> · آخر تحديث <span class="mono">2026-04-11</span>.
+  </div>
+</section>
+
+<script>
+  (function initPrefs(){
+    try {
+      var savedTheme = localStorage.getItem('te_theme') || 'dark';
+      var savedLang  = localStorage.getItem('te_lang')  || 'ar';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.setAttribute('data-lang',  savedLang);
+      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', savedLang);
+    } catch(e){}
+  })();
+  function toggleLang(){
+    var cur = document.documentElement.getAttribute('data-lang') || 'ar';
+    var next = cur === 'ar' ? 'en' : 'ar';
+    document.documentElement.setAttribute('data-lang', next);
+    document.documentElement.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', next);
+    try { localStorage.setItem('te_lang', next); } catch(e){}
+  }
+  function toggleTheme(){
+    var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('te_theme', next); } catch(e){}
+  }
+  function openAllMCQ(){
+    document.querySelectorAll('details.mcq').forEach(d => d.open = true);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+# Keep only html/css/js per project rule
+*
+
+!*.html
+!*.css
+!*.js
+!.gitignore
+
+# Explicitly ignore everything else
+*.pdf
+*.doc
+*.docx
+*.txt
+*.png
+*.jpg
+*.jpeg
+*.md
+*.json
+*.db
+*.sqlite
+*.lock
+*.toml
+*.yaml
+*.yml
+
+# Code-review-graph and related artefacts
+.code-review-graph/
+.mcp.json
+.claude/
+.cursorrules
+.windsurfrules
+AGENTS.md
+GEMINI.md
+CLAUDE.md
+
+# OS
+Thumbs.db
+.DS_Store
