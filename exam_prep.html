@@ -151,13 +151,74 @@
     padding:.25rem .6rem; border-radius:999px; font-size:.72rem; font-weight:800;
     border:1px solid rgba(79,162,255,.25);
   }
+  .toolbar {
+    flex-wrap: nowrap !important;
+    flex-shrink: 0;
+  }
   .toolbar button {
     font-size:.72rem; padding:.35rem .65rem; border-radius:.5rem;
     background: rgba(120,150,200,.08);
     border:1px solid rgba(120,150,200,.18);
     color:#bccce5;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .toolbar button:hover { background: rgba(30,124,244,.15); color:#d4e6ff; }
+
+  /* ===== HAMBURGER + SIDEBAR ===== */
+  .hamburger {
+    display:flex; align-items:center; justify-content:center;
+    width:2.1rem; height:2.1rem; border-radius:.5rem;
+    background: rgba(120,150,200,.08);
+    border:1px solid rgba(120,150,200,.18);
+    cursor:pointer; color:#bccce5; flex-shrink:0;
+  }
+  .hamburger:hover { background: rgba(30,124,244,.15); color:#d4e6ff; }
+  .sidebar-overlay {
+    position:fixed; inset:0; z-index:99;
+    background: rgba(0,0,0,.55);
+    display:none;
+  }
+  .sidebar-overlay.open { display:block; }
+  .sidebar {
+    position:fixed; top:0; bottom:0;
+    right:0;
+    width:270px; z-index:100;
+    transform: translateX(100%);
+    transition: transform .24s cubic-bezier(.4,0,.2,1);
+    padding:1rem .85rem 2rem;
+    display:flex; flex-direction:column; gap:.25rem;
+    overflow-y:auto;
+  }
+  html[dir="ltr"] .sidebar { right:auto; left:0; transform:translateX(-100%); }
+  .sidebar.open { transform:translateX(0); }
+  .sidebar-header {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:.75rem; padding-bottom:.6rem;
+    border-bottom:1px solid rgba(120,150,200,.18);
+  }
+  .sidebar-title { font-size:.75rem; font-weight:800; letter-spacing:.08em; color:var(--text-xlo); }
+  .sidebar-close {
+    background:none; border:none; cursor:pointer;
+    color:var(--text-lo); font-size:1.35rem; line-height:1;
+    padding:.15rem .4rem; border-radius:.4rem;
+  }
+  .sidebar-close:hover { background:var(--chip-bg); color:var(--text-hi); }
+  .sidebar a {
+    display:block; padding:.55rem .8rem; border-radius:.6rem;
+    font-size:.85rem; font-weight:700; color:var(--text-lo);
+    text-decoration:none;
+  }
+  .sidebar a:hover { background:var(--chip-bg); color:var(--text-hi); }
+  .sidebar-divider { height:1px; background:var(--border-soft); margin:.35rem 0; }
+  .hamburger { background:var(--chip-bg); border:1px solid var(--border-mid); color:var(--text-mid); }
+  .hamburger:hover { background:var(--brand-500); color:#fff; }
+
+  @media (max-width:767px) {
+    .header-sub { display:none; }
+    .toolbar button { padding:.28rem .5rem !important; font-size:.67rem !important; }
+    .toolbar { gap:.35rem !important; }
+  }
   .bil h3 { font-weight:900; }
   .bil .sub-en { font-family:'Inter',sans-serif; color:#9cb6d8; font-weight:600; font-size:.85rem; }
   .dual {
@@ -463,31 +524,73 @@
 <body>
 
 <!-- ============== TOP NAV ============== -->
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay no-print" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar glass no-print" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title only-ar">الأقسام</span>
+    <span class="sidebar-title only-en">SECTIONS</span>
+    <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close">✕</button>
+  </div>
+  <a href="#role"    onclick="closeSidebar()"><span class="only-ar">الوظيفة</span><span class="only-en">The Role</span></a>
+  <a href="#docs"    onclick="closeSidebar()"><span class="only-ar">ملخص الوثائق</span><span class="only-en">Doc Summaries</span></a>
+  <a href="#summary" onclick="closeSidebar()"><span class="only-ar">الملخص الدراسي</span><span class="only-en">Study Notes</span></a>
+  <a href="#patterns"onclick="closeSidebar()"><span class="only-ar">أنماط الامتحان</span><span class="only-en">Exam Patterns</span></a>
+  <div class="sidebar-divider"></div>
+  <a href="#mcq"     onclick="closeSidebar()"><span class="only-ar">أسئلة الاختيار</span><span class="only-en">MCQ (25)</span></a>
+  <a href="#essay"   onclick="closeSidebar()"><span class="only-ar">السؤال المقالي</span><span class="only-en">Essays (4+1)</span></a>
+  <div class="sidebar-divider"></div>
+  <a href="#strategy" onclick="closeSidebar()"><span class="only-ar">الاستراتيجية</span><span class="only-en">Strategy</span></a>
+  <a href="#alignment"onclick="closeSidebar()"><span class="only-ar">المواءمة</span><span class="only-en">Alignment</span></a>
+  <div class="sidebar-divider"></div>
+  <button onclick="openAllMCQ();closeSidebar()" style="background:var(--chip-bg);border:1px solid var(--border-mid);color:var(--text-mid);border-radius:.6rem;padding:.55rem .8rem;font-size:.85rem;font-weight:700;text-align:right;cursor:pointer;width:100%;">
+    <span class="only-ar">عرض كل الإجابات</span><span class="only-en">Reveal All Answers</span>
+  </button>
+</aside>
+
 <header class="no-print sticky top-0 z-40 glass border-b border-white/5">
-  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center gap-4">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-black text-white en">TE</div>
-      <div>
-        <div class="text-[11px] tracking-widest text-brand-200/70 font-black">الجزء الأول · التحضير للترقية <span class="en">· Part 1</span></div>
-        <div class="text-sm font-bold -mt-0.5">ترقية مدير إدارة · الاتصالات المصرية</div>
+  <div class="max-w-7xl mx-auto px-5 py-3 flex items-center gap-3 min-w-0">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-2 flex-shrink-0">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-black text-white en flex-shrink-0">TE</div>
+      <div class="min-w-0">
+        <div class="text-[10px] tracking-widest text-brand-200/70 font-black truncate">الجزء الأول · التحضير للترقية <span class="en">· Part 1</span></div>
+        <div class="text-sm font-bold -mt-0.5 header-sub truncate">ترقية مدير إدارة · الاتصالات المصرية</div>
       </div>
     </div>
-    <nav class="nav hidden md:flex items-center gap-1 mr-auto">
-      <a href="#role">الوظيفة</a>
-      <a href="#docs">ملخص الوثائق</a>
-      <a href="#summary">الملخص الدراسي</a>
-      <a href="#patterns">أنماط الامتحان</a>
-      <a href="#mcq">أسئلة الاختيار</a>
-      <a href="#essay">السؤال المقالي</a>
-      <a href="#strategy">الاستراتيجية</a>
-      <a href="#alignment">المواءمة</a>
+
+    <!-- Desktop nav -->
+    <nav class="nav hidden md:flex items-center gap-1 mr-auto flex-1 justify-end">
+      <a href="#role"><span class="only-ar">الوظيفة</span><span class="only-en en-nav">Role</span></a>
+      <a href="#docs"><span class="only-ar">ملخص الوثائق</span><span class="only-en en-nav">Docs</span></a>
+      <a href="#summary"><span class="only-ar">الملخص الدراسي</span><span class="only-en en-nav">Notes</span></a>
+      <a href="#patterns"><span class="only-ar">أنماط الامتحان</span><span class="only-en en-nav">Patterns</span></a>
+      <a href="#mcq"><span class="only-ar">أسئلة الاختيار</span><span class="only-en en-nav">MCQ</span></a>
+      <a href="#essay"><span class="only-ar">المقال</span><span class="only-en en-nav">Essays</span></a>
+      <a href="#strategy"><span class="only-ar">الاستراتيجية</span><span class="only-en en-nav">Strategy</span></a>
+      <a href="#alignment"><span class="only-ar">المواءمة</span><span class="only-en en-nav">Align</span></a>
     </nav>
-    <div class="toolbar flex items-center gap-2">
-      <button onclick="toggleLang()" id="langBtn" title="Language / اللغة"><span class="only-ar">EN</span><span class="only-en">AR</span></button>
-      <button onclick="toggleTheme()" id="themeBtn" title="Theme / السمة"><span class="only-ar" data-dark-ar="فاتح" data-light-ar="داكن">فاتح</span><span class="only-en" data-dark-en="Light" data-light-en="Dark">Light</span></button>
-      <button onclick="openAllMCQ()"><span class="only-ar">عرض الإجابات</span><span class="only-en">Reveal All</span></button>
+
+    <!-- Toolbar (always visible, no wrap) -->
+    <div class="toolbar flex items-center gap-2 flex-shrink-0">
+      <button onclick="toggleLang()" title="Language / اللغة"><span class="only-ar">EN</span><span class="only-en">AR</span></button>
+      <button onclick="toggleTheme()" title="Theme / السمة"><span class="only-ar">فاتح</span><span class="only-en">Light</span></button>
+      <button onclick="openAllMCQ()"><span class="only-ar">الإجابات</span><span class="only-en">Reveal</span></button>
       <button onclick="window.print()"><span class="only-ar">طباعة</span><span class="only-en">Print</span></button>
     </div>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger md:hidden flex-shrink-0" onclick="openSidebar()" aria-label="Menu">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
+        <rect y="0"  width="18" height="2" rx="1" fill="currentColor"/>
+        <rect y="6"  width="18" height="2" rx="1" fill="currentColor"/>
+        <rect y="12" width="18" height="2" rx="1" fill="currentColor"/>
+      </svg>
+    </button>
+
   </div>
 </header>
 
@@ -2209,6 +2312,16 @@
     var next = cur === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('te_theme', next); } catch(e){}
+  }
+  function openSidebar(){
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sidebarOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeSidebar(){
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+    document.body.style.overflow='';
   }
   function openAllMCQ(){
     document.querySelectorAll('details.mcq').forEach(d => d.open = true);
