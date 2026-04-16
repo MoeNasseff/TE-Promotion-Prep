@@ -1,0 +1,1911 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark" data-lang="ar">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>الجزء الثاني · التحضير للترقية · الاتصالات المصرية</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Cairo','Inter','system-ui','sans-serif'],
+          en:   ['Inter','system-ui','sans-serif'],
+          ar:   ['Cairo','Inter','system-ui','sans-serif'],
+        },
+        colors: {
+          ink:    { 900:'#05070e', 800:'#0a0f1c', 700:'#121a2e', 600:'#1a2442' },
+          brand:  { 50:'#eef7ff', 100:'#d8edff', 200:'#b0d8ff', 400:'#4fa2ff', 500:'#1e7cf4', 600:'#1060d6', 700:'#0b4bab' },
+          accent: { 400:'#f4b63b', 500:'#e59b0c', 600:'#b67505' },
+          good:   { 500:'#18b06b' },
+          bad:    { 500:'#e4575a' },
+        },
+        boxShadow: {
+          glow: '0 0 0 1px rgba(79,162,255,.35), 0 18px 40px -18px rgba(30,124,244,.45)',
+          card: '0 1px 0 rgba(255,255,255,.04) inset, 0 20px 48px -24px rgba(0,0,0,.6)',
+        },
+      }
+    }
+  }
+</script>
+<style>
+  :root { color-scheme: dark; }
+  html,body { background:#05070e; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 90% -10%, rgba(30,124,244,.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgba(244,182,59,.10), transparent 60%),
+      linear-gradient(180deg, #05070e 0%, #070b17 100%);
+    color:#e7ecf6;
+    font-feature-settings:"ss01","cv11";
+    font-family:'Cairo','Inter',system-ui,sans-serif;
+    line-height:1.85;
+  }
+  .en { font-family:'Inter',system-ui,sans-serif; direction:ltr; display:inline-block; }
+  .ltr-block { direction:ltr; text-align:left; font-family:'Inter',system-ui,sans-serif; }
+  .glass {
+    background: linear-gradient(180deg, rgba(18,26,46,.85), rgba(10,15,28,.85));
+    border: 1px solid rgba(120,150,200,.14);
+    backdrop-filter: blur(8px);
+  }
+  .chip {
+    display:inline-flex; align-items:center; gap:.4rem;
+    padding:.28rem .7rem; border-radius:999px;
+    font-size:.72rem; font-weight:700; letter-spacing:.02em;
+    background: rgba(30,124,244,.12);
+    color:#b7d4ff;
+    border:1px solid rgba(79,162,255,.25);
+    white-space:nowrap;
+  }
+  .chip.accent { background: rgba(244,182,59,.1); color:#f4d58b; border-color: rgba(244,182,59,.3); }
+  .chip.good   { background: rgba(24,176,107,.1); color:#8be6b9; border-color: rgba(24,176,107,.3); }
+  .chip.bad    { background: rgba(228,87,90,.1); color:#ffb0b2; border-color: rgba(228,87,90,.3); }
+  .h-rule {
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(120,150,200,.35), transparent);
+  }
+  .kbd {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    padding:.1rem .45rem; border-radius:.35rem;
+    background:#0f1a33; color:#bcd3ff;
+    border:1px solid rgba(120,150,200,.2);
+    font-size:.72rem;
+  }
+  .num-dot {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:1.7rem; height:1.7rem; border-radius:999px;
+    background: linear-gradient(180deg,#1e7cf4,#0b4bab);
+    color:white; font-weight:800; font-size:.8rem;
+    box-shadow: 0 6px 18px -6px rgba(30,124,244,.8);
+    flex-shrink:0;
+    font-family:'Inter',sans-serif;
+  }
+  .section-title {
+    display:flex; align-items:center; gap:.9rem;
+    font-weight:900; letter-spacing:-.01em;
+  }
+  .section-title .bar {
+    width:6px; height:30px; border-radius:6px;
+    background: linear-gradient(180deg,#1e7cf4,#f4b63b);
+  }
+  details[open] summary .caret { transform: rotate(-90deg); }
+  .caret { display:inline-block; transition: transform .18s ease; }
+  .mcq summary {
+    list-style:none; cursor:pointer;
+    display:flex; align-items:flex-start; gap:.85rem;
+    padding: 1rem 1.15rem;
+  }
+  .mcq summary::-webkit-details-marker { display:none; }
+  .mcq .answer { border-top:1px dashed rgba(120,150,200,.2); }
+  .opt {
+    display:flex; gap:.7rem; align-items:flex-start;
+    padding:.55rem .8rem; border-radius:.6rem;
+    background: rgba(255,255,255,.02);
+    border:1px solid rgba(120,150,200,.08);
+  }
+  .opt.correct {
+    background: rgba(24,176,107,.08);
+    border-color: rgba(24,176,107,.35);
+  }
+  .opt .letter {
+    font-weight:800; color:#9cb6d8; width:1.4rem; flex-shrink:0;
+    font-family:'Inter',sans-serif;
+  }
+  .opt.correct .letter { color:#8be6b9; }
+  .nav a {
+    font-size:.78rem; color:#9cb6d8; padding:.4rem .65rem; border-radius:.5rem;
+  }
+  .nav a:hover { background: rgba(30,124,244,.1); color:#d4e6ff; }
+  .grid-def dt { color:#9cb6d8; font-size:.72rem; letter-spacing:.04em; margin-top:.7rem; font-weight:800; }
+  .grid-def dd { color:#e7ecf6; margin-top:.15rem; font-size:.85rem; }
+  .ribbon {
+    background: linear-gradient(135deg, rgba(30,124,244,.18), rgba(244,182,59,.08));
+    border:1px solid rgba(79,162,255,.25);
+  }
+  .pillar {
+    background: linear-gradient(180deg, rgba(18,26,46,.9), rgba(10,15,28,.9));
+    border:1px solid rgba(120,150,200,.14);
+    border-radius: 1rem;
+    padding: 1.1rem 1.15rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .pillar::before {
+    content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background: linear-gradient(90deg,#1e7cf4,#f4b63b);
+  }
+  .k-label { font-size:.7rem; letter-spacing:.06em; color:#7e97bc; font-weight:800; }
+  .k-label .en { font-size:.62rem; color:#556c8e; margin-right:.35rem; }
+  .cta-btn {
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.6rem 1rem; border-radius:.7rem; font-weight:800; font-size:.85rem;
+    background: linear-gradient(180deg,#1e7cf4,#0b4bab);
+    box-shadow: 0 10px 24px -10px rgba(30,124,244,.7);
+    color:white;
+  }
+  .mono { font-family: ui-monospace, SFMono-Regular, monospace; direction:ltr; display:inline-block; }
+  .score-pill {
+    background: rgba(30,124,244,.12); color:#b7d4ff;
+    padding:.25rem .6rem; border-radius:999px; font-size:.72rem; font-weight:800;
+    border:1px solid rgba(79,162,255,.25);
+  }
+  .toolbar {
+    flex-wrap: nowrap !important;
+    flex-shrink: 0;
+  }
+  .toolbar button {
+    font-size:.72rem; padding:.35rem .65rem; border-radius:.5rem;
+    background: rgba(120,150,200,.08);
+    border:1px solid rgba(120,150,200,.18);
+    color:#bccce5;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .toolbar button:hover { background: rgba(30,124,244,.15); color:#d4e6ff; }
+
+  /* ===== HAMBURGER + SIDEBAR ===== */
+  .hamburger {
+    display:flex; align-items:center; justify-content:center;
+    width:2.1rem; height:2.1rem; border-radius:.5rem;
+    background: rgba(120,150,200,.08);
+    border:1px solid rgba(120,150,200,.18);
+    cursor:pointer; color:#bccce5; flex-shrink:0;
+  }
+  .hamburger:hover { background: rgba(30,124,244,.15); color:#d4e6ff; }
+  .sidebar-overlay {
+    position:fixed; inset:0; z-index:99;
+    background: rgba(0,0,0,.55);
+    display:none;
+  }
+  .sidebar-overlay.open { display:block; }
+  .sidebar {
+    position:fixed; top:0; bottom:0;
+    right:0;
+    width:270px; z-index:100;
+    transform: translateX(100%);
+    transition: transform .24s cubic-bezier(.4,0,.2,1);
+    padding:1rem .85rem 2rem;
+    display:flex; flex-direction:column; gap:.25rem;
+    overflow-y:auto;
+  }
+  html[dir="ltr"] .sidebar { right:auto; left:0; transform:translateX(-100%); }
+  .sidebar.open { transform:translateX(0); }
+  .sidebar-header {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:.75rem; padding-bottom:.6rem;
+    border-bottom:1px solid rgba(120,150,200,.18);
+  }
+  .sidebar-title { font-size:.75rem; font-weight:800; letter-spacing:.08em; color:var(--text-xlo); }
+  .sidebar-close {
+    background:none; border:none; cursor:pointer;
+    color:var(--text-lo); font-size:1.35rem; line-height:1;
+    padding:.15rem .4rem; border-radius:.4rem;
+  }
+  .sidebar-close:hover { background:var(--chip-bg); color:var(--text-hi); }
+  .sidebar a {
+    display:block; padding:.55rem .8rem; border-radius:.6rem;
+    font-size:.85rem; font-weight:700; color:var(--text-lo);
+    text-decoration:none;
+  }
+  .sidebar a:hover { background:var(--chip-bg); color:var(--text-hi); }
+  .sidebar-divider { height:1px; background:var(--border-soft); margin:.35rem 0; }
+  .hamburger { background:var(--chip-bg); border:1px solid var(--border-mid); color:var(--text-mid); }
+  .hamburger:hover { background:var(--brand-500); color:#fff; }
+
+  /* ===== GLOBAL OVERFLOW GUARD ===== */
+  html { overflow-x:clip; }
+  body { overflow-x:clip; max-width:100%; }
+  *, *::before, *::after { box-sizing:border-box; min-width:0; }
+  img, table, video, iframe, embed, object { max-width:100%; }
+
+  /* Constrain every direct section/article to viewport width */
+  section, article, main { max-width:100vw; }
+
+  /* Chips: prevent individual chip from exceeding its flex cell */
+  .chip { max-width:calc(100vw - 2rem); overflow:hidden; text-overflow:ellipsis; }
+
+  /* mono inside RTL: treat as inline to avoid bidi overflow */
+  .chip .mono { display:inline; white-space:nowrap; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width:767px) {
+    .header-sub,
+    .header-subbrand { display:none !important; }
+    header .flex.items-center.gap-3 { gap:.5rem !important; }
+    header .max-w-7xl { gap:.5rem !important; padding-left:.75rem !important; padding-right:.75rem !important; }
+    .toolbar { gap:.3rem !important; }
+    .toolbar button { padding:.25rem .45rem !important; font-size:.65rem !important; }
+    h1 { font-size: clamp(1.6rem, 7vw, 2.25rem) !important; line-height:1.25 !important; word-break:break-word; }
+    .flex.flex-wrap { flex-wrap:wrap !important; }
+    .chip { font-size:.65rem !important; padding:.2rem .5rem !important; }
+    .grid.md\:grid-cols-4 { grid-template-columns: 1fr 1fr !important; }
+    .grid.lg\:grid-cols-3 { grid-template-columns: 1fr !important; }
+    .dual { grid-template-columns: 1fr !important; }
+    section.max-w-7xl,
+    div.max-w-7xl { padding-left:.85rem !important; padding-right:.85rem !important; }
+    .pillar, .glass { min-width:0 !important; width:100% !important; }
+    .mcq summary { flex-wrap:wrap !important; }
+    .mono, .en, .ltr-block, .sub-en {
+      max-width:100% !important;
+      overflow-wrap:break-word !important;
+      word-break:break-word !important;
+    }
+    table { display:block !important; overflow-x:auto; }
+    .grid-def { grid-template-columns:1fr !important; }
+    #alignment table { font-size:.72rem !important; }
+    .pillar .text-3xl { font-size:1.35rem !important; }
+    .pillar .text-xs  { font-size:.62rem !important; }
+    .pillar .k-label  { font-size:.6rem !important; }
+    .en, .ltr-block { max-width:100%; overflow:hidden; }
+    .flex.items-center.gap-2,
+    .flex.items-center.gap-3,
+    .flex.items-center.gap-4 { flex-wrap:wrap; }
+    .max-w-7xl { max-width:100vw !important; }
+  }
+  .bil h3 { font-weight:900; }
+  .bil .sub-en { font-family:'Inter',sans-serif; color:#9cb6d8; font-weight:600; font-size:.85rem; }
+  .dual {
+    display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  @media (max-width: 900px) { .dual { grid-template-columns: 1fr; } }
+  .dual .card-ar { direction:rtl; text-align:right; }
+  .dual .card-en { direction:ltr; text-align:left; font-family:'Inter',sans-serif; }
+  .side-label {
+    display:inline-block; font-size:.6rem; letter-spacing:.18em; font-weight:800;
+    padding:.15rem .5rem; border-radius:.35rem; color:#9cb6d8;
+    background: rgba(120,150,200,.08); border:1px solid rgba(120,150,200,.16);
+    margin-bottom:.5rem;
+  }
+  .card-ar .side-label { font-family:'Cairo',sans-serif; }
+  .card-en .side-label { font-family:'Inter',sans-serif; }
+  .quote {
+    border-right:3px solid #1e7cf4; padding:.75rem 1rem;
+    background: rgba(30,124,244,.06);
+    border-radius:.5rem 0 0 .5rem;
+  }
+  [dir="ltr"] .quote { border-right:none; border-left:3px solid #1e7cf4; border-radius:0 .5rem .5rem 0; }
+
+  @media print {
+    @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+    *, *::before, *::after {
+      background: transparent !important;
+      background-image: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      backdrop-filter: none !important;
+      filter: none !important;
+      color: #000 !important;
+      border-radius: 0 !important;
+    }
+    html, body {
+      background: #fff !important;
+      color: #000 !important;
+      font-family: 'Cairo', 'Arial', 'Times New Roman', serif !important;
+      font-size: 11pt !important;
+      line-height: 1.55 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    html[data-lang="en"] body {
+      font-family: 'Times New Roman', 'Georgia', serif !important;
+    }
+    .no-print, header, nav, .nav, .toolbar, .chip, .score-pill,
+    .side-label, .k-label, .h-rule, .ribbon, .bar, .num-dot::before {
+      display: none !important;
+    }
+    header.sticky { position: static !important; }
+    section, article, div, main {
+      max-width: 100% !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      display: block !important;
+    }
+    section { margin-top: 10pt !important; }
+    section + section { margin-top: 14pt !important; }
+    .grid, .dual, .grid-def,
+    [class*="grid-cols"], [class*="md:grid-cols"], [class*="lg:grid-cols"] {
+      display: block !important;
+      grid-template-columns: none !important;
+    }
+    html[data-lang="en"] .card-ar,
+    html[data-lang="en"] .only-ar,
+    html[data-lang="en"] .sub-en { display: none !important; }
+    html[data-lang="ar"] .card-en,
+    html[data-lang="ar"] .only-en { display: none !important; }
+    h1 {
+      font-size: 20pt !important; font-weight: 800 !important;
+      margin: 0 0 10pt 0 !important;
+      page-break-after: avoid !important; break-after: avoid !important;
+    }
+    h2 {
+      font-size: 16pt !important; font-weight: 800 !important;
+      margin: 14pt 0 8pt 0 !important; padding: 0 !important;
+      border-bottom: 1.5pt solid #000 !important; padding-bottom: 3pt !important;
+      page-break-after: avoid !important; break-after: avoid !important;
+    }
+    h3 {
+      font-size: 13pt !important; font-weight: 700 !important;
+      margin: 10pt 0 4pt 0 !important;
+      page-break-after: avoid !important; break-after: avoid !important;
+    }
+    p, li, dd, dt {
+      font-size: 11pt !important; line-height: 1.55 !important;
+      margin: 3pt 0 !important; orphans: 3; widows: 3;
+    }
+    strong, b, em { font-weight: 700 !important; font-style: normal !important; }
+    em { font-style: italic !important; }
+    ul, ol {
+      margin: 4pt 0 6pt 18pt !important; padding: 0 !important;
+      list-style-position: outside !important;
+    }
+    html[dir="rtl"] ul, html[dir="rtl"] ol {
+      margin: 4pt 18pt 6pt 0 !important;
+    }
+    ul { list-style: disc !important; }
+    ol { list-style: decimal !important; }
+    li { margin: 2pt 0 !important; padding: 0 !important; }
+    details { display: block !important; margin: 6pt 0 !important; page-break-inside: avoid !important; break-inside: avoid !important; }
+    details summary { list-style: none !important; font-weight: 700 !important; padding: 0 !important; cursor: default; display: block !important; }
+    details summary::-webkit-details-marker { display: none !important; }
+    details > * { display: block !important; }
+    .mcq { border-bottom: .5pt solid #888 !important; padding-bottom: 6pt !important; margin-bottom: 6pt !important; }
+    .mcq .answer { display: block !important; margin-top: 4pt !important; }
+    .opt {
+      display: block !important; padding: 1pt 0 !important;
+      border: none !important; margin: 0 !important;
+    }
+    .opt.correct { font-weight: 700 !important; }
+    .opt.correct::before { content: "✓ "; }
+    .quote {
+      border: none !important; border-left: 2pt solid #000 !important;
+      padding: 2pt 10pt !important; margin: 6pt 0 !important;
+      font-style: italic !important;
+    }
+    html[dir="rtl"] .quote {
+      border-left: none !important; border-right: 2pt solid #000 !important;
+      padding: 2pt 10pt !important;
+    }
+    #services, #orderlife, #deptmap, #mcq2 {
+      page-break-before: always !important;
+      break-before: page !important;
+    }
+    .pillar, .glass, article, .mcq, .quote, dl, table, figure, blockquote {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+    .bg-clip-text, .bg-gradient-to-l, .bg-gradient-to-br, .bg-gradient-to-br * {
+      background: none !important;
+      -webkit-text-fill-color: #000 !important;
+      color: #000 !important;
+    }
+    a { color: #000 !important; text-decoration: none !important; }
+    .mono, .en { font-family: 'Courier New', monospace !important; }
+    img, svg, picture { display: none !important; }
+  }
+
+  /* ============== LANGUAGE SWITCH ============== */
+  html[data-lang="ar"] .only-en,
+  html[data-lang="ar"] .card-en,
+  html[data-lang="ar"] .sub-en { display:none !important; }
+  html[data-lang="en"] .only-ar,
+  html[data-lang="en"] .card-ar { display:none !important; }
+  html[data-lang="en"] .dual { grid-template-columns: 1fr; }
+  html[data-lang="ar"] .dual { grid-template-columns: 1fr; }
+  html[data-lang="en"] { direction:ltr; }
+  html[data-lang="en"] body { font-family:'Inter',system-ui,sans-serif; text-align:left; }
+  html[data-lang="en"] .nav a,
+  html[data-lang="en"] h1,
+  html[data-lang="en"] h2,
+  html[data-lang="en"] h3,
+  html[data-lang="en"] p,
+  html[data-lang="en"] li,
+  html[data-lang="en"] dd,
+  html[data-lang="en"] dt { direction:ltr; text-align:left; }
+  html[data-lang="en"] .quote { border-right:none; border-left:3px solid var(--brand-500); border-radius:0 .5rem .5rem 0; }
+  html[data-lang="en"] .card-en .sub-en { display:inline-block !important; }
+  html[data-lang="en"] ul.list-disc,
+  html[data-lang="en"] ol.list-decimal { padding-left:1.25rem; padding-right:0; }
+  html[data-lang="en"] .section-title { font-size: 0 !important; }
+  html[data-lang="en"] .section-title .bar { width:6px; height:30px; display:inline-block; }
+  html[data-lang="en"] .section-title .sub-en {
+    display:inline-block !important; font-size:1.5rem !important; font-weight:900 !important;
+    color: var(--text-hi) !important; margin:0 !important; letter-spacing:-.01em;
+  }
+  html[data-lang="en"] h1 { font-size:0 !important; line-height:0 !important; margin:0 !important; }
+  html[data-lang="en"] h1 + p.sub-en { font-size:3rem !important; font-weight:900 !important; line-height:1.15 !important; color:var(--text-hi) !important; margin-top:0 !important; }
+  html[data-lang="en"] .chrome-ar { display:none !important; }
+  html[data-lang="en"] .hero-ar-p { display:none !important; }
+  html[data-lang="en"] .section-subnote-ar { display:none !important; }
+  html[data-lang="en"] .nav a { font-size:0; }
+  html[data-lang="en"] .nav a .en-nav { font-size:.78rem; display:inline; }
+  html[data-lang="ar"] .nav a .en-nav { display:none; }
+
+  /* ============== THEME TOKENS ============== */
+  :root {
+    --bg-0:#05070e; --bg-1:#070b17; --bg-card:rgba(18,26,46,.85); --bg-card-2:rgba(10,15,28,.85);
+    --border-soft:rgba(120,150,200,.14); --border-mid:rgba(120,150,200,.2);
+    --text-hi:#e7ecf6; --text-mid:#bccce5; --text-lo:#9cb6d8; --text-xlo:#7e97bc;
+    --brand-400:#4fa2ff; --brand-500:#1e7cf4; --brand-600:#1060d6;
+    --accent-500:#e59b0c; --accent-400:#f4b63b;
+    --good-500:#18b06b; --bad-500:#e4575a;
+    --chip-bg:rgba(30,124,244,.12); --chip-text:#b7d4ff;
+    --pillar-bg-a:rgba(18,26,46,.9); --pillar-bg-b:rgba(10,15,28,.9);
+    --ribbon-a:rgba(30,124,244,.18); --ribbon-b:rgba(244,182,59,.08);
+    --grad-a:#1e7cf4; --grad-b:#f4b63b;
+    --rad-a:rgba(30,124,244,.18); --rad-b:rgba(244,182,59,.10);
+    --quote-bg:rgba(30,124,244,.06);
+  }
+  html[data-theme="light"] {
+    --bg-0:#f6f8fc; --bg-1:#eef2f9; --bg-card:rgba(255,255,255,.85); --bg-card-2:rgba(248,250,255,.9);
+    --border-soft:rgba(30,60,120,.12); --border-mid:rgba(30,60,120,.22);
+    --text-hi:#0c1426; --text-mid:#364764; --text-lo:#4c628a; --text-xlo:#6a7f9e;
+    --brand-400:#1060d6; --brand-500:#0b4bab; --brand-600:#083884;
+    --accent-500:#b67505; --accent-400:#d88a12;
+    --good-500:#118a53; --bad-500:#c43d42;
+    --chip-bg:rgba(11,75,171,.10); --chip-text:#0b4bab;
+    --pillar-bg-a:rgba(255,255,255,.95); --pillar-bg-b:rgba(240,245,253,.95);
+    --ribbon-a:rgba(11,75,171,.12); --ribbon-b:rgba(182,117,5,.08);
+    --grad-a:#0b4bab; --grad-b:#b67505;
+    --rad-a:rgba(11,75,171,.10); --rad-b:rgba(182,117,5,.08);
+    --quote-bg:rgba(11,75,171,.06);
+    color-scheme: light;
+  }
+  html[data-theme="dark"] { color-scheme: dark; }
+  html, body { background: var(--bg-0) !important; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 90% -10%, var(--rad-a), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, var(--rad-b), transparent 60%),
+      linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%) !important;
+    color: var(--text-hi) !important;
+  }
+  .glass {
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2)) !important;
+    border: 1px solid var(--border-soft) !important;
+  }
+  .pillar {
+    background: linear-gradient(180deg, var(--pillar-bg-a), var(--pillar-bg-b)) !important;
+    border: 1px solid var(--border-soft) !important;
+  }
+  .pillar::before { background: linear-gradient(90deg, var(--grad-a), var(--grad-b)) !important; }
+  .section-title .bar { background: linear-gradient(180deg, var(--grad-a), var(--grad-b)) !important; }
+  .ribbon { background: linear-gradient(135deg, var(--ribbon-a), var(--ribbon-b)) !important; border:1px solid var(--border-mid) !important; }
+  .chip { background: var(--chip-bg); color: var(--chip-text); border-color: var(--border-mid); }
+  .k-label { color: var(--text-xlo); }
+  .grid-def dt { color: var(--text-lo); }
+  .grid-def dd { color: var(--text-hi); }
+  .nav a { color: var(--text-lo); }
+  .nav a:hover { background: var(--chip-bg); color: var(--text-hi); }
+  .quote { background: var(--quote-bg); border-color: var(--brand-500); }
+  .h-rule { background: linear-gradient(90deg, transparent, var(--border-mid), transparent); }
+  .opt { background: var(--bg-card-2); border-color: var(--border-soft); }
+  .kbd { background: var(--bg-card-2); color: var(--text-mid); border-color: var(--border-mid); }
+  .toolbar button { background: var(--chip-bg); border:1px solid var(--border-mid); color: var(--text-mid); }
+  .toolbar button:hover { background: var(--brand-500); color:#fff; }
+  .num-dot { box-shadow: 0 6px 18px -6px var(--brand-500); }
+  .score-pill { background: var(--chip-bg); color: var(--chip-text); border:1px solid var(--border-mid); }
+  .side-label { background: var(--chip-bg); border:1px solid var(--border-mid); color: var(--text-lo); }
+  .text-slate-300, .text-slate-400, .text-slate-500 { color: var(--text-lo) !important; }
+  .text-brand-400 { color: var(--brand-400) !important; }
+  .text-brand-200 { color: var(--brand-400) !important; }
+  html[data-theme="light"] .bg-gradient-to-br.from-brand-500.to-accent-500 { background: linear-gradient(135deg, var(--brand-500), var(--accent-500)) !important; }
+  html[data-theme="light"] .bg-clip-text { background: linear-gradient(90deg, var(--brand-500), var(--accent-500)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay no-print" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar glass no-print" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title only-ar">الأقسام</span>
+    <span class="sidebar-title only-en">SECTIONS</span>
+    <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close">✕</button>
+  </div>
+  <a href="#services"  onclick="closeSidebar()"><span class="only-ar">كتالوج الخدمات</span><span class="only-en">Service Catalog</span></a>
+  <a href="#orderlife" onclick="closeSidebar()"><span class="only-ar">دورة حياة الطلب</span><span class="only-en">Order Lifecycle</span></a>
+  <a href="#deptmap"   onclick="closeSidebar()"><span class="only-ar">الهيكل التنظيمي</span><span class="only-en">Org Structure</span></a>
+  <a href="#mcq2"      onclick="closeSidebar()"><span class="only-ar">بنك الأسئلة</span><span class="only-en">MCQ Bank</span></a>
+  <div class="sidebar-divider"></div>
+  <a href="index.html" onclick="closeSidebar()"><span class="only-ar">← الجزء الأول</span><span class="only-en">← Part 1</span></a>
+</aside>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 glass no-print" style="border-bottom:1px solid var(--border-soft);">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-3 min-w-0">
+      <button class="hamburger" onclick="openSidebar()" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect y="3" width="18" height="2" rx="1" fill="currentColor"/><rect y="8" width="18" height="2" rx="1" fill="currentColor"/><rect y="13" width="18" height="2" rx="1" fill="currentColor"/></svg>
+      </button>
+      <div class="min-w-0">
+        <div class="font-bold text-sm leading-tight" style="color:var(--text-hi)">
+          <span class="only-ar">الجزء الثاني · دليل الدراسة</span>
+          <span class="only-en">Part 2 · Study Guide</span>
+        </div>
+        <div class="header-sub text-xs" style="color:var(--text-xlo)">
+          <span class="only-ar">الاتصالات المصرية · إعلان <span class="mono">93 / 2026</span></span>
+          <span class="only-en">Telecom Egypt · Announcement <span class="mono">93 / 2026</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar flex items-center gap-2">
+      <button onclick="openAllMCQ()"><span class="only-ar">كل الإجابات</span><span class="only-en">Show All</span></button>
+      <button onclick="toggleLang()"><span class="only-ar">EN</span><span class="only-en">ع</span></button>
+      <button onclick="toggleTheme()"><span class="only-ar">☀</span><span class="only-en">☀</span></button>
+      <button onclick="window.print()"><span class="only-ar">PDF</span><span class="only-en">PDF</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-4 pt-12 pb-6">
+  <div class="k-label mb-3">الجزء الثاني من اثنين <span class="en">PART 2 OF 2</span></div>
+  <h1 class="text-4xl font-black leading-tight mb-1" style="color:var(--text-hi)">كتالوج الخدمات · Nokia FO · الهيكل التنظيمي</h1>
+  <p class="sub-en only-en text-4xl font-black leading-tight mb-1">Service Catalog · Nokia FO · Org Structure</p>
+  <p class="hero-ar-p text-base mt-2 mb-4" style="color:var(--text-lo)">دليل شامل للجزء التقني والتنظيمي — كتالوج خدمات الاتصالات المصرية، بنية Nokia FO، دورة حياة الطلب، وخريطة الإدارات.</p>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="chip"><span class="mono">Nokia FO</span></span>
+    <span class="chip"><span class="mono">VC4</span></span>
+    <span class="chip"><span class="mono">P&amp;A</span></span>
+    <span class="chip"><span class="mono">OSS/BSS</span></span>
+    <span class="chip accent"><span class="mono">GPON G.984</span></span>
+    <span class="chip accent"><span class="mono">IPTV</span></span>
+    <span class="chip accent"><span class="mono">MPLS</span></span>
+    <span class="chip good">38 سؤال MCQ</span>
+  </div>
+  <div class="quote mb-6">
+    <span class="only-ar">مهمة الفريق: تشغيل وصيانة طبقة تفعيل الخدمة الموحدة التي تستقبل طلبات الهاتف الثابت والبيانات والخدمات المضافة و IPTV للأفراد والجملة من الواجهة الشمالية وتنفيذها على عناصر الشبكة الجنوبية.</span>
+    <span class="only-en ltr-block">Team mission: Operate and maintain a unified Service Activation layer that receives Fixed Voice, Fixed Data, VAS, and IPTV for retail and wholesale from the northbound interface and fulfills these requests on southbound network elements.</span>
+  </div>
+  <div class="h-rule mb-8"></div>
+</section>
+
+<!-- ============== SECTION A: SERVICE CATALOG ============== -->
+<section id="services" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    كتالوج الخدمات
+    <span class="sub-en only-en" style="font-size:1.5rem">Service Catalog</span>
+  </h2>
+  <p class="text-sm mb-6 section-subnote-ar" style="color:var(--text-lo)">سبع خدمات أساسية تقدمها الاتصالات المصرية عبر طبقة تفعيل Nokia FO.</p>
+
+  <!-- 1. Fixed Voice -->
+  <div class="pillar mb-4">
+    <div class="k-label mb-2">خدمة ١ <span class="en">SERVICE 1</span></div>
+    <div class="dual">
+      <div class="card-ar">
+        <div class="side-label">عربي</div>
+        <h3 class="text-lg font-black mb-1">الهاتف الثابت</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">شبكة PSTN التقليدية وخدمة ISDN للأفراد والشركات.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>PSTN — شبكة الهاتف العام المُبدَّل</li>
+          <li>ISDN BRI — قناتا B + قناة D (<span class="mono">2B+D</span>، 128 كيلوبت/ث)</li>
+          <li>ISDN PRI — <span class="mono">30B+D</span> للمؤسسات</li>
+          <li>توفير الخدمة عبر MSAN على بنية النحاس</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="chip"><span class="mono">PSTN</span></span>
+          <span class="chip"><span class="mono">ISDN BRI/PRI</span></span>
+          <span class="chip"><span class="mono">MSAN</span></span>
+        </div>
+      </div>
+      <div class="card-en">
+        <div class="side-label">ENGLISH</div>
+        <h3 class="text-lg font-black mb-1">Fixed Voice</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">Traditional PSTN telephony and ISDN for retail and enterprise customers.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>PSTN — Public Switched Telephone Network</li>
+          <li>ISDN BRI — 2B+D (128 kbps)</li>
+          <li>ISDN PRI — 30B+D for enterprises</li>
+          <li>Provisioned via MSAN on copper infrastructure</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ADSL -->
+  <div class="pillar mb-4">
+    <div class="k-label mb-2">خدمة ٢ <span class="en">SERVICE 2</span></div>
+    <div class="dual">
+      <div class="card-ar">
+        <div class="side-label">عربي</div>
+        <h3 class="text-lg font-black mb-1">ADSL</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">خط المشترك الرقمي غير المتماثل — الجيل الأول لخدمات الإنترنت الثابت.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>معيار: <span class="mono">ITU G.992.x</span></li>
+          <li>ADSL2+ — حتى <span class="mono">24 Mbps</span> تنزيل، <span class="mono">3.3 Mbps</span> رفع</li>
+          <li>يعمل فوق خطوط النحاس عبر MSAN</li>
+          <li>التفعيل عبر بوابة ADSL Portal أو Provisioning Portal</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="chip"><span class="mono">G.992</span></span>
+          <span class="chip"><span class="mono">24 Mbps↓</span></span>
+          <span class="chip"><span class="mono">MSAN</span></span>
+          <span class="chip accent">ADSL Portal</span>
+        </div>
+      </div>
+      <div class="card-en">
+        <div class="side-label">ENGLISH</div>
+        <h3 class="text-lg font-black mb-1">ADSL</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">Asymmetric Digital Subscriber Line — first-generation fixed broadband over copper.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>Standard: <span class="mono">ITU G.992.x</span></li>
+          <li>ADSL2+: up to <span class="mono">24 Mbps</span> downstream, <span class="mono">3.3 Mbps</span> upstream</li>
+          <li>Delivered over copper pairs via MSAN</li>
+          <li>Activated via ADSL Portal or Provisioning Portal (northbound)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. VDSL/VDSL2 -->
+  <div class="pillar mb-4">
+    <div class="k-label mb-2">خدمة ٣ <span class="en">SERVICE 3</span></div>
+    <div class="dual">
+      <div class="card-ar">
+        <div class="side-label">عربي</div>
+        <h3 class="text-lg font-black mb-1">VDSL / VDSL2</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">خط المشترك الرقمي فائق السرعة — سرعات عالية على مسافات قصيرة.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>VDSL معيار <span class="mono">G.993.1</span> / VDSL2 معيار <span class="mono">G.993.2</span></li>
+          <li>حتى <span class="mono">100 Mbps</span> تنزيل (VDSL2 vectoring)</li>
+          <li>يتطلب حلقات قصيرة — يُستخدم مع FTTx</li>
+          <li>Vectoring يلغي التشويش بين الخطوط المجاورة</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="chip"><span class="mono">G.993.2</span></span>
+          <span class="chip"><span class="mono">100 Mbps↓</span></span>
+          <span class="chip accent">Vectoring</span>
+        </div>
+      </div>
+      <div class="card-en">
+        <div class="side-label">ENGLISH</div>
+        <h3 class="text-lg font-black mb-1">VDSL / VDSL2</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">Very High-Speed DSL — high-bandwidth over short copper loops.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>VDSL: <span class="mono">G.993.1</span> / VDSL2: <span class="mono">G.993.2</span></li>
+          <li>Up to <span class="mono">100 Mbps</span> downstream with vectoring</li>
+          <li>Requires short local loops — deployed with FTTx</li>
+          <li>Vectoring cancels crosstalk between adjacent copper pairs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. FTTH/GPON -->
+  <div class="pillar mb-4">
+    <div class="k-label mb-2">خدمة ٤ <span class="en">SERVICE 4</span></div>
+    <div class="dual">
+      <div class="card-ar">
+        <div class="side-label">عربي</div>
+        <h3 class="text-lg font-black mb-1">FTTH / GPON</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">الألياف الضوئية حتى المنزل — الجيل الأحدث للإنترنت الثابت فائق السرعة.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>معيار GPON: <span class="mono">ITU G.984</span></li>
+          <li>سرعات من <span class="mono">100 Mbps</span> حتى <span class="mono">1 Gbps</span></li>
+          <li>شراكة مع <strong>4iG</strong> لتغطية <span class="mono">6 مليون</span> وحدة سكنية</li>
+          <li>OLT في المحطة، ONT عند العميل</li>
+          <li>نسبة التقسيم: حتى <span class="mono">1:128</span> مشتركاً لكل PON port</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="chip"><span class="mono">G.984</span></span>
+          <span class="chip"><span class="mono">1 Gbps</span></span>
+          <span class="chip good">4iG شراكة</span>
+          <span class="chip accent">6M وحدة</span>
+        </div>
+      </div>
+      <div class="card-en">
+        <div class="side-label">ENGLISH</div>
+        <h3 class="text-lg font-black mb-1">FTTH / GPON</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">Fiber to the Home — next-gen fixed broadband using passive optical network.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>GPON standard: <span class="mono">ITU G.984</span></li>
+          <li>Speeds: <span class="mono">100 Mbps – 1 Gbps</span></li>
+          <li>Partnership with <strong>4iG</strong> — <span class="mono">6 million</span> households passed</li>
+          <li>OLT at exchange, ONT at customer premises</li>
+          <li>Split ratio: up to <span class="mono">1:128</span> subscribers per PON port</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. WE Mobile -->
+  <div class="pillar mb-4">
+    <div class="k-label mb-2">خدمة ٥ <span class="en">SERVICE 5</span></div>
+    <div class="dual">
+      <div class="card-ar">
+        <div class="side-label">عربي</div>
+        <h3 class="text-lg font-black mb-1">WE Mobile</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">الذراع المتنقلة للاتصالات المصرية — انتقلت من MVNO إلى مشغل شبكة كاملة.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>أُطلقت عام 2017 تحت علامة WE كـ MVNO</li>
+          <li>أصبحت MNO (مشغل شبكة كاملة) بترددات خاصة</li>
+          <li>شبكة 4G LTE على المستوى الوطني</li>
+          <li>5G قيد التطوير والتوسع</li>
+          <li>التفعيل عبر BSS/CRM ← MW ← Nokia FO</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="chip">MVNO ← MNO</span>
+          <span class="chip"><span class="mono">4G LTE</span></span>
+          <span class="chip accent"><span class="mono">5G</span></span>
+        </div>
+      </div>
+      <div class="card-en">
+        <div class="side-label">ENGLISH</div>
+        <h3 class="text-lg font-black mb-1">WE Mobile</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">TE's mobile arm — transitioned from MVNO to full Mobile Network Operator.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>Launched 2017 as MVNO under WE brand</li>
+          <li>Now a full MNO with own spectrum</li>
+          <li>4G LTE nationwide coverage</li>
+          <li>5G expansion underway</li>
+          <li>Activated via BSS/CRM → MW → Nokia FO</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. WE TV IPTV -->
+  <div class="pillar mb-4">
+    <div class="k-label mb-2">خدمة ٦ <span class="en">SERVICE 6</span></div>
+    <div class="dual">
+      <div class="card-ar">
+        <div class="side-label">عربي</div>
+        <h3 class="text-lg font-black mb-1">WE TV — IPTV</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">خدمة التلفزيون عبر الإنترنت — بالتعاون مع شبكة الكابل المصرية CNE.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>شراكة مع <strong>Cable Network Egypt (CNE)</strong></li>
+          <li>البث المباشر: <span class="mono">IGMP Multicast</span> — توزيع كفء للقنوات</li>
+          <li>الفيديو عند الطلب (VOD): <span class="mono">Unicast</span></li>
+          <li>جهاز STB يُفعَّل عبر Provisioning Portal</li>
+          <li>يصل عبر مسار IPTV Core في الشبكة الجنوبية</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="chip">CNE شراكة</span>
+          <span class="chip"><span class="mono">IGMP Multicast</span></span>
+          <span class="chip accent"><span class="mono">VOD Unicast</span></span>
+          <span class="chip"><span class="mono">STB</span></span>
+        </div>
+      </div>
+      <div class="card-en">
+        <div class="side-label">ENGLISH</div>
+        <h3 class="text-lg font-black mb-1">WE TV — IPTV</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">Internet Protocol TV service in partnership with Cable Network Egypt.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>Content partnership with <strong>Cable Network Egypt (CNE)</strong></li>
+          <li>Live TV: <span class="mono">IGMP Multicast</span> — efficient group delivery</li>
+          <li>Video on Demand (VOD): <span class="mono">Unicast</span> streams</li>
+          <li>STB provisioned via Provisioning Portal</li>
+          <li>Delivered via IPTV Core southbound domain</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Enterprise / Wholesale -->
+  <div class="pillar mb-6">
+    <div class="k-label mb-2">خدمة ٧ <span class="en">SERVICE 7</span></div>
+    <div class="dual">
+      <div class="card-ar">
+        <div class="side-label">عربي</div>
+        <h3 class="text-lg font-black mb-1">خدمات المؤسسات والجملة</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">حلول الشبكات المتقدمة للشركات والمشغلين.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>MPLS VPN — شبكة خاصة افتراضية Layer 3</li>
+          <li>SD-WAN — إدارة الشبكة الواسعة مُعرَّفة بالبرمجيات</li>
+          <li>خطوط مؤجرة وروابط E1/E3</li>
+          <li>كابلات بحرية دولية: <strong>SEA-ME-WE 4</strong> و<strong>SEA-ME-WE 5</strong></li>
+          <li>طلبات المؤسسات الكبرى عبر <span class="mono">CST 360</span></li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="chip"><span class="mono">MPLS L3 VPN</span></span>
+          <span class="chip"><span class="mono">SD-WAN</span></span>
+          <span class="chip accent">SEA-ME-WE 4/5</span>
+          <span class="chip"><span class="mono">CST 360</span></span>
+        </div>
+      </div>
+      <div class="card-en">
+        <div class="side-label">ENGLISH</div>
+        <h3 class="text-lg font-black mb-1">Enterprise &amp; Wholesale</h3>
+        <p class="text-sm mb-2" style="color:var(--text-lo)">Advanced network solutions for enterprise customers and carrier partners.</p>
+        <ul class="list-disc list-inside text-sm space-y-1" style="color:var(--text-mid)">
+          <li>MPLS VPN — Layer 3 Virtual Private Network</li>
+          <li>SD-WAN — Software-Defined Wide Area Network</li>
+          <li>Leased lines and E1/E3 circuits</li>
+          <li>International submarine cables: <strong>SEA-ME-WE 4</strong> &amp; <strong>SEA-ME-WE 5</strong></li>
+          <li>Complex enterprise orders via <span class="mono">CST 360</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-rule mb-2"></div>
+</section>
+
+<!-- ============== SECTION B: ORDER LIFECYCLE ============== -->
+<section id="orderlife" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    بنية Nokia FO ودورة حياة الطلب
+    <span class="sub-en only-en" style="font-size:1.5rem">Nokia FO Architecture &amp; Order Lifecycle</span>
+  </h2>
+  <p class="text-sm mb-6 section-subnote-ar" style="color:var(--text-lo)">منصة Nokia Fulfillment Orchestration هي قلب طبقة تفعيل الخدمة في الاتصالات المصرية.</p>
+
+  <!-- Architecture Diagram -->
+  <div class="pillar mb-6">
+    <div class="k-label mb-3">مخطط البنية <span class="en">ARCHITECTURE DIAGRAM</span></div>
+    <!-- Northbound row -->
+    <div class="mb-2">
+      <div class="text-xs font-bold mb-1" style="color:var(--text-xlo);letter-spacing:.08em">NORTHBOUND INTERFACES</div>
+      <div class="flex flex-wrap gap-2 mb-2">
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:100px;border-color:rgba(79,162,255,.35)">
+          <div class="text-xs font-bold" style="color:var(--brand-400)">ADSL Portal</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:100px;border-color:rgba(79,162,255,.35)">
+          <div class="text-xs font-bold" style="color:var(--brand-400)">Provisioning Portal</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:100px;border-color:rgba(79,162,255,.35)">
+          <div class="text-xs font-bold" style="color:var(--brand-400)">BSS / CRM</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:100px;border-color:rgba(79,162,255,.35)">
+          <div class="text-xs font-bold" style="color:var(--brand-400)">OSS</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:100px;border-color:rgba(79,162,255,.35)">
+          <div class="text-xs font-bold" style="color:var(--brand-400)">CST 360</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:100px;border-color:rgba(244,182,59,.4);background:linear-gradient(180deg,rgba(244,182,59,.08),rgba(244,182,59,.04))">
+          <div class="text-xs font-bold" style="color:var(--accent-400)">Data Warehouse</div>
+        </div>
+      </div>
+    </div>
+    <!-- Arrows down -->
+    <div class="text-center text-lg mb-1" style="color:var(--brand-400)">⇕⇕⇕⇕⇕</div>
+    <!-- MW bar -->
+    <div class="rounded-lg text-center py-3 mb-1 font-black text-base" style="background:linear-gradient(90deg,rgba(30,124,244,.25),rgba(30,124,244,.15));border:1px solid rgba(79,162,255,.4);color:var(--brand-400);letter-spacing:.1em">
+      MW — Middleware
+    </div>
+    <div class="text-center text-lg mb-1" style="color:var(--brand-400)">⇕</div>
+    <!-- Nokia FO box -->
+    <div class="rounded-xl p-3 mb-1" style="border:2px solid rgba(228,87,90,.5);background:rgba(228,87,90,.04)">
+      <div class="text-xs font-black mb-2 text-center" style="color:#ffb0b2;letter-spacing:.12em">Nokia FO</div>
+      <div class="flex gap-3 items-stretch flex-wrap">
+        <div class="flex-1 rounded-lg text-center py-3 font-bold text-sm" style="background:rgba(30,124,244,.18);border:1px solid rgba(79,162,255,.4);color:var(--brand-400);min-width:140px">
+          Orchestrator
+        </div>
+        <div class="flex items-center font-bold" style="color:var(--text-xlo)">⇔</div>
+        <div class="flex-1 rounded-lg text-center py-3 font-bold text-sm" style="background:rgba(244,182,59,.12);border:1px solid rgba(244,182,59,.4);color:var(--accent-400);min-width:140px">
+          VC4 Resource Inventory
+        </div>
+      </div>
+      <div class="text-center text-base my-1" style="color:var(--brand-400)">⇕</div>
+      <div class="rounded-lg text-center py-3 font-bold text-sm" style="background:rgba(30,124,244,.18);border:1px solid rgba(79,162,255,.4);color:var(--brand-400)">
+        P&amp;A — Provisioning &amp; Activation
+      </div>
+    </div>
+    <div class="text-center text-lg mb-1" style="color:var(--brand-400)">⇕⇕⇕⇕⇕</div>
+    <!-- Southbound row -->
+    <div>
+      <div class="text-xs font-bold mb-1" style="color:var(--text-xlo);letter-spacing:.08em">SOUTHBOUND DOMAINS</div>
+      <div class="flex flex-wrap gap-2">
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:90px;border-color:rgba(24,176,107,.35);background:linear-gradient(180deg,rgba(24,176,107,.08),rgba(24,176,107,.04))">
+          <div class="text-xs font-bold" style="color:#8be6b9">Access Network</div>
+          <div class="text-xs mt-1" style="color:var(--text-xlo)">MSAN · ONT · OLT</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:90px;border-color:rgba(24,176,107,.35);background:linear-gradient(180deg,rgba(24,176,107,.08),rgba(24,176,107,.04))">
+          <div class="text-xs font-bold" style="color:#8be6b9">Fixed Voice Core</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:90px;border-color:rgba(24,176,107,.35);background:linear-gradient(180deg,rgba(24,176,107,.08),rgba(24,176,107,.04))">
+          <div class="text-xs font-bold" style="color:#8be6b9">Fixed Data Core</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:90px;border-color:rgba(24,176,107,.35);background:linear-gradient(180deg,rgba(24,176,107,.08),rgba(24,176,107,.04))">
+          <div class="text-xs font-bold" style="color:#8be6b9">IPTV Core</div>
+        </div>
+        <div class="pillar flex-1 text-center py-2 px-1" style="min-width:90px;border-color:rgba(24,176,107,.35);background:linear-gradient(180deg,rgba(24,176,107,.08),rgba(24,176,107,.04))">
+          <div class="text-xs font-bold" style="color:#8be6b9">Data VASs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Component definitions -->
+  <div class="grid md:grid-cols-3 gap-3 mb-8">
+    <div class="pillar">
+      <div class="k-label mb-1">MW <span class="en">MIDDLEWARE</span></div>
+      <p class="text-sm" style="color:var(--text-mid)">طبقة وسيطة تربط الأنظمة الشمالية بـ Nokia FO. تتحقق من الطلبات وتوجهها وتُدير المصادقة.</p>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-1">Orchestrator</div>
+      <p class="text-sm" style="color:var(--text-mid)">يستقبل الطلب ويحلله إلى مهام ذرية، يستعلم VC4 للموارد، يوجه المهام لـ P&amp;A.</p>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-1">P&amp;A <span class="en">PROV. &amp; ACTIVATION</span></div>
+      <p class="text-sm" style="color:var(--text-mid)">يُنفذ التهيئة الفعلية على عناصر الشبكة الجنوبية (MSAN، ONT، Core).</p>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-1">VC4 Resource Inventory</div>
+      <p class="text-sm" style="color:var(--text-mid)">قاعدة بيانات الموارد: عناوين IP، منافذ، VLANs، مسارات. يحجز الموارد ويُحدّثها بعد التفعيل.</p>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-1">CST 360</div>
+      <p class="text-sm" style="color:var(--text-mid)">واجهة 360° لرؤية العميل الشاملة — يُستخدم للطلبات المؤسسية المعقدة وكبار العملاء.</p>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-1">Data Warehouse</div>
+      <p class="text-sm" style="color:var(--text-mid)">يُغذَّى من جميع الأنظمة الشمالية + VC4. يدعم لوحات KPI الخاصة بالمدير (المسؤولية السادسة).</p>
+    </div>
+  </div>
+
+  <!-- 12-step lifecycle -->
+  <h3 class="font-black text-lg mb-4" style="color:var(--text-hi)">
+    <span class="only-ar">دورة حياة الطلب — ١٢ خطوة</span>
+    <span class="only-en">Order Lifecycle — 12 Steps</span>
+  </h3>
+  <div class="space-y-3 mb-8">
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">1</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">طلب العميل</span><span class="only-en">Customer Request</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">العميل يطلب الخدمة عبر أحد الأنظمة الشمالية (BSS/CRM يُنشئ أمر عمل).</span><span class="only-en">Customer requests service via a northbound system; BSS/CRM creates a work order.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: بيانات طلب غير صحيحة أو تكرار</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">2</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">إرسال الطلب إلى MW</span><span class="only-en">Submit Order to MW</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">الطلب ينتقل من النظام الشمالي إلى طبقة الوسيط MW.</span><span class="only-en">Order travels from northbound system to the Middleware layer.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: انتهاء مهلة الاتصال أو خطأ في المصادقة</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">3</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">التحقق والتوجيه بواسطة MW</span><span class="only-en">MW Validates &amp; Routes</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">MW يتحقق من صحة الطلب ويوجهه إلى Nokia FO Orchestrator.</span><span class="only-en">MW validates the order and routes it to the Nokia FO Orchestrator.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: خطأ في التوجيه أو نوع خدمة غير مدعوم</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">4</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">تحليل الطلب بواسطة Orchestrator</span><span class="only-en">Orchestrator Decomposes Order</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">المنسّق يحلل الطلب ويُجزّئه إلى مهام ذرية قابلة للتنفيذ.</span><span class="only-en">Orchestrator breaks the order into atomic executable tasks.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: نوع خدمة غير محدد في قاموس الخدمات</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">5</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">استعلام موارد VC4</span><span class="only-en">Query VC4 Resources</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">Orchestrator يستعلم VC4 Resource Inventory عن الموارد المتاحة (IP، منافذ، VLAN، مسار).</span><span class="only-en">Orchestrator queries VC4 for available resources: IP, port, VLAN, route.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: موارد مستنفدة أو قاعدة بيانات غير متزامنة</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">6</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">حجز الموارد في VC4</span><span class="only-en">Reserve Resources in VC4</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">الموارد المحددة تُحجز مؤقتاً: عنوان IP، المنفذ، VLAN، المسار.</span><span class="only-en">Identified resources are temporarily reserved: IP, port, VLAN, route.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: تعارض حجز (race condition) بين طلبين متزامنين</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">7</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">إرسال المهام إلى P&amp;A</span><span class="only-en">Send Tasks to P&amp;A</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">Orchestrator يُرسل المهام الذرية إلى P&amp;A لتنفيذها على عناصر الشبكة.</span><span class="only-en">Orchestrator dispatches atomic tasks to P&amp;A for execution on network elements.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: تعذر الوصول إلى P&amp;A أو حمل زائد</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">8</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">تنشيط عنصر الشبكة</span><span class="only-en">Network Element Activation</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">P&amp;A يدفع التهيئة إلى العنصر الجنوبي (MSAN، ONT، Core Router…).</span><span class="only-en">P&amp;A pushes configuration to the southbound element (MSAN, ONT, Core Router…).</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: العنصر غير متاح أو رفض التهيئة — فريق الدعم يتدخل</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">9</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">تأكيد عنصر الشبكة</span><span class="only-en">Element Acknowledgment</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">عنصر الشبكة يُرسل تأكيداً بنجاح التهيئة إلى P&amp;A.</span><span class="only-en">Network element sends acknowledgment of successful configuration to P&amp;A.</span></p>
+        <div class="mt-1"><span class="chip bad">نقطة فشل: انتهاء مهلة الانتظار — P&amp;A يعيد المحاولة أو يرفع تقريراً</span></div>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">10</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">تحديث مخزون VC4</span><span class="only-en">Update VC4 Inventory</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">P&amp;A يُبلّغ Orchestrator بالنجاح ← Orchestrator يُحدّث VC4 (الموارد المحجوزة تصبح مُستخدَمة).</span><span class="only-en">P&amp;A reports success → Orchestrator updates VC4 (reserved → in-use).</span></p>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">11</span>
+      <div>
+        <div class="font-bold text-sm" style="color:var(--text-hi)"><span class="only-ar">إغلاق الطلب</span><span class="only-en">Close Order</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">Orchestrator يُعلن اكتمال الطلب ويُرسل الحالة النهائية إلى MW.</span><span class="only-en">Orchestrator marks the order complete and sends final status to MW.</span></p>
+      </div>
+    </div>
+
+    <div class="pillar flex items-start gap-3" style="border-color:rgba(24,176,107,.35)">
+      <span class="num-dot" style="background:linear-gradient(180deg,#18b06b,#0d7a49)">12</span>
+      <div>
+        <div class="font-bold text-sm" style="color:#8be6b9"><span class="only-ar">إشعار الفوترة — نجاح</span><span class="only-en">Billing Trigger — Success</span></div>
+        <p class="text-sm" style="color:var(--text-mid)"><span class="only-ar">MW يُرسل إشعار النجاح إلى BSS/CRM ← يتم تشغيل الفوترة تلقائياً.</span><span class="only-en">MW sends success notification to BSS/CRM → billing is automatically triggered.</span></p>
+        <div class="mt-1"><span class="chip good">نقطة الفوترة — الخطوة الأخيرة</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Failure Map Table -->
+  <h3 class="font-black text-lg mb-3" style="color:var(--text-hi)">
+    <span class="only-ar">خريطة نقاط الفشل والتصعيد</span>
+    <span class="only-en">Failure Map &amp; Escalation Path</span>
+  </h3>
+  <div class="glass rounded-2xl overflow-hidden mb-8">
+    <table class="w-full text-sm">
+      <thead>
+        <tr style="background:rgba(30,124,244,.12);border-bottom:1px solid var(--border-mid)">
+          <th class="text-right p-3 font-black" style="color:var(--text-lo)"><span class="only-ar">الطبقة</span><span class="only-en">Layer</span></th>
+          <th class="text-right p-3 font-black" style="color:var(--text-lo)"><span class="only-ar">نوع الفشل الشائع</span><span class="only-en">Common Failure</span></th>
+          <th class="text-right p-3 font-black" style="color:var(--text-lo)"><span class="only-ar">إجراء الفريق</span><span class="only-en">Team Action</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3 font-bold" style="color:var(--brand-400)">Northbound / BSS</td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">بيانات طلب ناقصة، تكرار، رفض أهلية</span><span class="only-en">Incomplete order data, duplicate, eligibility rejection</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">إعادة الطلب مصححاً — التنسيق مع فريق BSS</span><span class="only-en">Resubmit corrected order — coordinate with BSS team</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3 font-bold" style="color:var(--brand-400)">MW</td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">انتهاء المهلة، خطأ توجيه، فشل مصادقة</span><span class="only-en">Timeout, routing error, auth failure</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">فحص سجلات MW، إعادة تشغيل الخدمة إن لزم</span><span class="only-en">Check MW logs, restart service if needed</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3 font-bold" style="color:#ffb0b2">Orchestrator</td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">خدمة غير محددة، فشل تجزئة المهام</span><span class="only-en">Unknown service type, task decomposition failure</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">تحديث قاموس الخدمات، مراجعة Nokia FO logs</span><span class="only-en">Update service catalog, review Nokia FO logs</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3 font-bold" style="color:var(--accent-400)">VC4 Inventory</td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">موارد مستنفدة، قاعدة بيانات غير متزامنة، تعارض حجز</span><span class="only-en">Resource exhaustion, out-of-sync DB, reservation conflict</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">مزامنة VC4، تحرير موارد معلقة، إضافة موارد جديدة</span><span class="only-en">Sync VC4, release stale reservations, expand resource pool</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3 font-bold" style="color:#ffb0b2">P&amp;A</td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">حمل زائد، تعذر الوصول لـ P&amp;A</span><span class="only-en">P&amp;A overload or unreachable</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">فحص حالة خدمة P&amp;A، إعادة تشغيل، تحليل العبء</span><span class="only-en">Check P&amp;A service health, restart, analyze load</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3 font-bold" style="color:#8be6b9">Access Network</td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">MSAN/ONT غير متاح، منفذ معطل، انقطاع ليف</span><span class="only-en">MSAN/ONT unreachable, port down, fiber cut</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">التصعيد لفريق الشبكة، جدولة صيانة ميدانية</span><span class="only-en">Escalate to network team, schedule field maintenance</span></td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold" style="color:#8be6b9">Core Domains</td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">فشل تحديث جدول التوجيه، Core Router غير متاح</span><span class="only-en">Route table update failure, Core Router unreachable</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">التصعيد لفريق الشبكات الأساسية، مراجعة BGP/OSPF</span><span class="only-en">Escalate to Core Networks team, review BGP/OSPF</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="h-rule mb-2"></div>
+</section>
+
+<!-- ============== SECTION C: ORG STRUCTURE ============== -->
+<section id="deptmap" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    الهيكل التنظيمي
+    <span class="sub-en only-en" style="font-size:1.5rem">Org Structure</span>
+  </h2>
+  <p class="text-sm mb-6 section-subnote-ar" style="color:var(--text-lo)">الإدارات العامة التسع للاتصالات المصرية وتقاطعها مع مسؤوليات الوظيفة.</p>
+
+  <!-- 9 Directorates -->
+  <h3 class="font-black text-base mb-3" style="color:var(--text-hi)">
+    <span class="only-ar">الإدارات العامة التسع</span>
+    <span class="only-en">Nine General Directorates</span>
+  </h3>
+  <div class="grid md:grid-cols-3 gap-3 mb-8">
+
+    <div class="pillar" style="border-color:rgba(244,182,59,.45)">
+      <div class="k-label mb-1">إدارتك <span class="en">YOUR DIRECTORATE</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--accent-400)">الإدارة العامة لدعم الأعمال</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">تطبيقات النظم التشغيلية</div>
+      <p class="text-xs" style="color:var(--text-mid)">تشغيل Nokia FO، MW، VC4 — طبقة تفعيل الخدمة الموحدة للخدمات الثابتة والمتنقلة.</p>
+      <div class="mt-2"><span class="chip accent">OSS Applications</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٢ <span class="en">DIRECTORATE 2</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة لشبكة الوصول</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">Access Network</div>
+      <p class="text-xs" style="color:var(--text-mid)">تشغيل وصيانة MSAN، OLT، ONT، كابلات النحاس والألياف حتى العميل.</p>
+      <div class="mt-2"><span class="chip">MSAN · ONT · OLT</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٣ <span class="en">DIRECTORATE 3</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة للشبكات الأساسية</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">Core Networks</div>
+      <p class="text-xs" style="color:var(--text-mid)">Fixed Voice Core، Fixed Data Core، IPTV Core، MPLS backbone، BGP/OSPF routing.</p>
+      <div class="mt-2"><span class="chip">MPLS · BGP · OSPF</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٤ <span class="en">DIRECTORATE 4</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة لتكنولوجيا المعلومات</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">IT Infrastructure</div>
+      <p class="text-xs" style="color:var(--text-mid)">البنية التحتية لتكنولوجيا المعلومات، مراكز البيانات، الأمن المعلوماتي.</p>
+      <div class="mt-2"><span class="chip">Data Centers · Security</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٥ <span class="en">DIRECTORATE 5</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة للعملاء</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">Customer Management</div>
+      <p class="text-xs" style="color:var(--text-mid)">BSS/CRM، خدمة العملاء، الفوترة، إدارة دورة حياة العميل.</p>
+      <div class="mt-2"><span class="chip">BSS · CRM · Billing</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٦ <span class="en">DIRECTORATE 6</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة للخدمات التجارية</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">Commercial Services</div>
+      <p class="text-xs" style="color:var(--text-mid)">تطوير المنتجات والخدمات، تسعير الباقات، المبيعات، حسابات المؤسسات عبر CST 360.</p>
+      <div class="mt-2"><span class="chip">CST 360 · Sales</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٧ <span class="en">DIRECTORATE 7</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة للعمليات</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">Operations</div>
+      <p class="text-xs" style="color:var(--text-mid)">مركز العمليات الشبكي NOC، مراقبة SLA، إدارة الحوادث على مستوى الشبكة.</p>
+      <div class="mt-2"><span class="chip">NOC · SLA · Incidents</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٨ <span class="en">DIRECTORATE 8</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة للتخطيط والتطوير</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">Planning &amp; Development</div>
+      <p class="text-xs" style="color:var(--text-mid)">التخطيط الاستراتيجي للشبكة، Data Warehouse، تحليل KPI والتقارير التنفيذية.</p>
+      <div class="mt-2"><span class="chip">KPI · Data Warehouse</span></div>
+    </div>
+
+    <div class="pillar">
+      <div class="k-label mb-1">٩ <span class="en">DIRECTORATE 9</span></div>
+      <div class="font-black text-sm mb-1" style="color:var(--text-hi)">الإدارة العامة للمشاريع</div>
+      <div class="text-xs mb-2" style="color:var(--text-lo)">Projects</div>
+      <p class="text-xs" style="color:var(--text-mid)">إدارة مشاريع التوسع والتطوير، التنسيق مع الموردين (Nokia، 4iG، CNE).</p>
+      <div class="mt-2"><span class="chip">PMO · Vendors</span></div>
+    </div>
+
+  </div>
+
+  <!-- Responsibility × Department Matrix -->
+  <h3 class="font-black text-base mb-3" style="color:var(--text-hi)">
+    <span class="only-ar">مصفوفة المسؤوليات الست × الإدارات</span>
+    <span class="only-en">6 Responsibilities × Departments Matrix</span>
+  </h3>
+  <div class="glass rounded-2xl overflow-hidden mb-6">
+    <table class="w-full text-sm">
+      <thead>
+        <tr style="background:rgba(30,124,244,.12);border-bottom:1px solid var(--border-mid)">
+          <th class="text-right p-3 font-black" style="color:var(--text-lo)">#</th>
+          <th class="text-right p-3 font-black" style="color:var(--text-lo)"><span class="only-ar">المسؤولية</span><span class="only-en">Responsibility</span></th>
+          <th class="text-right p-3 font-black" style="color:var(--text-lo)"><span class="only-ar">الإدارات المتقاطعة</span><span class="only-en">Interfacing Depts</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3"><span class="num-dot" style="width:1.4rem;height:1.4rem;font-size:.7rem">1</span></td>
+          <td class="p-3 font-bold" style="color:var(--text-hi)"><span class="only-ar">الدعم الفني وإصلاح أعطال التفعيل</span><span class="only-en">Technical Support &amp; Provisioning Fault Repair</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">شبكة الوصول · الشبكات الأساسية · العمليات</span><span class="only-en">Access Network · Core Networks · Operations</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3"><span class="num-dot" style="width:1.4rem;height:1.4rem;font-size:.7rem">2</span></td>
+          <td class="p-3 font-bold" style="color:var(--text-hi)"><span class="only-ar">تفعيل الخدمة من طرف إلى طرف</span><span class="only-en">End-to-End Service Activation</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">العملاء (BSS/CRM) · شبكة الوصول · الشبكات الأساسية</span><span class="only-en">Customer Mgmt (BSS/CRM) · Access · Core</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3"><span class="num-dot" style="width:1.4rem;height:1.4rem;font-size:.7rem">3</span></td>
+          <td class="p-3 font-bold" style="color:var(--text-hi)"><span class="only-ar">مراقبة SLA وإدارة الحوادث</span><span class="only-en">SLA Monitoring &amp; Incident Management</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">العمليات (NOC) · الخدمات التجارية · العملاء</span><span class="only-en">Operations (NOC) · Commercial · Customer Mgmt</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3"><span class="num-dot" style="width:1.4rem;height:1.4rem;font-size:.7rem">4</span></td>
+          <td class="p-3 font-bold" style="color:var(--text-hi)"><span class="only-ar">صيانة وتطوير منظومة Nokia FO</span><span class="only-en">Nokia FO System Maintenance &amp; Development</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">المشاريع · تكنولوجيا المعلومات · Nokia (مورد)</span><span class="only-en">Projects · IT · Nokia (vendor)</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-soft)">
+          <td class="p-3"><span class="num-dot" style="width:1.4rem;height:1.4rem;font-size:.7rem">5</span></td>
+          <td class="p-3 font-bold" style="color:var(--text-hi)"><span class="only-ar">تطوير كفاءات الفريق</span><span class="only-en">Team Capability Development</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">الموارد البشرية · التخطيط والتطوير</span><span class="only-en">HR · Planning &amp; Development</span></td>
+        </tr>
+        <tr>
+          <td class="p-3"><span class="num-dot" style="width:1.4rem;height:1.4rem;font-size:.7rem">6</span></td>
+          <td class="p-3 font-bold" style="color:var(--text-hi)"><span class="only-ar">لوحات KPI وإعداد التقارير التنفيذية</span><span class="only-en">KPI Dashboards &amp; Executive Reporting</span></td>
+          <td class="p-3" style="color:var(--text-mid)"><span class="only-ar">التخطيط والتطوير (Data Warehouse) · الخدمات التجارية</span><span class="only-en">Planning &amp; Dev (Data Warehouse) · Commercial</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="h-rule mb-2"></div>
+</section>
+
+<!-- ============== SECTION D: MCQ BANK ============== -->
+<section id="mcq2" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    بنك الأسئلة — اختيار من متعدد
+    <span class="sub-en only-en" style="font-size:1.5rem">MCQ Bank</span>
+  </h2>
+  <p class="text-sm mb-2 section-subnote-ar" style="color:var(--text-lo)">٣٨ سؤالاً مقسّمة: كتالوج الخدمات (١٠) · Nokia FO ودورة الحياة (١٥) · التنظيم والإدارات (١٣).</p>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="chip good">٣٨ سؤال</span>
+    <span class="chip">Q1–Q10 خدمات</span>
+    <span class="chip">Q11–Q25 Nokia FO</span>
+    <span class="chip accent">Q26–Q38 تنظيم</span>
+  </div>
+
+  <h3 class="font-black text-base mb-3" style="color:var(--text-lo);letter-spacing:.06em">Q1 – Q10 · كتالوج الخدمات</h3>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">1</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما هو معيار ITU المستخدم في تقنية GPON؟</span><span class="only-en">What is the ITU standard used in GPON technology?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>G.992</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>G.984</span></div>
+      <div class="opt"><span class="letter">ج</span><span>G.993.2</span></div>
+      <div class="opt"><span class="letter">د</span><span>G.711</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">GPON = Gigabit Passive Optical Network · معيار ITU-T G.984 · حتى 1:128 مشتركاً</span><span class="only-en">GPON = Gigabit Passive Optical Network · ITU-T G.984 · up to 1:128 split ratio</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">2</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">مع أي شركة تعاونت TE لتوصيل الألياف لـ ٦ ملايين وحدة سكنية؟</span><span class="only-en">Which company partnered with TE to pass 6 million households with FTTH?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Nokia</span></div>
+      <div class="opt"><span class="letter">ب</span><span>CNE</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span>4iG</span></div>
+      <div class="opt"><span class="letter">د</span><span>Huawei</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">4iG شركة هنغارية متخصصة في FTTH</span><span class="only-en">4iG is a Hungarian company specializing in FTTH</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">3</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما البروتوكول لبث القنوات المباشرة في WE TV؟</span><span class="only-en">What protocol delivers live channels in WE TV?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Unicast</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>IGMP Multicast</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Broadcast</span></div>
+      <div class="opt"><span class="letter">د</span><span>Anycast</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">IGMP Multicast للبث المباشر — Unicast للـ VOD</span><span class="only-en">IGMP Multicast for live TV — Unicast for VOD</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">4</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما تقنية البث لـ VOD في WE TV؟</span><span class="only-en">What delivery method is used for VOD in WE TV?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt correct"><span class="letter">أ</span><span>Unicast</span></div>
+      <div class="opt"><span class="letter">ب</span><span>IGMP Multicast</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Broadcast</span></div>
+      <div class="opt"><span class="letter">د</span><span>RSVP</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">5</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما معيار ITU الخاص بـ VDSL2؟</span><span class="only-en">What is the ITU standard for VDSL2?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>G.992.5</span></div>
+      <div class="opt"><span class="letter">ب</span><span>G.984</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span>G.993.2</span></div>
+      <div class="opt"><span class="letter">د</span><span>G.993.1</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">VDSL=G.993.1 · VDSL2=G.993.2 (حتى 100 Mbps مع Vectoring)</span><span class="only-en">VDSL=G.993.1 · VDSL2=G.993.2 (up to 100 Mbps with Vectoring)</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">6</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما أقصى سرعة تنزيل لـ ADSL2+؟</span><span class="only-en">Maximum downstream speed of ADSL2+?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>8 Mbps</span></div>
+      <div class="opt"><span class="letter">ب</span><span>12 Mbps</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span>24 Mbps</span></div>
+      <div class="opt"><span class="letter">د</span><span>100 Mbps</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">ADSL2+ (G.992.5) = 24 Mbps↓ / 3.3 Mbps↑</span><span class="only-en">ADSL2+ (G.992.5) = 24 Mbps down / 3.3 Mbps up</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">7</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">بما كانت WE Mobile قبل أن تصبح MNO؟</span><span class="only-en">What was WE Mobile before becoming a full MNO?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>ISP</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>MVNO — Mobile Virtual Network Operator</span></div>
+      <div class="opt"><span class="letter">ج</span><span>MVNE</span></div>
+      <div class="opt"><span class="letter">د</span><span>MVNA</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">أُطلقت 2017 كـ MVNO ثم حصلت على ترددات خاصة</span><span class="only-en">Launched 2017 as MVNO, then obtained own spectrum</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">8</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما نوع VPN الذي تقدمه TE عبر MPLS للمؤسسات؟</span><span class="only-en">What type of VPN does TE offer enterprises via MPLS?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Layer 2 VPN</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>Layer 3 VPN</span></div>
+      <div class="opt"><span class="letter">ج</span><span>SSL VPN</span></div>
+      <div class="opt"><span class="letter">د</span><span>IPsec only</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">9</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما اسم شريك TE لمحتوى WE TV؟</span><span class="only-en">Who is TE's content partner for WE TV?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Nilesat</span></div>
+      <div class="opt"><span class="letter">ب</span><span>4iG</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span>Cable Network Egypt — CNE</span></div>
+      <div class="opt"><span class="letter">د</span><span>Nokia</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">10</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما المعيار الرئيسي لـ ADSL الجيل الأول؟</span><span class="only-en">Primary ITU standard for first-generation ADSL?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt correct"><span class="letter">أ</span><span>G.992.1</span></div>
+      <div class="opt"><span class="letter">ب</span><span>G.984</span></div>
+      <div class="opt"><span class="letter">ج</span><span>G.993.2</span></div>
+      <div class="opt"><span class="letter">د</span><span>G.711</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">G.992.1=ADSL · G.992.3=ADSL2 · G.992.5=ADSL2+</span><span class="only-en">G.992.1=ADSL · G.992.3=ADSL2 · G.992.5=ADSL2+</span></p>
+    </div>
+  </details>
+
+  <h3 class="font-black text-base mb-3 mt-6" style="color:var(--text-lo);letter-spacing:.06em">Q11 – Q25 · Nokia FO ودورة حياة الطلب</h3>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">11</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ماذا يعني MW في بنية Nokia FO؟</span><span class="only-en">What does MW stand for in Nokia FO architecture?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Managed Workflow</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>Middleware</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Microwave</span></div>
+      <div class="opt"><span class="letter">د</span><span>Main Workload</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">MW = Middleware — يربط الأنظمة الشمالية بـ Nokia FO</span><span class="only-en">MW = Middleware — connects northbound systems to Nokia FO</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">12</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما وظيفة VC4 Resource Inventory؟</span><span class="only-en">What is the role of VC4 Resource Inventory?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">تنفيذ التهيئة على عناصر الشبكة</span><span class="only-en">Execute configuration on network elements</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">استقبال الطلبات من الأنظمة الشمالية</span><span class="only-en">Receive orders from northbound</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">إدارة مخزون موارد الشبكة (IP، منافذ، VLANs)</span><span class="only-en">Manage network resource inventory (IPs, ports, VLANs)</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">مراقبة SLA وإعداد التقارير</span><span class="only-en">Monitor SLA and reporting</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">13</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ماذا يعني P&amp;A في Nokia FO؟</span><span class="only-en">What does P&amp;A stand for in Nokia FO?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Planning &amp; Analysis</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>Provisioning &amp; Activation</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Process &amp; Automation</span></div>
+      <div class="opt"><span class="letter">د</span><span>Portal &amp; API</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">14</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما النظام الشمالي للطلبات المؤسسية الكبرى؟</span><span class="only-en">Which northbound system handles complex enterprise orders?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>ADSL Portal</span></div>
+      <div class="opt"><span class="letter">ب</span><span>OSS</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span>CST 360</span></div>
+      <div class="opt"><span class="letter">د</span><span>Provisioning Portal</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">15</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">كم خطوة في دورة حياة الطلب؟</span><span class="only-en">How many steps in the Nokia FO order lifecycle?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>8</span></div>
+      <div class="opt"><span class="letter">ب</span><span>10</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span>12</span></div>
+      <div class="opt"><span class="letter">د</span><span>15</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">16</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">في أي خطوة يُطلَق إشعار الفوترة؟</span><span class="only-en">At which step is the billing trigger fired?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">الخطوة الأولى</span><span class="only-en">Step 1</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">الخطوة السابعة</span><span class="only-en">Step 7</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="only-ar">الخطوة العاشرة</span><span class="only-en">Step 10</span></div>
+      <div class="opt correct"><span class="letter">د</span><span class="only-ar">الخطوة الثانية عشرة</span><span class="only-en">Step 12</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">الفوترة تُطلَق فقط عند تأكيد النجاح الكامل</span><span class="only-en">Billing fires only on full success confirmation</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">17</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما الأنظمة الشمالية الخمسة في Nokia FO؟</span><span class="only-en">What are the five northbound systems in Nokia FO?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>ADSL Portal · BSS · OSS · Nokia FO · VC4</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>ADSL Portal · Provisioning Portal · BSS/CRM · OSS · CST 360</span></div>
+      <div class="opt"><span class="letter">ج</span><span>ADSL Portal · MW · Orchestrator · P&amp;A · VC4</span></div>
+      <div class="opt"><span class="letter">د</span><span>BSS · OSS · CRM · ERP · DWH</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">18</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما النطاقات الجنوبية الخمسة في Nokia FO؟</span><span class="only-en">What are the five southbound domains?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt correct"><span class="letter">أ</span><span>Access Network · Fixed Voice Core · Fixed Data Core · IPTV Core · Data VASs</span></div>
+      <div class="opt"><span class="letter">ب</span><span>MSAN · ONT · OLT · BSS · CRM</span></div>
+      <div class="opt"><span class="letter">ج</span><span>MW · Orchestrator · P&amp;A · VC4 · DWH</span></div>
+      <div class="opt"><span class="letter">د</span><span>ADSL · VDSL · GPON · IPTV · Mobile</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">19</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">أول إجراء لـ Orchestrator عند استلام الطلب؟</span><span class="only-en">First action Orchestrator takes upon receiving an order?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">يُرسله مباشرة لـ P&amp;A</span><span class="only-en">Sends directly to P&amp;A</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">يستعلم VC4</span><span class="only-en">Queries VC4</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">يحلل الطلب ويجزّئه إلى مهام ذرية</span><span class="only-en">Decomposes order into atomic tasks</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">يُبلّغ BSS/CRM</span><span class="only-en">Notifies BSS/CRM</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">الترتيب: تحليل → استعلام VC4 → حجز → P&amp;A</span><span class="only-en">Order: decompose → query VC4 → reserve → P&amp;A</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">20</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ماذا يفعل P&amp;A عند استلام المهام من Orchestrator؟</span><span class="only-en">What does P&amp;A do when it receives tasks from Orchestrator?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">يستعلم VC4</span><span class="only-en">Queries VC4</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span class="only-ar">يدفع التهيئة إلى عناصر الشبكة الجنوبية</span><span class="only-en">Pushes configuration to southbound network elements</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="only-ar">يُبلّغ BSS/CRM مباشرةً</span><span class="only-en">Notifies BSS/CRM directly</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">يحجز الموارد في VC4</span><span class="only-en">Reserves resources in VC4</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">21</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما الأنظمة التي تُغذّي Data Warehouse؟</span><span class="only-en">Which systems feed the Data Warehouse?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">Nokia FO فقط</span><span class="only-en">Nokia FO only</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">BSS/CRM و OSS فقط</span><span class="only-en">BSS/CRM and OSS only</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">جميع الأنظمة الشمالية + VC4 Resource Inventory</span><span class="only-en">All northbound systems + VC4 Resource Inventory</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">P&amp;A و Orchestrator فقط</span><span class="only-en">P&amp;A and Orchestrator only</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">22</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما مهمة الفريق حسب المرجع الرسمي؟</span><span class="only-en">What is the team's official mission?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">إدارة شبكة الوصول وصيانة MSAN</span><span class="only-en">Manage access network and maintain MSAN</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span class="only-ar">تشغيل وصيانة طبقة تفعيل خدمة موحدة للهاتف الثابت والبيانات و VAS و IPTV من الواجهة الشمالية إلى الجنوبية</span><span class="only-en">Operate and maintain a unified Service Activation layer for Fixed Voice, Data, VAS, and IPTV from northbound to southbound</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="only-ar">تطوير تطبيقات BSS/CRM</span><span class="only-en">Develop BSS/CRM applications</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">مراقبة SLA وإعداد التقارير التنفيذية فقط</span><span class="only-en">SLA monitoring and executive reporting only</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">23</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ماذا يحدث عند اكتشاف تعارض موارد في VC4؟</span><span class="only-en">What happens when a resource conflict is detected in VC4?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">P&amp;A يستمر بالتنفيذ تلقائياً</span><span class="only-en">P&amp;A continues execution automatically</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">BSS/CRM يُلغي الطلب مباشرةً</span><span class="only-en">BSS/CRM cancels the order directly</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">Orchestrator يُخفق الطلب ← MW يُبلّغ النظام الشمالي ← فريق الدعم يتدخل يدوياً</span><span class="only-en">Orchestrator fails the order → MW notifies northbound → Support team intervenes manually</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">يُعاد تشغيل Nokia FO تلقائياً</span><span class="only-en">Nokia FO restarts automatically</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">24</span>
+      <span class="font_bold text-sm flex-1"><span class="only-ar">Orchestrator يتواصل مع VC4 بأي اتجاه؟</span><span class="only-en">In which direction does Orchestrator communicate with VC4?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">Orchestrator يقرأ فقط من VC4</span><span class="only-en">Orchestrator reads from VC4 only</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">VC4 يرسل تحديثات لـ Orchestrator فقط</span><span class="only-en">VC4 sends updates to Orchestrator only</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">ثنائي الاتجاه — Orchestrator يستعلم ويحدّث VC4</span><span class="only-en">Bidirectional — Orchestrator queries and updates VC4</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">لا يوجد تواصل مباشر — يمر عبر P&amp;A</span><span class="only-en">No direct communication — goes through P&amp;A</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">25</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما المسار الكامل لتفعيل خدمة IPTV جديدة؟</span><span class="only-en">What is the full activation path for a new IPTV service?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>BSS/CRM → Nokia FO → IPTV Core</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>BSS/CRM → MW → Orchestrator → P&amp;A → IPTV Core</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Provisioning Portal → P&amp;A → IPTV Core</span></div>
+      <div class="opt"><span class="letter">د</span><span>OSS → VC4 → P&amp;A → IPTV Core</span></div>
+    </div>
+  </details>
+
+  <h3 class="font-black text-base mb-3 mt-6" style="color:var(--text-lo);letter-spacing:.06em">Q26 – Q38 · التنظيم والإدارات</h3>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">26</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما الاسم الكامل للإدارة العامة التي تتبعها؟</span><span class="only-en">What is the full Arabic name of your General Directorate?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">الإدارة العامة للشبكات الأساسية</span><span class="only-en">General Directorate of Core Networks</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">الإدارة العامة للعمليات</span><span class="only-en">General Directorate of Operations</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">الإدارة العامة لدعم الأعمال — تطبيقات النظم التشغيلية</span><span class="only-en">General Directorate of Business Support — OSS Applications</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">الإدارة العامة لتكنولوجيا المعلومات</span><span class="only-en">General Directorate of IT</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">27</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">كم عدد المسؤوليات الرسمية للوظيفة المرقّى إليها؟</span><span class="only-en">How many official responsibilities does the promoted role have?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>3</span></div>
+      <div class="opt"><span class="letter">ب</span><span>4</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span>6</span></div>
+      <div class="opt"><span class="letter">د</span><span>8</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">28</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما المسؤولية الأولى للمدير الجديد؟</span><span class="only-en">What is Responsibility #1 of the promoted manager?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">إعداد تقارير KPI</span><span class="only-en">Prepare KPI reports</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span class="only-ar">الدعم الفني وإصلاح أعطال التفعيل</span><span class="only-en">Technical Support &amp; Provisioning Fault Repair</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="only-ar">تطوير كفاءات الفريق</span><span class="only-en">Team Capability Development</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">إدارة علاقات الموردين</span><span class="only-en">Vendor Relationship Management</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">29</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">أي إدارة تمتلك وتشغّل MSAN و ONT؟</span><span class="only-en">Which directorate owns and operates MSAN and ONT?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">الإدارة العامة للشبكات الأساسية</span><span class="only-en">Core Networks</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span class="only-ar">الإدارة العامة لشبكة الوصول</span><span class="only-en">Access Network Directorate</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="only-ar">الإدارة العامة لدعم الأعمال</span><span class="only-en">Business Support</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">الإدارة العامة للعمليات</span><span class="only-en">Operations</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">30</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">أي إدارة تتولى BSS/CRM والفوترة؟</span><span class="only-en">Which directorate manages BSS/CRM and billing?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">الإدارة العامة للخدمات التجارية</span><span class="only-en">Commercial Services</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span class="only-ar">الإدارة العامة للعملاء</span><span class="only-en">Customer Management</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="only-ar">الإدارة العامة للعمليات</span><span class="only-en">Operations</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">الإدارة العامة للتخطيط والتطوير</span><span class="only-en">Planning &amp; Development</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">31</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ماذا تعني اختصار KPI؟</span><span class="only-en">What does KPI stand for?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Key Process Indicator</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>Key Performance Indicator</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Key Project Index</span></div>
+      <div class="opt"><span class="letter">د</span><span>Knowledge Performance Index</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">32</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">من المسؤول عن لوحات KPI في الوظيفة الجديدة؟</span><span class="only-en">Who is responsible for KPI dashboards in the promoted role?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">فريق التخطيط والتطوير</span><span class="only-en">Planning &amp; Development team</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">فريق العمليات NOC</span><span class="only-en">Operations NOC team</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">المدير الجديد — المسؤولية السادسة</span><span class="only-en">The promoted manager — Responsibility #6</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">فريق تكنولوجيا المعلومات</span><span class="only-en">IT team</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">33</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما رقم إعلان الترقية الوظيفية الحالي؟</span><span class="only-en">What is the current promotion announcement number?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="mono">85 / 2026</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span class="mono">93 / 2026</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="mono">93 / 2025</span></div>
+      <div class="opt"><span class="letter">د</span><span class="mono">103 / 2026</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">34</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">أي إدارة تمتلك MPLS backbone وتوجيه BGP/OSPF؟</span><span class="only-en">Which directorate owns MPLS backbone and BGP/OSPF routing?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">الإدارة العامة لشبكة الوصول</span><span class="only-en">Access Network</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span class="only-ar">الإدارة العامة للشبكات الأساسية</span><span class="only-en">Core Networks</span></div>
+      <div class="opt"><span class="letter">ج</span><span class="only-ar">الإدارة العامة للعمليات</span><span class="only-en">Operations</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">الإدارة العامة لدعم الأعمال</span><span class="only-en">Business Support</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">35</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">مراقبة SLA وإدارة الحوادث أي مسؤولية هي؟</span><span class="only-en">SLA monitoring and incident management is which responsibility number?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span class="only-ar">المسؤولية الأولى</span><span class="only-en">Responsibility #1</span></div>
+      <div class="opt"><span class="letter">ب</span><span class="only-ar">المسؤولية الثانية</span><span class="only-en">Responsibility #2</span></div>
+      <div class="opt correct"><span class="letter">ج</span><span class="only-ar">المسؤولية الثالثة</span><span class="only-en">Responsibility #3</span></div>
+      <div class="opt"><span class="letter">د</span><span class="only-ar">المسؤولية الرابعة</span><span class="only-en">Responsibility #4</span></div>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">36</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ماذا تعني MVNO؟</span><span class="only-en">What does MVNO stand for?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Mobile Verified Network Operator</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>Mobile Virtual Network Operator</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Multi-Vendor Network Operations</span></div>
+      <div class="opt"><span class="letter">د</span><span>Mobile Voice Network Option</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">مشغل شبكة افتراضي يستأجر شبكة مشغل آخر — WE كانت MVNO قبل 2017</span><span class="only-en">Uses another operator's network infrastructure — WE was MVNO before 2017</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">37</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما الاسم الكامل لبروتوكول IGMP؟</span><span class="only-en">What is the full name of IGMP?</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>Internet General Multicast Protocol</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>Internet Group Management Protocol</span></div>
+      <div class="opt"><span class="letter">ج</span><span>Integrated Group Multicast Protocol</span></div>
+      <div class="opt"><span class="letter">د</span><span>Internet Gateway Management Protocol</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">IGMP يُدير عضوية مجموعات البث المتعدد — يستخدم في IPTV لإدارة من يستقبل كل قناة</span><span class="only-en">IGMP manages multicast group membership — used in IPTV to control which subscribers receive each channel</span></p>
+    </div>
+  </details>
+
+  <details class="mcq glass rounded-2xl mb-3">
+    <summary>
+      <span class="num-dot flex-shrink-0">38</span>
+      <span class="font-bold text-sm flex-1"><span class="only-ar">ما اسما كابلي TE البحريين الدوليين؟</span><span class="only-en">Name TE's two international submarine cable systems.</span></span>
+      <span class="caret" style="color:var(--text-xlo)">›</span>
+    </summary>
+    <div class="answer px-4 py-3 space-y-2">
+      <div class="opt"><span class="letter">أ</span><span>FLAG و EIG</span></div>
+      <div class="opt correct"><span class="letter">ب</span><span>SEA-ME-WE 4 و SEA-ME-WE 5</span></div>
+      <div class="opt"><span class="letter">ج</span><span>AAE-1 و SMW3</span></div>
+      <div class="opt"><span class="letter">د</span><span>MENA و EASSy</span></div>
+      <p class="text-xs mt-2" style="color:var(--text-lo)"><span class="only-ar">SEA-ME-WE = South East Asia – Middle East – Western Europe · كابلان بحريان دوليان لـ TE</span><span class="only-en">SEA-ME-WE = South East Asia – Middle East – Western Europe · two international submarine cables for TE</span></p>
+    </div>
+  </details>
+
+  <div class="h-rule mt-8 mb-2"></div>
+</section>
+
+<!-- ============== FOOTER CTA ============== -->
+<section class="max-w-7xl mx-auto px-4 pb-16">
+  <div class="glass rounded-2xl p-6 flex flex-wrap items-center justify-between gap-4 bil">
+    <div>
+      <div class="k-label"><span class="only-ar">العودة للجزء الأول</span><span class="only-en">BACK TO PART 1</span></div>
+      <div class="font-bold text-lg mt-1"><span class="only-ar">الجزء الأول · ملخص الوثائق والأنماط وأسئلة المقابلة</span><span class="only-en">Part 1 · Doc Summaries, Patterns &amp; Interview Questions</span></div>
+      <div class="text-sm mt-1" style="color:var(--text-lo)"><span class="only-ar">المسؤوليات الست · نماذج الإجابات · محاور الامتحان</span><span class="only-en">Six responsibilities · Model answers · Exam patterns</span></div>
+    </div>
+    <div class="flex items-center gap-2 flex-wrap">
+      <a href="index.html" class="cta-btn"><span class="only-ar">← الجزء الأول</span><span class="only-en">← Part 1</span></a>
+      <button class="cta-btn" onclick="openAllMCQ()"><span class="only-ar">عرض كل الإجابات</span><span class="only-en">Show All Answers</span></button>
+      <button class="cta-btn" style="background:linear-gradient(180deg,#e59b0c,#b67505);box-shadow:0 10px 24px -10px rgba(229,155,12,.7);" onclick="window.print()"><span class="only-ar">تصدير PDF</span><span class="only-en">Export PDF</span></button>
+    </div>
+  </div>
+  <div class="mt-6 text-xs" style="color:var(--text-xlo)">
+    <span class="only-ar">الجزء ٢ من ٢ · مبني على صور المرجع + إعلان <span class="mono">93 / 2026</span> · آخر تحديث <span class="mono">2026-04-16</span></span>
+    <span class="only-en">Part 2 of 2 · Built from reference images + Announcement <span class="mono">93 / 2026</span> · Last updated <span class="mono">2026-04-16</span></span>
+  </div>
+</section>
+
+<script>
+  (function initPrefs(){
+    try {
+      var savedTheme = localStorage.getItem('te_theme') || 'dark';
+      var savedLang  = localStorage.getItem('te_lang')  || 'ar';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.documentElement.setAttribute('data-lang',  savedLang);
+      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', savedLang);
+    } catch(e){}
+  })();
+  function toggleLang(){
+    var cur = document.documentElement.getAttribute('data-lang') || 'ar';
+    var next = cur === 'ar' ? 'en' : 'ar';
+    document.documentElement.setAttribute('data-lang', next);
+    document.documentElement.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', next);
+    try { localStorage.setItem('te_lang', next); } catch(e){}
+  }
+  function toggleTheme(){
+    var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('te_theme', next); } catch(e){}
+  }
+  function openSidebar(){
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sidebarOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeSidebar(){
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
+  function openAllMCQ(){
+    document.querySelectorAll('details.mcq').forEach(d => d.open = true);
+  }
+</script>
+
+</body>
+</html>
+
+
+
