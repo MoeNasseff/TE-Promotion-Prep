@@ -533,6 +533,11 @@
   <a href="#deptmap"   onclick="closeSidebar()"><span class="only-ar">الهيكل التنظيمي</span><span class="only-en">Org Structure</span></a>
   <a href="#mcq2"      onclick="closeSidebar()"><span class="only-ar">بنك الأسئلة</span><span class="only-en">MCQ Bank</span></a>
   <div class="sidebar-divider"></div>
+  <a href="#retailflows"    onclick="closeSidebar()"><span class="only-ar">تدفقات الخدمة</span><span class="only-en">Retail Flows</span></a>
+  <a href="#enterpriseflows" onclick="closeSidebar()"><span class="only-ar">الخدمات المؤسسية</span><span class="only-en">Enterprise Flows</span></a>
+  <a href="#lifecycle-detail" onclick="closeSidebar()"><span class="only-ar">دورة الحياة</span><span class="only-en">Detailed Lifecycle</span></a>
+  <a href="#flowmapping"    onclick="closeSidebar()"><span class="only-ar">خريطة التدفقات</span><span class="only-en">Flow Mapping</span></a>
+  <div class="sidebar-divider"></div>
   <a href="index.html" onclick="closeSidebar()"><span class="only-ar">← الجزء الأول</span><span class="only-en">← Part 1</span></a>
 </aside>
 
@@ -1903,6 +1908,677 @@
     document.querySelectorAll('details.mcq').forEach(d => d.open = true);
   }
 </script>
+
+
+<!-- ============================================================ -->
+<!-- SECTION: RETAIL SERVICE FLOWS                                -->
+<!-- ============================================================ -->
+<section id="retailflows" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    تدفقات خدمة WE التفصيلية — Nokia FlowOne
+    <span class="sub-en only-en" style="font-size:1.5rem">WE Retail Service Flows — Nokia FlowOne Mapping</span>
+  </h2>
+  <p class="text-sm mb-4" style="color:var(--text-lo)">
+    كل عملية في شرائح الخدمة الفردية (Voice · Data · IPTV) مُعيَّنة على نوع أمر Nokia FO ومرجع eTOM وإجراءات NE محددة.
+  </p>
+
+  <!-- WE–OTHER KEY -->
+  <div class="pillar mb-6 flex flex-wrap gap-4 items-start">
+    <div><span class="chip accent">WE–Other</span><span class="text-sm ms-2" style="color:var(--text-mid)">يمر بـ Nokia FO الخاص بـ WE <strong>وبـ BSS خارجي</strong> (شريك/جملة)</span></div>
+    <div><span class="chip">WE</span><span class="text-sm ms-2" style="color:var(--text-mid)">التدفق داخل Nokia FO الخاص بـ WE فقط</span></div>
+    <div class="text-xs mt-1 w-full" style="color:var(--text-lo)">الـ "Other" = <strong>Vodafone Egypt</strong> (ISP_ID=VODAFONE) · <strong>Orange Egypt</strong> (ISP_ID=ORANGE) · <strong>e&amp; / Etisalat</strong> (ISP_ID=ETISALAT) — يُرسلون عبر <strong>Provisioning Portal</strong></div>
+  </div>
+
+  <!-- VOICE -->
+  <h3 class="font-black text-lg mb-3 mt-2" style="color:var(--text-hi)"><span class="only-ar">أولاً: خدمة الصوت</span><span class="only-en">I. Voice Service</span></h3>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">1</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Visibility &amp; Reservation <span class="chip accent">WE–Other</span><span class="chip">FEASIBILITY</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">فحص توافر منفذ MSAN + حجز DN_NO في VC4 — بدون أي تهيئة على الشبكة</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2 space-y-2" style="color:var(--text-mid)">
+      <div class="dual gap-3">
+        <div class="card-ar pillar p-3 space-y-1">
+          <p><strong style="color:var(--text-hi)">Nokia FO Order Action:</strong> FEASIBILITY (متزامن — BSS طلب sync mode)</p>
+          <p><strong style="color:var(--text-hi)">eTOM:</strong> 1.1.5 Order Handling</p>
+          <p><strong style="color:var(--text-hi)">Northbound:</strong> Provisioning Portal (ISP_ID=VODAFONE/ORANGE/ETISALAT) أو BSS/CRM (ISP_ID=TE)</p>
+          <p><strong style="color:var(--text-hi)">VC4_Check:</strong> حالة منفذ MSAN_CODE:FRAME-SHELF-SLOT-PORT → AVAILABLE/OCCUPIED/FAULTY</p>
+          <p><strong style="color:var(--text-hi)">VC4_Reserve:</strong> DN_NO محجوز من number pool لـ AREA_CODE → RESERVATION_ID يُرجع للنظام الشمالي</p>
+          <p><strong style="color:var(--text-hi)">P&amp;A:</strong> لا شيء — قراءة فقط</p>
+          <div class="flex flex-wrap gap-1 mt-1">
+            <span class="chip good">نجاح: RESERVATION_ID يُرجع — موارد في حالة RESERVED</span>
+            <span class="chip bad">منفذ OCCUPIED → رفض فوري</span>
+            <span class="chip bad">number pool ناضب في AREA_CODE</span>
+          </div>
+        </div>
+        <div class="card-en pillar p-3 space-y-1">
+          <p>Params: <kbd class="kbd">MSAN_CODE</kbd> <kbd class="kbd">FRAME</kbd> <kbd class="kbd">SHELF</kbd> <kbd class="kbd">SLOT</kbd> <kbd class="kbd">PORT</kbd> <kbd class="kbd">AREA_CODE</kbd> <kbd class="kbd">DN_NO</kbd></p>
+          <p>Resources stay <strong>RESERVED</strong> (not IN_USE) until Create order or Release order</p>
+          <p>Rollback: VC4_Reserve UNDO fires automatically on partial failure — no reservation leak</p>
+          <p>FTTH variant: <kbd class="kbd">ONTSERIALNUMBER</kbd> + <kbd class="kbd">ONTID</kbd> checked in VC4 ONT registry instead of copper MSAN port</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">2</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Create Voice <span class="chip accent">WE–Other</span><span class="chip">CREATE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">PS_VOICE (نحاس) · PS_FTTH_VOICE / PS_FTTH_FVNO (FTTH) · 1.1.5→1.1.6→1.1.7</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <div class="dual gap-3">
+        <div class="card-ar pillar p-3 space-y-1">
+          <div class="k-label mb-1">نحاس — MSAN</div>
+          <p><strong>Orchestrator:</strong> CFS=PS_VOICE → RFS: VC4_Reserve + MSAN_NE_Task + EDA_NE_Task + VC4_Commit</p>
+          <p><strong>P&amp;A → MSAN:</strong> LOOKUP_NOKIA_CONFIG_PARAM → voice template → PSTN profile على MSAN_IP:FRAME-SHELF-SLOT-PORT (class-of-service، تفعيل منفذ، تعيين DN_NO)</p>
+          <p><strong>P&amp;A → EDA/IMS:</strong> SetTEIMSSubscription → IMPU = sip:2{AREA_CODE}{DN_NO}@ims.tedata.net؛ charging profile؛ Barring-119 تلقائي</p>
+          <div class="flex flex-wrap gap-1 mt-1">
+            <span class="chip good">VC4_Commit: port → IN_USE · DN_NO → ASSIGNED</span>
+            <span class="chip bad">MSAN ACK timeout >30s → Rollback كامل</span>
+            <span class="chip bad">IMPU موجود في IMS (cleanup لم يكتمل) → Rollback MSAN</span>
+          </div>
+        </div>
+        <div class="card-en pillar p-3 space-y-1">
+          <div class="k-label mb-1">FTTH — ONT (diverges from Copper)</div>
+          <p>CFS: <kbd class="kbd">PS_FTTH_VOICE</kbd> retail / <kbd class="kbd">PS_FTTH_FVNO</kbd> wholesale</p>
+          <p>ZTE: <kbd class="kbd">ZTE_CLI.getONTGatewayDetails</kbd> → IP profile, then <kbd class="kbd">ZTE_GPON.CHG-ONUVOIPIP</kbd> — SIP proxy (IMS P-CSCF), RTP ports, codec G.711/G.729</p>
+          <p>Huawei: <kbd class="kbd">ADD-SIP</kbd> + <kbd class="kbd">ADD-SIP-PSTN-USER</kbd> + <kbd class="kbd">CFG-ONT-POTS</kbd></p>
+          <p>FVNO wholesale: OPERATOR=VODAFONE in IMS profile; billing → FVNO partner account</p>
+          <span class="chip bad">ONTSERIALNUMBER mismatch → rejected at Validate phase</span>
+          <span class="chip bad">Fiber cut / GPON down → P&amp;A timeout → Rollback</span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">3</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Delete Voice <span class="chip accent">WE–Other</span><span class="chip bad" style="border-color:rgba(228,87,90,.35)">DELETE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">إلغاء الخدمة — تحرير DN_NO وإزالة مشترك IMS</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <p><strong>Orchestrator:</strong> Delete CFS → NE_Task: إيقاف MSAN port أو إزالة POTS على ONT → EDA: حذف IMS subscriber → VC4_Commit: DN_NO → AVAILABLE</p>
+      <p class="mt-1">Huawei FTTH: <kbd class="kbd">HUW-CLI.DELETE-SIP-PSTN-USER</kbd> (DN_NO2) + <kbd class="kbd">CFG-ONT-POTS delete</kbd></p>
+      <div class="flex flex-wrap gap-1 mt-2">
+        <span class="chip bad">DN_NO غير موجود في VC4 → رفض في Validate</span>
+        <span class="chip accent">فشل الحذف لا يُطلق Rollback — الخدمة تبقى نشطة حتى التدخل اليدوي</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">4</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Add / Delete Voice VAS <span class="chip">WE</span><span class="chip">ADD-ON / DELETE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">DND · Call Forward · Barring-119 · International — IMS/EDA فقط · eTOM 1.1.6</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <p><strong>Trigger:</strong> BSS/CRM فقط — ISP لا يتحكم في VAS · CFS: <kbd class="kbd">PS_VOICE_VAS</kbd> · LINE_n_ACTION=VAS</p>
+      <p class="mt-1"><strong>P&amp;A → EDA/IMS SetTEIMSSubscription:</strong></p>
+      <ul class="list-disc list-inside ms-4 mt-1 space-y-1 text-xs">
+        <li>USER_TYPE=H: DND → path=/simservs/complete-terminal-communication-barring</li>
+        <li>Barring-119: CATEGORY_NAME=Barring-mobile-0119</li>
+        <li>International: service class INTERNATIONAL enabled</li>
+        <li>USER_TYPE=N: PUBLIC_ID = 2{AREA_CODE}{DN_NO}</li>
+      </ul>
+      <span class="chip bad mt-2">مشترك غير موجود في IMS → لا تغيير على الشبكة</span>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">5</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Dunning-Suspend / Dunning-Resume (Voice) <span class="chip">WE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">إيقاف مالي ≠ إيقاف بطلب العميل — مرحلتان: Outgoing أولاً ثم All</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <div class="glass rounded-xl p-3 mb-3" style="border-color:rgba(244,182,59,.3)">
+        <div class="font-bold mb-2" style="color:var(--accent-400)">الفرق الجوهري — Dunning vs Customer Suspend</div>
+        <div class="dual gap-3">
+          <div class="card-ar p-2 text-xs"><strong>Dunning-Suspend (مالي):</strong> BSS يُطلقه؛ Stage 1: Suspend_Outgoing (IMS Barring-Outgoing)؛ Stage 2: Suspend_All (MSAN template + IMS full barring)؛ VC4→SUSPENDED_DUNNING؛ موارد محجوزة لا تُحرَّر</div>
+          <div class="card-en p-2 text-xs"><strong>Customer Suspend</strong>: different Nokia FO order action; port-level deactivation on MSAN; longer duration; IP may be released; VC4→SUSPENDED_CUSTOMER</div>
+        </div>
+      </div>
+      <p><strong>Resume P&amp;A:</strong> MSAN template re-enable + EDA/IMS removes all Dunning-Barring classes؛ VC4: SUSPENDED_DUNNING → IN_USE</p>
+      <div class="flex flex-wrap gap-1 mt-2">
+        <span class="chip bad">فشل Suspend: MSAN غير متاح → خدمة تبقى نشطة (مقبول ماليًا)</span>
+        <span class="chip bad">فشل Resume جزئي: MSAN OK لكن IMS لا → مشترك يستقبل فقط</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- DATA -->
+  <h3 class="font-black text-lg mb-3 mt-8" style="color:var(--text-hi)"><span class="only-ar">ثانياً: خدمة البيانات</span><span class="only-en">II. Data Service</span></h3>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">6</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Eligibility (Data) <span class="chip accent">WE–Other</span><span class="chip">FEASIBILITY</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">نحاس: ASSIA loop check · FTTH: ONT status على OLT</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <div class="dual gap-3">
+        <div class="card-ar pillar p-3 space-y-1">
+          <div class="k-label mb-1">نحاس (ADSL/VDSL)</div>
+          <p>VC4_Check: حالة منفذ MSAN + DSLAM_NAME → ASSIA_HOSTNAME</p>
+          <p>ASSIA: MAX_ATTAINABLE_RATE (kbps) + SNR_MARGIN (dB)</p>
+          <p>إذا MAX_ATTAINABLE_RATE ≥ حد طبقة السرعة → مؤهَّل</p>
+          <span class="chip bad">خط طويل لـ VDSL2 100 Mbps → اقتراح تخفيض الطبقة</span>
+        </div>
+        <div class="card-en pillar p-3 space-y-1">
+          <div class="k-label mb-1">FTTH (GPON)</div>
+          <p>VC4_Check: <kbd class="kbd">ONTSERIALNUMBER</kbd> → ONT_STATUS (ACTIVE/OFFLINE)</p>
+          <p>PON port utilization headroom: if headroom &lt; requested speed → ineligible</p>
+          <span class="chip bad">ONT OFFLINE → field dispatch; fiber cut or power failure</span>
+          <span class="chip bad">PON port saturated → capacity expansion needed</span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">7</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Create (Data) <span class="chip accent">WE–Other</span><span class="chip">CREATE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">PPPoE · QinQ VLAN · ASSIA · RADIUS · 1.1.5→1.1.6→1.1.7</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <div class="dual gap-3">
+        <div class="card-ar pillar p-3 space-y-1">
+          <div class="k-label mb-1">نحاس (MSAN)</div>
+          <p><strong>VC4_Reserve:</strong> USER_VLAN (inner QinQ) + OUTER_VLAN (outer QinQ) + IP من DHCP pool</p>
+          <p><strong>P&amp;A → MSAN:</strong> LOOKUP_NOKIA_CONFIG_PARAM → xDSL template؛ PACKAGE_PROFILE + QinQ (OUTER_VLAN=123, USER_VLAN=321) + <kbd class="kbd">CHG-PORT-PPPOEPLUS</kbd></p>
+          <p><strong>ASSIA:</strong> AddLine @ ASSIA_HOSTNAME؛ target speed = PACKAGE_PROFILE</p>
+          <p><strong>RADIUS:</strong> PPPOEUSER=<kbd class="kbd">$ACCOUNT_NO@tedata.net.eg</kbd> + QoS policer</p>
+          <span class="chip bad">ASSIA.AddLine statusCode=12 → retry AddLine (LLD fallback)</span>
+        </div>
+        <div class="card-en pillar p-3 space-y-1">
+          <div class="k-label mb-1">FTTH (ONT)</div>
+          <p>ZTE: <kbd class="kbd">CFG-ONUWANIP</kbd> — IPHOSTID=1, IPMODE=PPPoE, PPPOEUSER=acct@tedata.net.eg, VLANPROFILENAME=vlan10, USER_VLAN, OUTER_VLAN</p>
+          <p>Huawei/Nokia/Zhone: equivalent WAN profile + QinQ</p>
+          <p>IPoE: only if ISP_ID profile specifies it (replaces PPPoE)</p>
+          <span class="chip bad">VLANPROFILENAME not pre-provisioned on OLT → P&amp;A fallout</span>
+          <span class="chip good">VC4_Commit: VLANs + IP → ASSIGNED; ONTSERIALNUMBER → IN_USE</span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">8</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Delete (Data) <span class="chip accent">WE–Other</span><span class="chip bad" style="border-color:rgba(228,87,90,.35)">DELETE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">إلغاء خدمة البيانات وتحرير VLANs وIP</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <p>حذف أوامر xDSL/ONT (جميع الـ VLANs على المنفذ) → ASSIA.RemoveLine → RADIUS: حذف سجل مشترك → VC4_Commit: USER_VLAN + OUTER_VLAN + IP تعود للـ pool</p>
+      <div class="glass rounded-lg p-2 mt-2" style="border-color:rgba(244,182,59,.3)">
+        <span class="chip accent">CR31</span><span class="text-xs ms-2">لو IPTV نشط على نفس المنفذ: Nokia FO يُشغِّل حذف IPTV أولاً قبل إزالة xDSL Access تلقائياً</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">9</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Change Package (Data) <span class="chip accent">WE–Other</span><span class="chip">MODIFY</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">مسار A: QoS فقط (صفر انقطاع) · مسار B: إعادة تهيئة كاملة</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <div class="dual gap-3">
+        <div class="card-ar pillar p-3">
+          <div class="k-label mb-1">مسار A — QoS فقط <span class="chip good ms-1">صفر انقطاع</span></div>
+          <p>يُطبَّق عند: تغيير السرعة فقط + نفس التقنية + نفس VLAN pair</p>
+          <p>P&amp;A: ASSIA.UpdateLine (هدف سرعة جديد) + RADIUS: تحديث policer — PPPoE session لا تنقطع</p>
+          <p>PCRF: يدفع QoS policy جديدة للـ BRAS؛ VC4: PACKAGE_PROFILE يُحدَّث</p>
+        </div>
+        <div class="card-en pillar p-3">
+          <div class="k-label mb-1">Path B — Full Re-provision <span class="chip bad ms-1" style="border-color:rgba(228,87,90,.35)">brief interruption</span></div>
+          <p>When: VAS/encapsulation change, ADSL→VDSL migration, new VLAN needed</p>
+          <p>MSAN port fully deconfigured → reconfigured; VC4: PACKAGE_PROFILE + possibly new VLANs</p>
+          <p>PPPoE session drops ~2–10 sec; client auto-reconnects</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">10</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Dunning-Suspend / Dunning-Resume (Data) <span class="chip">WE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">الإيقاف المالي يعمل على PCRF+RADIUS فقط — MSAN لا يُعاد تهيئته</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <div class="glass rounded-xl p-3 mb-3" style="border-color:rgba(244,182,59,.3)">
+        <div class="font-bold mb-1" style="color:var(--accent-400)">الفرق الحاسم</div>
+        <div class="dual gap-2 text-xs">
+          <div class="card-ar p-2"><strong>Dunning-Suspend (مالي):</strong> PCRF يدفع zero-rate QoS → RADIUS CoA يقطع PPPoE session؛ MSAN لا يُعاد تهيئته؛ VLAN محجوزة لا تُحرَّر؛ VC4→SUSPENDED_DUNNING</div>
+          <div class="card-en p-2"><strong>Customer Suspend:</strong> port-level deactivation on MSAN; IP may be released from pool; VC4→SUSPENDED_CUSTOMER — different Nokia FO order action type entirely</div>
+        </div>
+      </div>
+      <p><strong>Resume:</strong> PCRF يعيد QoS profile الأصلي → RADIUS يرفع CoA block → PPPoE يُعاد تلقائياً؛ MSAN لا يحتاج تغييراً</p>
+      <span class="chip bad">فشل Resume: PCRF لا يستجيب → مشترك يعيد الاتصال بسرعة خاطئة</span>
+    </div>
+  </details>
+
+  <!-- IPTV -->
+  <h3 class="font-black text-lg mb-3 mt-8" style="color:var(--text-hi)"><span class="only-ar">ثالثاً: خدمة IPTV</span><span class="only-en">III. IPTV Service</span></h3>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">11</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Eligibility (IPTV) <span class="chip">WE</span><span class="chip">FEASIBILITY</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">ثلاث تحققات: حد النطاق + VLAN Multicast + توافق STB</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <p><strong>Trigger:</strong> BSS/CRM فقط — WE (ليس WE–Other). CNE (Cable Network Egypt) شريك تسليم محتوى، ليس ISP موزِّع.</p>
+      <p class="mt-1"><strong>VC4_Check (3 تحققات):</strong></p>
+      <ul class="list-disc list-inside ms-4 mt-1 space-y-1 text-xs">
+        <li>PACKAGE_PROFILE الحالي على المنفذ ≥ <strong>4 Mbps SD</strong> أو ≥ <strong>8 Mbps HD</strong></li>
+        <li>IPTV Multicast VLAN متاحة على منفذ MSAN/OLT (سعة لم تنضب)</li>
+        <li>STB_MODEL في قائمة CNE/Nokia FO المعتمدة</li>
+      </ul>
+      <div class="flex flex-wrap gap-1 mt-2">
+        <span class="chip bad">سرعة &lt;8 Mbps → HD غير مؤهَّل (SD فقط)</span>
+        <span class="chip bad">VLAN Multicast ممتلئة على Node → غير مؤهَّل حتى توسيع السعة</span>
+        <span class="chip bad">STB_MODEL غير معتمد → يُرفض</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">12</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Create (IPTV) <span class="chip">WE</span><span class="chip">CREATE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">IGMP على MSAN/OLT + STB MAC في CNE + تفعيل EPG · 1.1.5→1.1.6→1.1.7</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <p><strong>Orchestrator:</strong> VC4_Reserve (IPTV_VLAN + STB_MAC) → MSAN/OLT IGMP → CNE Middleware → EPG → VC4_Commit</p>
+      <div class="dual gap-3 mt-2">
+        <div class="card-ar pillar p-3 space-y-1">
+          <div class="k-label mb-1">MSAN (نحاس)</div>
+          <p>تفعيل IGMP snooping proxy على منفذ المشترك</p>
+          <p>إضافة المنفذ لـ IPTV Multicast VLAN؛ IGMP v2/v3؛ IPTV_VLAN tag</p>
+          <span class="chip bad">MSAN firmware قديمة لا تدعم IGMP proxy → استبدال card</span>
+        </div>
+        <div class="card-en pillar p-3 space-y-1">
+          <div class="k-label mb-1">OLT (FTTH) + CNE</div>
+          <p>OLT: IGMP proxy on GPON port for ONTID; ONT GEM port → multicast VLAN</p>
+          <p>CNE API: register STB_MAC; entitlement (standard/premium/sports); EPG profile activated</p>
+          <span class="chip bad">STB_MAC duplicate in CNE → fallout; stale registration cleanup</span>
+          <p class="text-xs mt-1" style="color:var(--text-lo)">Live TV = IGMP Multicast · VOD = IP Unicast (no extra NE provisioning)</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details class="mcq pillar mb-3">
+    <summary><span class="num-dot">13</span>
+      <div class="flex-1"><div class="font-bold text-sm flex flex-wrap gap-2 items-center" style="color:var(--text-hi)">Delete IPTV &amp; Change Package IPTV <span class="chip">WE</span></div>
+      <div class="text-xs mt-1" style="color:var(--text-lo)">Change Package: تغيير محتوى = Middleware فقط · إضافة STB = NE-level</div></div>
+      <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span></summary>
+    <div class="px-4 pb-4 text-sm mt-2" style="color:var(--text-mid)">
+      <div class="dual gap-3">
+        <div class="card-ar pillar p-3 space-y-1">
+          <div class="k-label mb-1">Delete IPTV</div>
+          <p>MSAN/OLT: تعطيل IGMP + إزالة من Multicast VLAN</p>
+          <p>CNE: إلغاء تسجيل STB_MAC + سحب استحقاق المحتوى</p>
+          <p>VC4_Commit: IPTV_VLAN → AVAILABLE؛ STB_MAC → DEPROVISIONED</p>
+        </div>
+        <div class="card-en pillar p-3 space-y-1">
+          <div class="k-label mb-2">Change Package — 3 paths</div>
+          <p><strong>Content tier</strong> (Standard→Premium): <span class="chip good">middleware-only</span> — CNE API updates entitlement; EPG refresh; <strong>NO NE change</strong></p>
+          <p><strong>SD→HD upgrade</strong>: Nokia FO re-runs bandwidth gate; if data speed ≥ 8 Mbps <span class="chip good">no NE change</span>; else Data Change Package required first</p>
+          <p><strong>Add/Remove STB</strong>: <span class="chip accent">NE-level</span> — VC4 registers new STB_MAC; CNE adds entitlement; no VLAN change</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <div class="h-rule mb-2"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: ENTERPRISE FLOWS                                    -->
+<!-- ============================================================ -->
+<section id="enterpriseflows" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    الخدمات المؤسسية — Nokia FO عبر CST 360
+    <span class="sub-en only-en" style="font-size:1.5rem">Enterprise Service Flows — CST 360 → Nokia FlowOne</span>
+  </h2>
+  <p class="text-sm mb-6" style="color:var(--text-lo)">CST 360 كـ Northbound · بوابات موافقة يدوية · SLA بالأيام العمل · موارد VC4 مختلفة تماماً عن الخدمات الفردية</p>
+
+  <div class="grid md:grid-cols-2 gap-3 mb-6">
+    <div class="pillar">
+      <div class="k-label mb-2">Retail vs Enterprise — الاختلافات الهيكلية</div>
+      <table class="w-full text-xs" style="border-collapse:collapse">
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="py-1 pe-2 font-bold" style="color:var(--text-lo)">Northbound</td><td class="py-1" style="color:var(--text-mid)">BSS/CRM · Provisioning Portal</td><td class="py-1 font-bold" style="color:var(--brand-400)">CST 360</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="py-1 pe-2 font-bold" style="color:var(--text-lo)">Manual Gate</td><td class="py-1" style="color:var(--text-mid)">لا يوجد</td><td class="py-1 font-bold" style="color:var(--accent-400)">نعم — مهندس يوافق في CST 360</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="py-1 pe-2 font-bold" style="color:var(--text-lo)">SLA</td><td class="py-1" style="color:var(--text-mid)">دقائق → ساعات</td><td class="py-1 font-bold" style="color:var(--accent-400)">أيام عمل (5 BD موقع MPLS)</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="py-1 pe-2 font-bold" style="color:var(--text-lo)">VC4 Resources</td><td class="py-1" style="color:var(--text-mid)">IP · VLAN · Port · DN_NO</td><td class="py-1 font-bold" style="color:var(--accent-400)">Circuit ID · VRF · BGP AS · PE Port · RD/RT</td></tr>
+        <tr><td class="py-1 pe-2 font-bold" style="color:var(--text-lo)">Rollback</td><td class="py-1" style="color:var(--text-mid)">كامل تلقائي</td><td class="py-1 font-bold" style="color:var(--accent-400)">جزئي ممكن — مواقع أخرى لا تتأثر</td></tr>
+      </table>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-2">VC4 Enterprise Resources</div>
+      <div class="space-y-1 text-xs" style="color:var(--text-mid)">
+        <div><span class="chip">VRF_NAME</span><span class="ms-2">اسم VRF على PE (مثل: CUST_1234_VPN)</span></div>
+        <div><span class="chip">PE_PORT_ID</span><span class="ms-2">منفذ PE (مثل: PE-CAI-01 Gi0/0/3)</span></div>
+        <div><span class="chip">VLAN_RANGE</span><span class="ms-2">نطاق VLAN لرابط PE-CE (مثل: 1200–1201)</span></div>
+        <div><span class="chip">BGP_AS</span><span class="ms-2">رقم AS للعميل (مثل: 65001)</span></div>
+        <div><span class="chip">RD / RT</span><span class="ms-2">Route Distinguisher + Route Target (65000:CUST_ID)</span></div>
+        <div><span class="chip">CIRCUIT_ID</span><span class="ms-2">معرّف الدائرة المؤجَّرة E1/E3</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MPLS VPN -->
+  <h3 class="font-black text-base mb-3" style="color:var(--text-hi)">A. MPLS L3 VPN</h3>
+  <div class="space-y-3 mb-6">
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">1</span>
+      <div class="text-sm flex-1">
+        <div class="font-bold" style="color:var(--text-hi)">Site Qualification <span class="chip ms-2">FEASIBILITY</span></div>
+        <p class="mt-1" style="color:var(--text-mid)">CST 360 → Nokia FO: VC4_Check على منافذ PE في منطقة الموقع + نطاق VLAN متاح + BGP AS pool؛ Manual Task Node: مهندس يراجع ويوافق قبل المتابعة</p>
+        <span class="chip bad mt-1">PE capacity exhausted in region → capacity planning action required</span>
+      </div>
+    </div>
+    <div class="pillar flex items-start gap-3" style="border-color:rgba(244,182,59,.3)">
+      <span class="num-dot" style="background:linear-gradient(180deg,#f4b63b,#b67505)">2</span>
+      <div class="text-sm flex-1">
+        <div class="font-bold" style="color:var(--accent-400)">New Site Activation <span class="chip accent ms-2">CREATE · 5 Business Days SLA</span></div>
+        <p class="mt-1" style="color:var(--text-mid)">VC4_Reserve (VRF+PE_PORT+VLAN_RANGE+BGP_AS+RD/RT) → <strong>MANUAL TASK: VRF Design Approval</strong> (مهندس في CST 360) → P&amp;A على PE: ينشئ VRF_NAME؛ RD=65000:CUST_ID؛ RT=65000:CUST_ID؛ يُفعِّل PE-CE port بـ CE_IP + VLAN؛ BGP neighbor CE_IP remote-as BGP_AS؛ QoS: DSCP EF للصوت + AF31 للبيانات</p>
+        <p class="mt-1" style="color:var(--text-mid)">CPE ZTP: Nokia FO يُطلق ZTP server → CPE يُنزِّل config (WAN IP، BGP peer، QoS) عند أول تشغيل</p>
+        <div class="flex flex-wrap gap-1 mt-1">
+          <span class="chip bad">BGP session fails → L3 VPN team + customer + Nokia TAC</span>
+          <span class="chip bad">CPE serial mismatch in ZTP → manual config fallback (+1 BD)</span>
+          <span class="chip accent">Manual gate: مهندس يُكمِّل تحقق route table قبل COMPLETED</span>
+        </div>
+      </div>
+    </div>
+    <div class="pillar flex items-start gap-3">
+      <span class="num-dot">3</span>
+      <div class="text-sm flex-1">
+        <div class="font-bold" style="color:var(--text-hi)">Modify / Add Site / Remove Site / Suspend / Terminate</div>
+        <div class="grid md:grid-cols-2 gap-2 mt-2 text-xs" style="color:var(--text-mid)">
+          <div><strong>Bandwidth upgrade:</strong> QoS policy update على PE port؛ لا BGP/VRF تغيير؛ انقطاع &lt;1s</div>
+          <div><strong>Add Site (2 BD):</strong> VRF extension على PE؛ VPN يبقى نشطاً</div>
+          <div><strong>Suspend:</strong> PE-CE port admin-down؛ BGP ينخفض؛ VRF يُحفَظ</div>
+          <div><strong>Terminate (3 BD):</strong> BGP remove → VRF delete → PE port deconfig → VC4_Commit يُحرِّر جميع الموارد</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIA + SD-WAN + Leased Lines -->
+  <div class="grid md:grid-cols-3 gap-3 mb-6">
+    <div class="pillar">
+      <div class="k-label mb-2">B. Dedicated Internet Access (DIA)</div>
+      <p class="text-xs" style="color:var(--text-mid)">CST 360 لـ enterprise (&gt;100Mbps)؛ ADSL Portal لـ SME</p>
+      <p class="text-xs mt-1" style="color:var(--text-mid)"><strong>VC4:</strong> PE_PORT · PUBLIC_IP_BLOCK · VLAN (PE-CE) · BGP_AS</p>
+      <p class="text-xs mt-1" style="color:var(--text-mid)">P&amp;A: PE port + BGP default route injection + RADIUS + CPE WAN IP من public pool</p>
+      <div class="mt-2"><span class="chip accent" style="font-size:.65rem">SLA: 5 BD domestic · 10–15 BD if SEA-ME-WE 4/5</span></div>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-2">C. SD-WAN</div>
+      <p class="text-xs" style="color:var(--text-mid)"><strong>CPE ZTP:</strong> Nokia FO يُطلق SD-WAN controller onboarding API → CPE calls home → تُنزَّل config: WAN، overlay tunnels، QoS policy</p>
+      <p class="text-xs mt-1" style="color:var(--text-mid)"><strong>VC4:</strong> CPE_SERIAL · SDWAN_SITE_ID · OVERLAY_TUNNEL_ID · POLICY_TEMPLATE_ID</p>
+      <div class="mt-2"><span class="chip accent" style="font-size:.65rem">Manual gate: مهندس يوافق على topology للمواقع &gt;10</span></div>
+    </div>
+    <div class="pillar">
+      <div class="k-label mb-2">D. Leased Lines / E1–E3</div>
+      <p class="text-xs" style="color:var(--text-mid)"><strong>VC4:</strong> CIRCUIT_ID · E1_PORT_ID (MUX/SDH) · TDM timeslot · near/far-end node IDs</p>
+      <p class="text-xs mt-1" style="color:var(--text-mid)">P&amp;A: SDH/PDH MUX config — E1 timeslot assignment + cross-connect at both ends + alarm thresholds</p>
+      <div class="mt-2 flex flex-wrap gap-1">
+        <span class="chip accent" style="font-size:.65rem">5–10 BD domestic</span>
+        <span class="chip bad" style="font-size:.65rem">10–15 BD SEA-ME-WE 4/5</span>
+      </div>
+      <p class="text-xs mt-1" style="color:var(--text-lo)">Manual task: Transmission Engineering يؤكد المسار؛ تنسيق يدوي مع محطة الهبوط للدوائر الدولية</p>
+    </div>
+  </div>
+
+  <div class="h-rule mb-2"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: LIFECYCLE DETAIL                                    -->
+<!-- ============================================================ -->
+<section id="lifecycle-detail" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    دورة الحياة التفصيلية — ٦ متغيرات حسب الخدمة
+    <span class="sub-en only-en" style="font-size:1.5rem">Detailed Lifecycle — 6 Service-Specific Variants</span>
+  </h2>
+  <p class="text-sm mb-4" style="color:var(--text-lo)">الخطوات 1–4 مشتركة. كل متغير يُظهر نقاط التفرق الحقيقية فقط.</p>
+
+  <!-- Shared steps -->
+  <div class="pillar mb-6 p-4">
+    <div class="k-label mb-3">الخطوات المشتركة 1–4 في جميع المتغيرات</div>
+    <div class="grid md:grid-cols-4 gap-2 text-center text-xs">
+      <div><span class="num-dot mx-auto block mb-1">1</span><div class="font-bold" style="color:var(--text-hi)">Customer Request</div><div style="color:var(--text-lo)">Northbound → MW</div></div>
+      <div><span class="num-dot mx-auto block mb-1">2</span><div class="font-bold" style="color:var(--text-hi)">MW Validate &amp; Route</div><div style="color:var(--text-lo)">مصادقة + توجيه للـ Orchestrator</div></div>
+      <div><span class="num-dot mx-auto block mb-1">3</span><div class="font-bold" style="color:var(--text-hi)">Orchestrator Decompose</div><div style="color:var(--text-lo)">CFS → RFS tasks؛ نوع خدمة + NE vendor</div></div>
+      <div><span class="num-dot mx-auto block mb-1">4</span><div class="font-bold" style="color:var(--text-hi)">VC4_Reserve</div><div style="color:var(--text-lo)">حجز موارد مختلف لكل متغير</div></div>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+
+    <!-- V1 -->
+    <details class="mcq pillar">
+      <summary>
+        <span class="num-dot" style="background:linear-gradient(180deg,#9b59b6,#6c3483)">V1</span>
+        <div class="flex-1"><div class="font-bold text-sm" style="color:var(--text-hi)">Fixed Voice — نحاس (SIP PSTN via MSAN)</div>
+        <div class="text-xs mt-1" style="color:var(--text-lo)">PS_VOICE · DN_NO + MSAN port · EDA/IMS</div></div>
+        <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span>
+      </summary>
+      <div class="px-4 pb-4 space-y-2 mt-3">
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">5</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">VC4_Reserve (Voice)</strong><p style="color:var(--text-mid)">MSAN port → RESERVED؛ DN_NO → RESERVED مع RESERVATION_ID؛ NE ACK timeout = 30s</p><span class="chip bad">Race condition على نفس المنفذ → retry مرة ثم فشل</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">6</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → MSAN Copper [DIVERGES FROM V2]</strong><p style="color:var(--text-mid)">Nokia: LOOKUP_NOKIA_CONFIG_PARAM → voice template → PSTN profile على MSAN_IP:FRAME-SHELF-SLOT-PORT (class-of-service، تفعيل port، DN_NO)؛ Huawei/ZTE: equivalent</p><span class="chip bad">NE ACK timeout 30s → Rollback · Profile mismatch → fallout</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">7</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → EDA/IMS</strong><p style="color:var(--text-mid)">SetTEIMSSubscription → IMPU=sip:2{AREA_CODE}{DN_NO}@ims.tedata.net؛ charging profile؛ Barring-119 by default</p><span class="chip bad">IMS duplicate IMPU → Rollback MSAN config</span></div></div>
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(24,176,107,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#18b06b,#0d7a49);font-size:.65rem">8</span><div class="text-sm flex-1"><strong style="color:#8be6b9">VC4_Commit → MW → BSS Billing</strong><p style="color:var(--text-mid)">Port → IN_USE؛ DN_NO → ASSIGNED؛ سجل مشترك مع ACCOUNT_NO و ISP_ID</p></div></div>
+      </div>
+    </details>
+
+    <!-- V2 -->
+    <details class="mcq pillar">
+      <summary>
+        <span class="num-dot" style="background:linear-gradient(180deg,#9b59b6,#6c3483)">V2</span>
+        <div class="flex-1"><div class="font-bold text-sm" style="color:var(--text-hi)">Fixed Voice — FTTH (VoIP/SIP via ONT)</div>
+        <div class="text-xs mt-1" style="color:var(--text-lo)">PS_FTTH_VOICE / PS_FTTH_FVNO · ONT POTS port + DN_NO · EDA/IMS</div></div>
+        <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span>
+      </summary>
+      <div class="px-4 pb-4 space-y-2 mt-3">
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">5</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">VC4_Check (FTTH)</strong><p style="color:var(--text-mid)">ONTSERIALNUMBER → VC4 ONT registry؛ ONT_STATUS = ACTIVE على OLT؛ حجز ONT POTS port slot</p><span class="chip bad">ONTSERIALNUMBER mismatch → رفض في Validate phase فوراً</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">6</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → OLT/ONT VoIP [FTTH — يختلف عن V1]</strong><p style="color:var(--text-mid)">ZTE: <kbd class="kbd">ZTE_CLI.getONTGatewayDetails</kbd> → IP profile؛ ثم <kbd class="kbd">ZTE_GPON.CHG-ONUVOIPIP</kbd> — SIP proxy (IMS P-CSCF)، DTMF RFC 2833، RTP ports، G.711/G.729<br/>Huawei: <kbd class="kbd">ADD-SIP</kbd> + <kbd class="kbd">ADD-SIP-PSTN-USER</kbd> + <kbd class="kbd">CFG-ONT-POTS</kbd></p><span class="chip bad">Fiber cut → P&A timeout → Rollback · SIP REGISTER fails → manual IMS alignment</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">7</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → EDA/IMS (نفس V1 + FVNO variant)</strong><p style="color:var(--text-mid)">FVNO wholesale: OPERATOR=VODAFONE في IMS profile؛ billing → FVNO partner wholesale account</p></div></div>
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(24,176,107,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#18b06b,#0d7a49);font-size:.65rem">8</span><div class="text-sm flex-1"><strong style="color:#8be6b9">VC4_Commit: ONT POTS port → IN_USE؛ DN_NO → ASSIGNED</strong></div></div>
+      </div>
+    </details>
+
+    <!-- V3 -->
+    <details class="mcq pillar">
+      <summary>
+        <span class="num-dot" style="background:linear-gradient(180deg,#2196f3,#0b4bab)">V3</span>
+        <div class="flex-1"><div class="font-bold text-sm" style="color:var(--text-hi)">Fixed Data — نحاس (ADSL/VDSL via MSAN)</div>
+        <div class="text-xs mt-1" style="color:var(--text-lo)">VC4: USER_VLAN + OUTER_VLAN + IP · ASSIA · RADIUS</div></div>
+        <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span>
+      </summary>
+      <div class="px-4 pb-4 space-y-2 mt-3">
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">5</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">VC4_Reserve (Data)</strong><p style="color:var(--text-mid)">USER_VLAN (inner subscriber) + OUTER_VLAN (outer service provider) + IP من DHCP pool؛ DATA_CREATE_RESERVE_VLAN task قابل للـ Rollback</p></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">6</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → MSAN xDSL [يختلف عن V1/V2]</strong><p style="color:var(--text-mid)">Nokia: LOOKUP_NOKIA_CONFIG_PARAM → xDSL template: PACKAGE_PROFILE + QinQ (OUTER_VLAN=123, USER_VLAN=321) + <kbd class="kbd">CHG-PORT-PPPOEPLUS</kbd> + VDSL2 vectoring params إن لزم</p><span class="chip bad">PACKAGE_PROFILE not on MSAN → P&A fallout; batch sync needed</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">7</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → ASSIA + RADIUS [خطوة فريدة للـ Data]</strong><p style="color:var(--text-mid)">ASSIA.AddLine @ ASSIA_HOSTNAME؛ ACCOUNT_NO مسجَّل (جميع مشتركي TE في ASSIA)؛ target = PACKAGE_PROFILE<br/>RADIUS: PPPOEUSER=<kbd class="kbd">$ACCOUNT_NO@tedata.net.eg</kbd>؛ policer downstream/upstream</p><span class="chip bad">ASSIA.AddLine statusCode=12 → retry AddLine (LLD fallback)</span></div></div>
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(24,176,107,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#18b06b,#0d7a49);font-size:.65rem">8</span><div class="text-sm flex-1"><strong style="color:#8be6b9">VC4_Commit: USER_VLAN + OUTER_VLAN + IP → ASSIGNED؛ port → IN_USE؛ PACKAGE_PROFILE مسجَّل</strong></div></div>
+      </div>
+    </details>
+
+    <!-- V4 -->
+    <details class="mcq pillar">
+      <summary>
+        <span class="num-dot" style="background:linear-gradient(180deg,#2196f3,#0b4bab)">V4</span>
+        <div class="flex-1"><div class="font-bold text-sm" style="color:var(--text-hi)">Fixed Data — FTTH (GPON)</div>
+        <div class="text-xs mt-1" style="color:var(--text-lo)">VC4: USER_VLAN + OUTER_VLAN + IP + ONTSERIALNUMBER · ASSIA · RADIUS</div></div>
+        <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span>
+      </summary>
+      <div class="px-4 pb-4 space-y-2 mt-3">
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">6</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → OLT/ONT Data WAN [يختلف عن V3]</strong><p style="color:var(--text-mid)">ZTE: <kbd class="kbd">CFG-ONUWANIP</kbd> — IPHOSTID=1, IPMODE=PPPoE, PPPOEUSER=acct@tedata.net.eg, VLANPROFILENAME=vlan10, USER_VLAN, OUTER_VLAN<br/>IF ISP requires IPoE: IPMODE=IPoE, DHCP-based<br/>MSAN_VENDORID → NOKIA/HUAWEI/ZTE → different command; P&A LOOKUP resolves</p><span class="chip bad">VLANPROFILENAME=vlan10 not on OLT → P&A rejected; OLT VLAN profile sync</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">7</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → ASSIA + RADIUS [نفس V3]</strong><span class="chip bad">ASSIA update fails → service live on NE but loop management not tracking → manual registration</span></div></div>
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(24,176,107,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#18b06b,#0d7a49);font-size:.65rem">8</span><div class="text-sm flex-1"><strong style="color:#8be6b9">VC4_Commit: VLANs + IP → ASSIGNED؛ ONTSERIALNUMBER → IN_USE في ONT registry</strong></div></div>
+      </div>
+    </details>
+
+    <!-- V5 -->
+    <details class="mcq pillar">
+      <summary>
+        <span class="num-dot" style="background:linear-gradient(180deg,#e44d26,#c0392b)">V5</span>
+        <div class="flex-1"><div class="font-bold text-sm" style="color:var(--text-hi)">IPTV (نحاس أو FTTH)</div>
+        <div class="text-xs mt-1" style="color:var(--text-lo)">VC4: IPTV_VLAN + STB_MAC · MSAN/OLT IGMP · CNE Middleware · EPG</div></div>
+        <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span>
+      </summary>
+      <div class="px-4 pb-4 space-y-2 mt-3">
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(244,182,59,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#f4b63b,#b67505);font-size:.65rem">5a</span><div class="text-sm flex-1"><strong style="color:var(--accent-400)">Eligibility Gate [خطوة فريدة لـ IPTV — بين 4 و5]</strong><p style="color:var(--text-mid)">VC4_Check: PACKAGE_PROFILE ≥ 4 Mbps SD / ≥ 8 Mbps HD؛ MULTICAST_VLAN_AVAILABLE؛ STB_MODEL في catalog</p><span class="chip bad">فشل → رفض فوري — لا حجز موارد</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">5b</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">VC4_Reserve IPTV</strong><p style="color:var(--text-mid)">IPTV_VLAN محجوزة على منفذ؛ STB_MAC مسجَّل في VC4 STB registry</p></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">6</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → MSAN أو OLT IGMP [تفرق نحاس/FTTH]</strong><p style="color:var(--text-mid)">[IF COPPER]: MSAN يُفعِّل IGMP snooping proxy؛ يضيف لـ IPTV Multicast VLAN؛ IGMP v2/v3<br/>[IF FTTH]: OLT يضيف ONT GEM port لـ multicast VLAN؛ IGMP proxy/snooping على ONTID</p><span class="chip bad">MSAN firmware لا تدعم IGMP proxy → استبدال card (فريد لـ IPTV)</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">7</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → CNE Middleware [خطوة فريدة لـ IPTV]</strong><p style="color:var(--text-mid)">CNE API: STB_MAC + entitlement (standard/premium/sports)؛ EPG: تفعيل channel guide profile</p><span class="chip bad">STB_MAC duplicate in CNE → fallout; stale registration cleanup</span></div></div>
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(24,176,107,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#18b06b,#0d7a49);font-size:.65rem">8</span><div class="text-sm flex-1"><strong style="color:#8be6b9">VC4_Commit: IPTV_VLAN → IN_USE؛ STB_MAC → PROVISIONED</strong></div></div>
+      </div>
+    </details>
+
+    <!-- V6 -->
+    <details class="mcq pillar">
+      <summary>
+        <span class="num-dot" style="background:linear-gradient(180deg,#f4b63b,#b67505)">V6</span>
+        <div class="flex-1"><div class="font-bold text-sm" style="color:var(--text-hi)">Enterprise MPLS L3 VPN — New Site Activation</div>
+        <div class="text-xs mt-1" style="color:var(--text-lo)">CST 360 · Manual Task Gate · VRF+BGP_AS+PE_PORT+VLAN_RANGE · 5 أيام عمل</div></div>
+        <span class="caret ms-auto text-xs" style="color:var(--text-xlo)">▼</span>
+      </summary>
+      <div class="px-4 pb-4 space-y-2 mt-3">
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(244,182,59,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#f4b63b,#b67505);font-size:.65rem">1E</span><div class="text-sm flex-1"><strong style="color:var(--accent-400)">CST 360 Customer Order [يختلف جوهرياً عن Retail]</strong><p style="color:var(--text-mid)">N service order lines (واحد لكل موقع VPN)؛ SLA timer يبدأ في CST 360 (5 BD)؛ لا Provisioning Portal ولا BSS</p></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">3E</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">VC4_Reserve (Enterprise)</strong><p style="color:var(--text-mid)">VRF_NAME + PE_PORT_ID (PE-CAI-01 Gi0/0/3) + VLAN_RANGE (1200–1201) + BGP_AS (65001) + RD=65000:CUST_ID + RT=65000:CUST_ID</p><span class="chip bad">PE capacity exhausted → capacity planning; reservations held</span></div></div>
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(244,182,59,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#f4b63b,#b67505);font-size:.65rem">4E</span><div class="text-sm flex-1"><strong style="color:var(--accent-400)">MANUAL TASK NODE — VRF Design Approval [غير موجود في Retail]</strong><p style="color:var(--text-mid)">Nokia FO يوقف workflow؛ مهندس في CST 360 يراجع VRF name + RD/RT + BGP/OSPF + prefix list + QoS DSCP؛ SLA clock تعمل خلال الإيقاف</p><span class="chip bad">مهندس يرفض → يعود لـ CST 360 للتعديل؛ حجوزات VC4 تبقى</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">5E</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">P&amp;A → PE Router</strong><p style="color:var(--text-mid)">ينشئ VRF VRF_NAME؛ RD=65000:CUST_ID؛ RT import+export؛ يُفعِّل PE-CE port (PE_PORT_ID) بـ CE_IP + VLAN_RANGE؛ BGP neighbor CE_IP remote-as BGP_AS؛ QoS: DSCP EF صوت + AF31 بيانات</p><span class="chip bad">BGP session fails → L3 VPN team + customer + Nokia TAC</span></div></div>
+        <div class="pillar flex items-start gap-3"><span class="num-dot" style="font-size:.65rem">6E</span><div class="text-sm flex-1"><strong style="color:var(--text-hi)">CPE ZTP + End-to-End Verification</strong><p style="color:var(--text-mid)">ZTP: CPE calls home → config (WAN IP، BGP peer، QoS)؛ إن ZTP غير مدعوم → مهندس ميداني (+1 BD)<br/>Verification: Nokia FO يتحقق من CE subnet في VRF route table على PE؛ SLA baseline في CST 360</p><span class="chip bad">CE subnet غير موجود في VRF (prefix filter) → engineer يضبط BGP policy يدوياً</span></div></div>
+        <div class="pillar flex items-start gap-3" style="border-color:rgba(24,176,107,.35)"><span class="num-dot" style="background:linear-gradient(180deg,#18b06b,#0d7a49);font-size:.65rem">7E</span><div class="text-sm flex-1"><strong style="color:#8be6b9">VC4_Commit: جميع الموارد → IN_USE؛ CST 360: COMPLETED؛ SLA timer stops؛ billing activated</strong></div></div>
+      </div>
+    </details>
+
+  </div>
+  <div class="h-rule mb-2"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION: FLOW MAPPING                                        -->
+<!-- ============================================================ -->
+<section id="flowmapping" class="max-w-7xl mx-auto px-4 pb-10">
+  <h2 class="section-title text-2xl mb-1">
+    <span class="bar"></span>
+    خريطة تدفقات WE → Nokia FlowOne
+    <span class="sub-en only-en" style="font-size:1.5rem">WE Flows → Nokia FlowOne Standard Model Mapping</span>
+  </h2>
+  <p class="text-sm mb-6" style="color:var(--text-lo)">كيف تتعيَّن العمليات المُسمَّاة في نظام WE على نموذج Order Management القياسي لـ Nokia FlowOne</p>
+
+  <!-- Master Mapping Table -->
+  <h3 class="font-black text-base mb-3" style="color:var(--text-hi)">A. جدول التعيين الرئيسي</h3>
+  <div class="glass rounded-2xl overflow-auto mb-8">
+    <table class="w-full text-xs" style="border-collapse:collapse;min-width:700px">
+      <thead><tr style="background:rgba(30,124,244,.12);border-bottom:1px solid var(--border-mid)">
+        <th class="text-right p-2 font-black" style="color:var(--text-lo)">WE Flow</th>
+        <th class="text-right p-2 font-black" style="color:var(--text-lo)">Service</th>
+        <th class="text-center p-2 font-black" style="color:var(--text-lo)">WE–Other</th>
+        <th class="text-right p-2 font-black" style="color:var(--text-lo)">Nokia FO Action</th>
+        <th class="text-right p-2 font-black" style="color:var(--text-lo)">eTOM</th>
+        <th class="text-right p-2 font-black" style="color:var(--text-lo)">VC4 Resource</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Visibility &amp; Reservation</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">FEASIBILITY</td><td class="p-2">1.1.5</td><td class="p-2">DN_NO + MSAN port</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Create Voice (Copper)</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">CREATE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">MSAN port + DN_NO</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Create Voice (FTTH/FVNO)</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">CREATE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">ONT POTS port + DN_NO</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Delete Voice</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">DELETE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">DN_NO released</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Add Voice VAS</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">ADD-ON</td><td class="p-2">1.1.6</td><td class="p-2">VC4 VAS flag</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Delete Voice VAS</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">DELETE (VAS)</td><td class="p-2">1.1.6</td><td class="p-2">VC4 VAS flag cleared</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:#ffb0b2">Dunning-Suspend Voice</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">SUSPEND (financial)</td><td class="p-2">1.1.5</td><td class="p-2">SUSPENDED_DUNNING</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:#8be6b9">Dunning-Resume Voice</td><td class="p-2">Voice</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">RESUME</td><td class="p-2">1.1.5</td><td class="p-2">IN_USE</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Eligibility Data (Copper)</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">FEASIBILITY</td><td class="p-2">1.1.5</td><td class="p-2">MSAN port (check)</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Eligibility Data (FTTH)</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">FEASIBILITY</td><td class="p-2">1.1.5</td><td class="p-2">ONT registry (check)</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Create Data (Copper)</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">CREATE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">USER_VLAN + OUTER_VLAN + IP</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Create Data (FTTH)</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">CREATE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">USER_VLAN + OUTER_VLAN + IP</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Delete Data</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">DELETE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">VLANs + IP released</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Change Package Data</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip accent">نعم</span></td><td class="p-2">MODIFY</td><td class="p-2">1.1.6</td><td class="p-2">PACKAGE_PROFILE in VC4</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:#ffb0b2">Dunning-Suspend Data</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">SUSPEND (financial)</td><td class="p-2">1.1.5</td><td class="p-2">SUSPENDED_DUNNING</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:#8be6b9">Dunning-Resume Data</td><td class="p-2">Data</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">RESUME</td><td class="p-2">1.1.5</td><td class="p-2">IN_USE</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Eligibility IPTV</td><td class="p-2">IPTV</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">FEASIBILITY</td><td class="p-2">1.1.5</td><td class="p-2">IPTV VLAN capacity</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Create IPTV</td><td class="p-2">IPTV</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">CREATE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">IPTV_VLAN + STB_MAC</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-2 font-bold" style="color:var(--brand-400)">Delete IPTV</td><td class="p-2">IPTV</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">DELETE</td><td class="p-2">1.1.5→1.1.7</td><td class="p-2">IPTV_VLAN released</td></tr>
+        <tr><td class="p-2 font-bold" style="color:var(--brand-400)">Change Package IPTV</td><td class="p-2">IPTV</td><td class="p-2 text-center"><span class="chip">لا</span></td><td class="p-2">MODIFY</td><td class="p-2">1.1.6</td><td class="p-2">CNE entitlement / STB_MAC</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- B: WE-Other -->
+  <h3 class="font-black text-base mb-3" style="color:var(--text-hi)">B. WE–Other — شرح مفصَّل</h3>
+  <div class="dual gap-4 mb-8">
+    <div class="card-ar pillar p-4 space-y-2">
+      <div class="k-label mb-1">من هم الـ "Other"؟</div>
+      <div class="space-y-1 text-xs">
+        <div><span class="chip">ISP_ID=VODAFONE</span><span class="ms-2" style="color:var(--text-mid)">Vodafone Egypt</span></div>
+        <div><span class="chip">ISP_ID=ORANGE</span><span class="ms-2" style="color:var(--text-mid)">Orange Egypt</span></div>
+        <div><span class="chip">ISP_ID=ETISALAT</span><span class="ms-2" style="color:var(--text-mid)">e&amp; (Etisalat Egypt)</span></div>
+        <div><span class="chip">ISP_ID=TE</span><span class="ms-2" style="color:var(--text-mid)">WE retail direct (ليس WE–Other)</span></div>
+      </div>
+      <div class="k-label mt-2 mb-1">آلية التنسيق</div>
+      <ol class="list-decimal list-inside text-xs space-y-1" style="color:var(--text-mid)">
+        <li>ISP يرسل SOAP لـ <strong>Provisioning Portal</strong> (ليس BSS/CRM)</li>
+        <li>ISP_ID=VODAFONE + OPERATOR param يُحدِّدان الـ workflow</li>
+        <li>MW يوجِّه لـ Nokia FO بناءً على service type + ISP_ID</li>
+        <li>Nokia FO يُطبِّق billing routing لـ wholesale account</li>
+        <li>P&A على MSAN/ONT <strong>متطابق</strong> — الشبكة لا تفرِّق بين ISPs</li>
+        <li>Provisioning Portal يُرجع status للـ ISP بشكل غير متزامن</li>
+      </ol>
+    </div>
+    <div class="card-en pillar p-4 space-y-2">
+      <div class="k-label mb-1">FVNO — Voice Wholesale Special Case</div>
+      <p class="text-sm" style="color:var(--text-mid)">FVNO = <strong>Fixed Virtual Network Operator</strong> — ISP resells TE's PSTN/IMS fixed voice under their own brand</p>
+      <p class="text-sm mt-1" style="color:var(--text-mid)">Nokia FO: <kbd class="kbd">LINE_NAME=PS_FTTH_FVNO</kbd> workflow for FVNO voice creates</p>
+      <p class="text-sm mt-1" style="color:var(--text-mid)">IMS subscriber profile: <kbd class="kbd">OPERATOR=VODAFONE</kbd> — billing routed to FVNO partner wholesale account</p>
+      <p class="text-sm mt-1" style="color:var(--text-mid)">ISP-specific PPPoE domain possible: <kbd class="kbd">$ACCOUNT_NO@vodafone.eg</kbd> vs <kbd class="kbd">@tedata.net.eg</kbd> for TE retail</p>
+    </div>
+  </div>
+
+  <!-- C: Triple-play -->
+  <h3 class="font-black text-base mb-3" style="color:var(--text-hi)">C. Triple-Play Composite Order على ONT واحد</h3>
+  <div class="pillar p-4 mb-8">
+    <div class="k-label mb-3">Nokia FO: Customer Order واحد → 3 Service Orders بتسلسل محدود</div>
+    <div class="grid md:grid-cols-3 gap-3 mb-4 text-center text-xs">
+      <div class="glass rounded-xl p-3"><div class="font-black mb-1" style="color:var(--brand-400)">CFS Line 1: PS_FTTH_VOICE</div><span class="chip good">يعمل بالتوازي مع Data</span></div>
+      <div class="glass rounded-xl p-3"><div class="font-black mb-1" style="color:var(--brand-400)">CFS Line 2: FTTH Data</div><span class="chip accent">يكتمل أولاً — شرط مسبق لـ IPTV</span></div>
+      <div class="glass rounded-xl p-3"><div class="font-black mb-1" style="color:var(--accent-400)">CFS Line 3: IPTV</div><span class="chip bad" style="border-color:rgba(228,87,90,.35)">ينتظر COMPLETED من Data</span></div>
+    </div>
+    <div class="text-sm space-y-2" style="color:var(--text-mid)">
+      <p><strong style="color:var(--text-hi)">التسلسل:</strong> Voice + Data بالتوازي (منافذ ONT مختلفة: POTS vs WAN). IPTV ينتظر حدث COMPLETED من Data Service Order قبل بدء eligibility check (يحتاج التحقق من PACKAGE_PROFILE النشط).</p>
+      <p><strong style="color:var(--text-hi)">VC4:</strong> VC4_Reserve للصوت + البيانات بالتوازي؛ VC4_Reserve لـ IPTV ينتظر اكتمال Data (للتحقق من DATA_SPEED vs IPTV threshold).</p>
+      <p><strong style="color:var(--text-hi)">فشل sub-order:</strong> الإعداد الافتراضي لـ TE = partial success + fallout (الخدمات الأخرى لا تُوقَف). Full rollback فقط إن كان مُهيَّأً صراحةً أو إن كانت الخدمة الفاشلة شرطاً مسبقاً.</p>
+    </div>
+  </div>
+
+  <!-- D: Retail vs Enterprise -->
+  <h3 class="font-black text-base mb-3" style="color:var(--text-hi)">D. Retail vs Enterprise داخل Nokia FO Order Management</h3>
+  <div class="glass rounded-2xl overflow-hidden mb-6">
+    <table class="w-full text-sm" style="border-collapse:collapse">
+      <thead><tr style="background:rgba(30,124,244,.12);border-bottom:1px solid var(--border-mid)">
+        <th class="text-right p-3 font-black" style="color:var(--text-lo)">المحور</th>
+        <th class="text-right p-3 font-black" style="color:var(--brand-400)">Retail</th>
+        <th class="text-right p-3 font-black" style="color:var(--accent-400)">Enterprise (CST 360)</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-3 font-bold" style="color:var(--text-lo)">Northbound</td><td class="p-3" style="color:var(--text-mid)">BSS/CRM · Provisioning Portal (ISP)</td><td class="p-3" style="color:var(--text-mid)">CST 360 (360° enterprise view)</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-3 font-bold" style="color:var(--text-lo)">Order Complexity</td><td class="p-3" style="color:var(--text-mid)">خدمة واحدة · موقع واحد</td><td class="p-3" style="color:var(--text-mid)">N خدمات · N مواقع في Customer Order واحد</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-3 font-bold" style="color:var(--text-lo)">Manual Task Nodes</td><td class="p-3" style="color:var(--text-mid)">لا يوجد — تلقائي بالكامل</td><td class="p-3" style="color:var(--text-mid)">نعم: VRF design approval · circuit routing approval</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-3 font-bold" style="color:var(--text-lo)">SLA Timer</td><td class="p-3" style="color:var(--text-mid)">دقائق → ساعات (Nokia FO + BSS dashboard)</td><td class="p-3" style="color:var(--text-mid)">أيام عمل — CST 360 SLA dashboard</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-3 font-bold" style="color:var(--text-lo)">VC4 Resources</td><td class="p-3" style="color:var(--text-mid)">IP · VLAN · Port · DN_NO · STB_MAC</td><td class="p-3" style="color:var(--text-mid)">Circuit ID · VRF · BGP AS · PE Port · VLAN Range · RD/RT</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-3 font-bold" style="color:var(--text-lo)">Rollback</td><td class="p-3" style="color:var(--text-mid)">كامل تلقائي</td><td class="p-3" style="color:var(--text-mid)">جزئي ممكن — مواقع VPN أخرى لا تتأثر</td></tr>
+        <tr style="border-bottom:1px solid var(--border-soft)"><td class="p-3 font-bold" style="color:var(--text-lo)">Billing</td><td class="p-3" style="color:var(--text-mid)">MW → BSS/CRM notification</td><td class="p-3" style="color:var(--text-mid)">CST 360 billing notification + enterprise contract</td></tr>
+        <tr><td class="p-3 font-bold" style="color:var(--text-lo)">CST 360 Role</td><td class="p-3" style="color:var(--text-mid)">غير مُستخدَم</td><td class="p-3" style="color:var(--text-mid)">Northbound trigger + task management (المهندسون يُحدِّثون حالة المهام اليدوية)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="h-rule mb-2"></div>
+</section>
 
 </body>
 </html>
